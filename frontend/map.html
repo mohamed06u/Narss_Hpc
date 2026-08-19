@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NARSS HPC - Map</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+    <!-- Map CSS -->
+    <link rel="stylesheet" href="css/map.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2>NARSS HPC</h2>
+            <p>High Performance Computing</p>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-btn">🏠 Home</a>
+            <a href="map.html" class="nav-btn active">🗺️ Map</a>
+            <a href="services/ondemand-computing.html" class="nav-btn">⚙️ On-Demand Computing</a>
+
+            <!-- SHAPEFILE UPLOAD -->
+            <div class="shapefile-box">
+                <h3>📂 Shapefile</h3>
+                <p>Upload a Shapefile ZIP</p>
+
+                <input type="file" id="shapefileInput" accept=".zip">
+                <button type="button" id="uploadShapefileBtn" class="upload-btn">Upload Shapefile</button>
+                <p id="uploadStatus" class="upload-status"></p>
+            </div>
+
+            <!-- LOGOUT -->
+            <button type="button" class="nav-btn logout" id="logoutBtn">🚪 Logout</button>
+        </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <header class="topbar">
+            <div>
+                <h1>Geographic Map</h1>
+                <p>NARSS HPC Spatial Data</p>
+            </div>
+        </header>
+
+        <section class="map-section">
+            <div id="map"></div>
+        </section>
+    </main>
+
+    <!-- LEAFLET JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- AUTH JS -->
+    <script src="js/auth.js"></script>
+
+    <!-- MAP JS -->
+    <script src="js/map.js"></script>
+
+</body>
+
+</html>

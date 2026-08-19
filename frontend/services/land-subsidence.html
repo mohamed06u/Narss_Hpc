@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NARSS HPC - Land Subsidence Monitoring</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1e3a8a;
+            --secondary-color: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 260px;
+            background-color: var(--card-bg);
+            border-right: 1px solid var(--border-color);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            flex-shrink: 0;
+        }
+
+        .brand-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .brand-subtitle {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 14px;
+            color: var(--text-dark);
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background-color: #eff6ff;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 32px 40px;
+            overflow-y: auto;
+        }
+
+        .header-section {
+            margin-bottom: 32px;
+        }
+
+        .header-section h1 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .header-section p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* Banner Card */
+        .banner-card {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 32px;
+            border-radius: 16px;
+            margin-bottom: 32px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .banner-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        .banner-card p {
+            font-size: 1rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .banner-pills {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .pill {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            backdrop-filter: blur(4px);
+        }
+
+        /* Grid Layout */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        @media (max-width: 992px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .article-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 28px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            margin-bottom: 24px;
+        }
+
+        .article-card h3 {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .article-card p {
+            line-height: 1.7;
+            color: #334155;
+            margin-bottom: 16px;
+        }
+
+        /* Legend Table Styling */
+        .legend-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+        }
+
+        .legend-table th, .legend-table td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.9rem;
+        }
+
+        .legend-table th {
+            background-color: #f1f5f9;
+            color: var(--text-dark);
+        }
+
+        .color-badge {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+
+        /* Hotspots Grid */
+        .hotspots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .hotspot-card {
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 16px;
+            background: #fafafa;
+        }
+
+        .hotspot-card h4 {
+            color: #dc2626;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .hotspot-card p {
+            font-size: 0.85rem;
+            margin: 0;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* Interactive Map Container */
+        #interactive-map {
+            height: 380px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-top: 16px;
+        }
+
+        /* Use Cases List */
+        .use-case-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .use-case-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px;
+            border-radius: 8px;
+            background: #f8fafc;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .use-case-item i {
+            color: var(--secondary-color);
+            margin-top: 3px;
+        }
+
+        .use-case-item h5 {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            margin-bottom: 2px;
+        }
+
+        .use-case-item p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div>
+            <div class="brand-title">NARSS HPC</div>
+            <div class="brand-subtitle">High Performance Computing</div>
+        </div>
+
+        <ul class="nav-links">
+            <li>
+                <a href="../index.html">
+                    <i class="fa-solid fa-house"></i> Home
+                </a>
+            </li>
+            <li>
+                <a href="../map.html">
+                    <i class="fa-solid fa-map-location-dot"></i> Map View
+                </a>
+            </li>
+            <li>
+                <a href="land-subsidence.html">
+                    <i class="fa-solid fa-chart-line"></i> Land Subsidence
+                </a>
+            </li>
+            <li>
+                <a href="ondemand-computing.html">
+                    <i class="fa-solid fa-microchip"></i> On-Demand Computing
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        
+        <div class="header-section">
+            <h1>Land Subsidence Monitoring</h1>
+            <p>A comprehensive platform analyzing ground movement across Egypt's Nile Delta using Sentinel-1 PSI technology.</p>
+        </div>
+
+        <!-- Hero Banner -->
+        <div class="banner-card">
+            <h2>Observe. Detect. Measure. Monitor.</h2>
+            <p>The NARSS Land Subsidence Monitoring Service transforms repeated Copernicus Sentinel-1 satellite observations into interactive maps, deformation measurements, and time-series reports—empowering decision-makers to track ground motion with millimeter precision.</p>
+            <div class="banner-pills">
+                <span class="pill">225 Satellite Images</span>
+                <span class="pill">2015 – 2020 Study Period</span>
+                <span class="pill">PSI Technology</span>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="content-grid">
+            
+            <!-- Left Column: Articles & Map -->
+            <div>
+                <!-- Article 1 -->
+                <div class="article-card">
+                    <h3><i class="fa-solid fa-earth-africa"></i> Nile Delta Ground Deformation Dynamics</h3>
+                    <p>Egypt's Nile Delta contains critical infrastructure, agricultural land, coastal communities, and major industrial centers. Many of these areas rest on low-lying, sediment-rich terrain vulnerable to land movement driven by sediment compaction, groundwater extraction, and urban loading.</p>
+                    <p>Analysis reveals that the Delta is not moving as a uniform block. The northern region exhibits subsidence ranging generally from <b>0 to -7 mm/year</b>, with localized hotspots reaching up to <b>-17 mm/year</b>.</p>
+                </div>
+
+                <!-- Hotspots & Interactive Map -->
+                <div class="article-card">
+                    <h3><i class="fa-solid fa-map-pin"></i> Field Inspection Hotspots</h3>
+                    <p>Ground-truthing and field investigations at high-subsidence locations documented visible structural damage including cracks, leaning structures, and foundation degradation.</p>
+                    
+                    <div id="interactive-map"></div>
+
+                    <div class="hotspots-grid">
+                        <div class="hotspot-card">
+                            <h4>Ashtoum Al-Gamil Bridge, Port Said</h4>
+                            <p>Severe structural fracturing and concrete damage observed along bridge support piers.</p>
+                        </div>
+                        <div class="hotspot-card">
+                            <h4>Muharram Bek Bus Station, Alexandria</h4>
+                            <p>Floor tiles displacement and deep horizontal wall cracking near foundation levels.</p>
+                        </div>
+                        <div class="hotspot-card">
+                            <h4>El Mataria, Ad Daqahliyah</h4>
+                            <p>Residential area impact near Lake Manzala due to low-lying wetland conditions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Legend & Decision Support -->
+            <div>
+                
+                <!-- Displacement Rate Legend Card -->
+                <div class="article-card">
+                    <h3><i class="fa-solid fa-palette"></i> Velocity Scale (mm/yr)</h3>
+                    <table class="legend-table">
+                        <thead>
+                            <tr>
+                                <th>Rate</th>
+                                <th>Classification</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="color-badge" style="background: #dc2626;"></span> &lt; -10.0</td>
+                                <td>High Subsidence</td>
+                            </tr>
+                            <tr>
+                                <td><span class="color-badge" style="background: #f97316;"></span> -10.0 to -7.5</td>
+                                <td>Moderate-High</td>
+                            </tr>
+                            <tr>
+                                <td><span class="color-badge" style="background: #eab308;"></span> -7.5 to -5.0</td>
+                                <td>Moderate Subsidence</td>
+                            </tr>
+                            <tr>
+                                <td><span class="color-badge" style="background: #84cc16;"></span> -5.0 to -2.5</td>
+                                <td>Minor Subsidence</td>
+                            </tr>
+                            <tr>
+                                <td><span class="color-badge" style="background: #16a34a;"></span> -2.5 to +2.5</td>
+                                <td>Stable Ground</td>
+                            </tr>
+                            <tr>
+                                <td><span class="color-badge" style="background: #06b6d4;"></span> +2.5 to +5.0</td>
+                                <td>Minor Uplift</td>
+                            </tr>
+                            <tr>
+                                <td><span class="color-badge" style="background: #1e3a8a;"></span> &gt; +10.0</td>
+                                <td>High Uplift</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Decision Support Card -->
+                <div class="article-card">
+                    <h3><i class="fa-solid fa-bullseye"></i> Decision Support</h3>
+                    <div class="use-case-list">
+                        <div class="use-case-item">
+                            <i class="fa-solid fa-city"></i>
+                            <div>
+                                <h5>Urban Planning</h5>
+                                <p>Identify high-risk zones requiring detailed geotechnical investigation before expansion.</p>
+                            </div>
+                        </div>
+                        <div class="use-case-item">
+                            <i class="fa-solid fa-bridge"></i>
+                            <div>
+                                <h5>Infrastructure Management</h5>
+                                <p>Prioritize bridges, roads, and transit hubs for structural maintenance.</p>
+                            </div>
+                        </div>
+                        <div class="use-case-item">
+                            <i class="fa-solid fa-water"></i>
+                            <div>
+                                <h5>Coastal Management</h5>
+                                <p>Assess combined risks of land subsidence and sea-level rise along coastlines.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Leaflet JS & Interactive Script -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            
+            // 1. تفعيل الزر النشط في القائمة الجانبية تلقائياً حسب اسم الصفحة الحالية
+            const currentPage = window.location.pathname.split("/").pop();
+            const links = document.querySelectorAll('.nav-links a');
+
+            links.forEach(link => {
+                const linkPage = decodeURIComponent(link.getAttribute('href'));
+                if (linkPage === currentPage || (currentPage === "" && linkPage === "index.html")) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+
+            // 2. تهيئة الخريطة التفاعلية المصغرة لمناطق المعاينة الميدانية
+            const miniMap = L.map('interactive-map').setView([31.2000, 31.0000], 8);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(miniMap);
+
+            // المواقع الميدانية المرصودة بالتقرير
+            const locations = [
+                {
+                    name: "Ashtoum Al-Gamil Bridge, Port Said",
+                    coords: [31.2464, 32.1861],
+                    desc: "High subsidence & structural cracking."
+                },
+                {
+                    name: "Muharram Bek Bus Station, Alexandria",
+                    coords: [31.1852, 29.9189],
+                    desc: "Wall cracks & foundation subsidence."
+                },
+                {
+                    name: "El Mataria, Ad Daqahliyah",
+                    coords: [31.5284, 32.0317],
+                    desc: "Residential zone structural impacts."
+                }
+            ];
+
+            locations.forEach(loc => {
+                L.marker(loc.coords).addTo(miniMap)
+                    .bindPopup(`<b>${loc.name}</b><br>${loc.desc}`);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NARSS HPC Lab</title>
+
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- CSS الخاص بالصورة الخلفية لقسم الـ Hero وتنسيق شريط التنقل الجديد -->
+    <style>
+        /* =========================
+           NAVBAR STYLES
+        ========================= */
+        .main-navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background-color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            position: relative;
+            z-index: 1000;
+            border-bottom: 1px solid #e5e7eb;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .nav-brand {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #1f2937;
+            font-weight: 600;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 0;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: #d97706;
+        }
+
+        .chevron {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-right: 2px solid #1f2937;
+            border-bottom: 2px solid #1f2937;
+            transform: rotate(45deg);
+            margin-bottom: 3px;
+            transition: transform 0.3s;
+        }
+
+        .nav-link:hover .chevron {
+            border-color: #d97706;
+        }
+
+        /* Dropdown Menu */
+        .dropdown-menu {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: #ffffff;
+            min-width: 280px;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 5px;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            border: 1px solid #f3f4f6;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .dropdown-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #d97706;
+            font-weight: 700;
+            font-size: 14px;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 12px;
+            margin-bottom: 12px;
+        }
+
+        .dropdown-item {
+            display: block;
+            text-decoration: none;
+            color: #4b5563;
+            padding: 8px 0;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .dropdown-item:hover {
+            color: #d97706;
+            transform: translateX(-5px);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        /* =========================
+           HERO SECTION
+        ========================= */
+        .hero {
+            position: relative;
+            background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.4)), url('assets/images/images.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #ffffff;
+            padding: 100px 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+            margin: 0 20px 40px 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #e2e8f0;
+            max-width: 800px;
+            margin: 0 auto 25px auto;
+            line-height: 1.6;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header / Navbar الجديد -->
+    <nav class="main-navbar">
+        <a href="index.html" class="nav-brand">
+            🛰️ NARSS HPC Lab Services
+        </a>
+
+        <ul class="nav-menu">
+            <!-- قائمة الخدمات المنسدلة -->
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link">
+                    الخدمات <span class="chevron"></span>
+                </a>
+                <div class="dropdown-menu">
+                    <div class="dropdown-header">
+                        <span>مجالات التركيز</span>
+                        <span>↗</span>
+                    </div>
+                    <a href="../frontend/services/ai-training.html" class="dropdown-item">ai_training</a>
+                    <a href="../frontend/services/ondemand-computing.html" class="dropdown-item">ondemand_computing</a>
+                    <a href="../frontend/services/land-subsidence.html" class="dropdown-item">land_subsidence</a>
+                    <a href="../frontend/services/oil-spill.html" class="dropdown-item">oil_spill</a>
+                </div>
+            </li>
+
+            <!-- قائمة المنصات المنسدلة -->
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link">
+                    المنصات <span class="chevron"></span>
+                </a>
+                <div class="dropdown-menu">
+                    <div class="dropdown-header">
+                        <span>الأنظمة التفاعلية</span>
+                        <span>↗</span>
+                    </div>
+                    <a href="map.html" class="dropdown-item">map</a>
+                    <a href="../frontend/services/data-analytics.html" class="dropdown-item">data_analytics</a>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a href="#services-container" class="nav-link">عن المعمل</a>
+            </li>
+        </ul>
+
+        <div class="nav-actions">
+            <a href="login.html" class="btn btn-outline" style="padding: 8px 18px; border-radius: 20px; text-decoration: none; border: 1px solid #3b5998; color: #3b5998; font-weight: 600;">
+                تسجيل الدخول
+            </a>
+            <a href="register.html" class="btn btn-primary" style="padding: 8px 18px; border-radius: 20px; text-decoration: none; background-color: #3b5998; color: #fff; font-weight: 600;">
+                حساب جديد
+            </a>
+        </div>
+    </nav>
+
+
+    <!-- Hero Section with Background -->
+    <section class="hero">
+
+        <h1>
+            معمل الحوسبة الفائقة للاستشعار عن بعد
+            (NARSS HPC)
+        </h1>
+
+        <p>
+            تسريع أبحاث الذكاء الاصطناعي ومعالجة علوم الأرض
+            لدعم اتخاذ القرارات البيئية المتقدمة.
+        </p>
+
+        <a href="map.html" class="btn-main" style="display: inline-block; background: #3b5998; color: #fff; padding: 12px 24px; border-radius: 30px; text-decoration: none; font-weight: bold;">
+            استعرض الخريطة التفاعلية ➜
+        </a>
+
+    </section>
+
+
+    <!-- Services -->
+    <main class="container">
+
+        <h2 class="section-title">
+            خدمات المنصة الإلكترونية
+        </h2>
+
+        <div
+            class="services-grid"
+            id="services-container">
+
+            <p class="loading">
+                جاري تحميل الخدمات...
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            جميع الحقوق محفوظة © الهيئة القومية للاستشعار
+            عن بعد وعلوم الفضاء (NARSS) 2026
+        </p>
+
+    </footer>
+
+
+    <script src="js/services.js"></script>
+</body>
+
+</html>

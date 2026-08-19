@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NARSS Interactive Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="css/map.css">
+</head>
+<body>
+<aside id="sidebar">
+    <div class="sidebar-header">
+        <span id="app-title">🗺️ نظام الهيئة (NARSS)</span>
+        <button class="icon-btn" onclick="toggleLanguage()">ع/EN</button>
+    </div>
+
+    <div class="sidebar-content">
+        <a class="nav-btn" href="index.html">🏠 الرئيسية</a>
+
+        <button class="nav-btn" onclick="openPdfModal()">📄 بروشور NARSS HPC</button>
+
+        <div class="dropdown-container">
+            <button class="dropdown-header" onclick="toggleDropdown()">
+                <span>🛠️ لوحة الخدمات المكانية</span>
+                <span id="arrow-icon">▼</span>
+            </button>
+
+            <div id="servicesDropdown" class="dropdown-content">
+                <button onclick="flyToLocation(30.0444,31.2357,13,'القاهرة - العاصمة','النقطة الرئيسية في القاهرة')">🏛️ القاهرة</button>
+                <button onclick="flyToLocation(31.2001,29.9187,13,'الإسكندرية','مدينة الإسكندرية الساحلية')">🌊 الإسكندرية</button>
+                <button onclick="flyToLocation(30.0131,31.2089,13,'الأهرامات - الجيزة','منطقة الأهرامات')">🐪 الأهرامات</button>
+                <button onclick="flyToLocation(26.8206,30.8025,6,'جمهورية مصر العربية','نظرة عامة على مصر')">🌐 مصر بالكامل</button>
+            </div>
+        </div>
+
+        <a class="nav-btn" href="services/ai-training.html">🧠 AI Training</a>
+        <a class="nav-btn" href="services/data-analytics.html">📊 Data Analytics</a>
+        <a class="nav-btn" href="services/land-subsidence.html">🌍 Land Subsidence</a>
+        <a class="nav-btn" href="services/oil-spill.html">🌊 Oil Spill</a>
+        <a class="nav-btn" href="services/ondemand-computing.html">⚙️ On-Demand Computing</a>
+
+        <button class="nav-btn logout" onclick="logout()">🚪 تسجيل الخروج</button>
+    </div>
+</aside>
+
+<main id="map"></main>
+
+<div id="pdfModal" class="modal">
+    <div class="modal-content">
+        <button class="close" onclick="closePdfModal()">×</button>
+        <h2>📄 NARSS HPC Brochure</h2>
+        <p>ضع ملف البروشور داخل مجلد <b>assets/pdf</b> باسم:</p>
+        <code>NARSS_HPC_Brochure_PrintReady.pdf</code>
+        <iframe src="assets/pdf/NARSS_HPC_Brochure_PrintReady.pdf"></iframe>
+    </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="js/map.js"></script>
+</body>
+</html>
