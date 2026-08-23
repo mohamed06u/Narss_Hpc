@@ -4,185 +4,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NARSS HPC Lab | معمل الحوسبة الفائقة</title>
 
-    <title>NARSS HPC Lab</title>
+    <!-- Google Fonts: Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Stylesheet الأساسي -->
     <link rel="stylesheet" href="css/main.css">
-
-    <!-- CSS الخاص بالصورة الخلفية لقسم الـ Hero وتنسيق شريط التنقل الجديد -->
-    <style>
-        /* =========================
-           NAVBAR STYLES
-        ========================= */
-        .main-navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 40px;
-            background-color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            position: relative;
-            z-index: 1000;
-            border-bottom: 1px solid #e5e7eb;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-        }
-
-        .nav-brand {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: #1e3a8a;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-            margin: 0;
-            padding: 0;
-            align-items: center;
-        }
-
-        .nav-item {
-            position: relative;
-        }
-
-        .nav-link {
-            text-decoration: none;
-            color: #1f2937;
-            font-weight: 600;
-            font-size: 15px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 10px 0;
-            transition: color 0.2s ease;
-        }
-
-        .nav-link:hover {
-            color: #d97706;
-        }
-
-        .chevron {
-            display: inline-block;
-            width: 6px;
-            height: 6px;
-            border-right: 2px solid #1f2937;
-            border-bottom: 2px solid #1f2937;
-            transform: rotate(45deg);
-            margin-bottom: 3px;
-            transition: transform 0.3s;
-        }
-
-        .nav-link:hover .chevron {
-            border-color: #d97706;
-        }
-
-        /* Dropdown Menu */
-        .dropdown-menu {
-            visibility: hidden;
-            opacity: 0;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background-color: #ffffff;
-            min-width: 280px;
-            border-radius: 8px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            margin-top: 5px;
-            transform: translateY(10px);
-            transition: all 0.3s ease;
-            border: 1px solid #f3f4f6;
-        }
-
-        .dropdown:hover .dropdown-menu {
-            visibility: visible;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .dropdown-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: #d97706;
-            font-weight: 700;
-            font-size: 14px;
-            border-bottom: 1px solid #e5e7eb;
-            padding-bottom: 12px;
-            margin-bottom: 12px;
-        }
-
-        .dropdown-item {
-            display: block;
-            text-decoration: none;
-            color: #4b5563;
-            padding: 8px 0;
-            font-size: 14px;
-            transition: all 0.2s;
-        }
-
-        .dropdown-item:hover {
-            color: #d97706;
-            transform: translateX(-5px);
-        }
-
-        .nav-actions {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-        }
-
-        /* =========================
-           HERO SECTION
-        ========================= */
-        .hero {
-            position: relative;
-            background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.4)), url('assets/images/images.jpeg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            color: #ffffff;
-            padding: 100px 20px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
-            margin: 0 20px 40px 20px;
-        }
-
-        .hero h1 {
-            font-size: 2.2rem;
-            color: #ffffff;
-            margin-bottom: 15px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-        }
-
-        .hero p {
-            font-size: 1.15rem;
-            color: #e2e8f0;
-            max-width: 800px;
-            margin: 0 auto 25px auto;
-            line-height: 1.6;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-        }
-    </style>
 </head>
 
 <body>
 
-    <!-- Header / Navbar الجديد -->
+    <!-- Top Announcement Bar -->
+    <!-- <div class="top-bar">
+        <div class="top-bar-content">
+            <span>
+                <span class="badge-live"><i class="fas fa-circle"></i> نشط</span>
+                كافة أنظمة الحوسبة الفائقة وسيرفرات الذكاء الاصطناعي تعمل بكفاءة 100%
+            </span>
+            <span class="top-bar-divider">|</span>
+            <a href="#" class="top-bar-link">
+                <i class="fas fa-file-alt"></i> سجلات الصيانة الدورية
+            </a>
+        </div>
+    </div> -->
+
+    <!-- Header / Navbar -->
     <nav class="main-navbar">
         <a href="index.html" class="nav-brand">
-            🛰️ NARSS HPC Lab Services
+            <span class="brand-icon">🛰️</span>
+            <span>NARSS <span class="brand-highlight">HPC</span> Lab</span>
         </a>
 
         <ul class="nav-menu">
-            <!-- قائمة الخدمات المنسدلة -->
             <li class="nav-item dropdown">
                 <a href="#" class="nav-link">
                     الخدمات <span class="chevron"></span>
@@ -192,14 +51,21 @@
                         <span>مجالات التركيز</span>
                         <span>↗</span>
                     </div>
-                    <a href="../frontend/services/ai-training.html" class="dropdown-item">ai_training</a>
-                    <a href="../frontend/services/ondemand-computing.html" class="dropdown-item">ondemand_computing</a>
-                    <a href="../frontend/services/land-subsidence.html" class="dropdown-item">land_subsidence</a>
-                    <a href="../frontend/services/oil-spill.html" class="dropdown-item">oil_spill</a>
+                    <a href="../frontend/services/ai-training.html" class="dropdown-item">
+                        <i class="fas fa-brain"></i> ai_training
+                    </a>
+                    <a href="../frontend/services/ondemand-computing.html" class="dropdown-item">
+                        <i class="fas fa-server"></i> ondemand_computing
+                    </a>
+                    <a href="../frontend/services/land-subsidence.html" class="dropdown-item">
+                        <i class="fas fa-mountain"></i> land_subsidence
+                    </a>
+                    <a href="../frontend/services/oil-spill.html" class="dropdown-item">
+                        <i class="fas fa-oil-can"></i> oil_spill
+                    </a>
                 </div>
             </li>
 
-            <!-- قائمة المنصات المنسدلة -->
             <li class="nav-item dropdown">
                 <a href="#" class="nav-link">
                     المنصات <span class="chevron"></span>
@@ -209,8 +75,12 @@
                         <span>الأنظمة التفاعلية</span>
                         <span>↗</span>
                     </div>
-                    <a href="map.html" class="dropdown-item">map</a>
-                    <a href="../frontend/services/data-analytics.html" class="dropdown-item">data_analytics</a>
+                    <a href="map.html" class="dropdown-item">
+                        <i class="fas fa-map"></i> map
+                    </a>
+                    <a href="../frontend/services/data-analytics.html" class="dropdown-item">
+                        <i class="fas fa-chart-bar"></i> data_analytics
+                    </a>
                 </div>
             </li>
 
@@ -220,67 +90,110 @@
         </ul>
 
         <div class="nav-actions">
-            <a href="login.html" class="btn btn-outline" style="padding: 8px 18px; border-radius: 20px; text-decoration: none; border: 1px solid #3b5998; color: #3b5998; font-weight: 600;">
-                تسجيل الدخول
+            <a href="login.html" class="btn btn-outline">
+                <i class="fas fa-sign-in-alt"></i> تسجيل الدخول
             </a>
-            <a href="register.html" class="btn btn-primary" style="padding: 8px 18px; border-radius: 20px; text-decoration: none; background-color: #3b5998; color: #fff; font-weight: 600;">
-                حساب جديد
+            <a href="register.html" class="btn btn-primary">
+                <i class="fas fa-user-plus"></i> حساب جديد
             </a>
         </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-toggle" aria-label="القائمة">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </nav>
 
-
-    <!-- Hero Section with Background -->
+    <!-- Hero Section -->
     <section class="hero">
+        <div class="hero-overlay">
+            <div class="hero-content">
 
-        <h1>
-            معمل الحوسبة الفائقة للاستشعار عن بعد
-            (NARSS HPC)
-        </h1>
-
-        <p>
-            تسريع أبحاث الذكاء الاصطناعي ومعالجة علوم الأرض
-            لدعم اتخاذ القرارات البيئية المتقدمة.
-        </p>
-
-        <a href="map.html" class="btn-main" style="display: inline-block; background: #3b5998; color: #fff; padding: 12px 24px; border-radius: 30px; text-decoration: none; font-weight: bold;">
-            استعرض الخريطة التفاعلية ➜
-        </a>
-
+                <h1>معمل الحوسبة الفائقة للاستشعار عن بعد</h1>
+                <p class="hero-subtitle">NARSS HPC Lab</p>
+                <p>تسريع أبحاث الذكاء الاصطناعي، ومعالجة علوم الأرض لدعم اتخاذ القرارات البيئية المتقدمة.</p>
+                <div class="hero-actions">
+                    <a href="map.html" class="btn-main">
+                        استعرض الخريطة التفاعلية <i class="fas fa-arrow-left"></i>
+                    </a>
+                    <a href="#services-container" class="btn-secondary">
+                        <i class="fas fa-chevron-down"></i> استكشف الخدمات
+                    </a>
+                </div>
+                <!-- <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">كفاءة التشغيل</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">دعم فني</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">+50</span>
+                        <span class="stat-label">مشروع بحثي</span>
+                    </div>
+                </div> -->
+            </div>
+        </div>
     </section>
 
-
-    <!-- Services -->
+    <!-- Main Container -->
     <main class="container">
 
-        <h2 class="section-title">
-            خدمات المنصة الإلكترونية
-        </h2>
+        <!-- قسم العنوان والبحث المحسن -->
+        <div class="section-header-box">
+            <div class="section-title-wrapper">
+                <span class="section-tag">🛠️ خدماتنا</span>
+                <h2>خدمات المنصة الإلكترونية</h2>
+                <p>اختر من بين خدمات الحوسبة ومعالجة البيانات المتاحة</p>
+            </div>
+            <div class="filter-search-box">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="serviceSearch" placeholder="ابحث عن خدمة أو تقنية...">
+            </div>
+        </div>
 
-        <div
-            class="services-grid"
-            id="services-container">
-
-            <p class="loading">
+        <!-- شبكة الخدمات بتصميم الكروت الجديدة -->
+        <div class="services-grid" id="services-container">
+            <div class="loading">
+                <i class="fas fa-spinner fa-spin"></i>
                 جاري تحميل الخدمات...
-            </p>
-
+            </div>
         </div>
 
     </main>
 
-
     <!-- Footer -->
     <footer>
-
-        <p>
-            جميع الحقوق محفوظة © الهيئة القومية للاستشعار
-            عن بعد وعلوم الفضاء (NARSS) 2026
-        </p>
-
+        <div class="footer-content">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <span class="brand-icon">🛰️</span>
+                    <span class="brand-name">NARSS HPC Lab</span>
+                </div>
+                <p class="footer-desc">الهيئة القومية للاستشعار عن بعد وعلوم الفضاء</p>
+            </div>
+            <div class="footer-links">
+                <a href="#"><i class="fas fa-info-circle"></i> عن المعمل</a>
+                <a href="#"><i class="fas fa-envelope"></i> اتصل بنا</a>
+                <a href="#"><i class="fas fa-blog"></i> المدونة</a>
+            </div>
+            <div class="footer-social">
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+            <div class="footer-bottom">
+                <p>جميع الحقوق محفوظة © 2026 | وحدة الحوسبة الفائقة ومعالجة البيانات الجيومكانية</p>
+            </div>
+        </div>
     </footer>
 
-
+    <!-- JavaScript -->
     <script src="js/services.js"></script>
 </body>
 

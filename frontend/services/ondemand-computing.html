@@ -2,89 +2,166 @@
 <html lang="ar" dir="rtl">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
-
-    <title>
-        On-Demand Computing - NARSS HPC
-    </title>
-
-    <link
-        rel="stylesheet"
-        href="../css/main.css">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>On-Demand Computing | NARSS HPC Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/services_css/ondemand-computing.css">
 </head>
 
 <body>
-
-<header>
-
-    <a
-        href="../index.html"
-        class="logo">
-
-        🛰️ NARSS HPC Lab
-
-    </a>
-
-    <a
-        href="../index.html"
-        class="home-link">
-
-        الرئيسية
-
-    </a>
-
-</header>
-
-
-<main class="container">
-
-    <a
-        href="../index.html"
-        class="back-link">
-
-        ➜ العودة للرئيسية
-
-    </a>
-
-
-    <section class="page-card">
-
-        <h1>
-            ⚙️ On-Demand Computing
-        </h1>
-
-        <p class="service-description">
-
-            خدمة توفير موارد الحوسبة الفائقة
-            عند الطلب للمهام العلمية والحسابية.
-
-        </p>
-
-
-        <div class="placeholder-box">
-
-            <h3>
-                📍 Computing Workspace
-            </h3>
-
-            <p>
-
-                منطقة إعداد مهمة الحوسبة
-                واختيار الموارد المطلوبة.
-
-            </p>
-
+    <nav class="main-navbar" aria-label="التنقل الرئيسي">
+        <a href="../index.html" class="nav-brand">🛰️ NARSS HPC Lab</a>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="../index.html" class="nav-link">الرئيسية</a></li>
+            <li class="nav-item"><a href="../map.html" class="nav-link">الخريطة التفاعلية</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a href="../login.html" class="btn btn-outline">تسجيل الدخول</a>
+            <a href="../register.html" class="btn btn-primary">حساب جديد</a>
         </div>
+    </nav>
 
-    </section>
+    <main class="service-detail-main">
+        <nav class="breadcrumb-nav" aria-label="مسار التنقل">
+            <a href="../index.html">الرئيسية</a>
+            <span class="separator" aria-hidden="true">/</span>
+            <a href="../index.html#services-container">الخدمات</a>
+            <span class="separator" aria-hidden="true">/</span>
+            <span class="current">الحوسبة عند الطلب</span>
+        </nav>
 
-</main>
+        <header class="service-hero-section">
+            <div class="hero-top-meta">
+                <span class="service-num">05</span>
+                <span class="hero-category">HPC / GPU COMPUTING / LARGE DATA</span>
+            </div>
+            <h1>On-Demand Computing</h1>
+            <p class="hero-lead">تنفيذ مهام المعالجة الضخمة كثيفة الحوسبة، معالجة الصور بالذكاء الاصطناعي، وعمليات
+                الحوسبة الموزعة المدعومة بوحدات معالجة الرسوميات (GPU).</p>
+            <div class="hero-actions">
+                <a href="#job-submission-section" class="btn btn-primary">Request Computing</a>
+                <a href="#cluster-monitor-section" class="btn btn-outline"
+                    style="border-color: rgba(255,255,255,0.3); color: white;">View HPC Cluster</a>
+            </div>
+        </header>
 
+        <section class="service-section">
+            <h2>حالات الاستخدام (Use Cases)</h2>
+            <div class="use-cases-grid-6">
+                <article class="use-case-card">
+                    <h3>Heavy Computational Jobs</h3>
+                    <p>تشغيل المهام الحسابية المكثفة التي تتطلب موارد معالجة فائقة السرعة.</p>
+                </article>
+                <article class="use-case-card">
+                    <h3>Image Segmentation</h3>
+                    <p>تقسيم ومعالجة صور الأقمار الصناعية المعقدة واستخراج المعالم بدقة.</p>
+                </article>
+                <article class="use-case-card">
+                    <h3>Simulations</h3>
+                    <p>إجراء المحاكاة البيئية والنماذج الرياضية واسعة النطاق.</p>
+                </article>
+                <article class="use-case-card">
+                    <h3>Large Dataset Processing</h3>
+                    <p>معالجة أطنان من البيانات الجيومكانية والملفات الضخمة بكفاءة عالية.</p>
+                </article>
+                <article class="use-case-card">
+                    <h3>Batch Processing</h3>
+                    <p>تنفيذ المهام المجمعة (Batch) لجدولة ومعالجة البيانات بالتوازي.</p>
+                </article>
+                <article class="use-case-card">
+                    <h3>GPU-Accelerated Workloads</h3>
+                    <p>تسريع مهام التعلم العميق والذكاء الاصطناعي باستخدام العتاد المتطور.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="service-section" id="cluster-monitor-section">
+            <div class="cluster-header-wrap">
+                <h2>مراقبة موارد العقد (HPC Resource Visualization)</h2>
+                <span class="demo-monitor-banner" role="status">DEMO RESOURCE MONITOR — NOT LIVE HPC STATUS</span>
+            </div>
+            <div class="cluster-nodes-grid">
+                <div class="node-card">
+                    <div class="node-top"><span class="node-title">NODE 01</span><span
+                            class="node-status status-idle">IDLE (Demo)</span></div>
+                    <div class="node-specs">
+                        <div class="spec-row"><span>CPU:</span> <strong>64 Cores (Intel Xeon)</strong></div>
+                        <div class="spec-row"><span>GPU:</span> <strong>Nvidia Tensor Core</strong></div>
+                        <div class="spec-row"><span>RAM:</span> <strong>256 GB ECC</strong></div>
+                    </div>
+                </div>
+                <div class="node-card">
+                    <div class="node-top"><span class="node-title">NODE 02</span><span
+                            class="node-status status-active">ACTIVE (Demo)</span></div>
+                    <div class="node-specs">
+                        <div class="spec-row"><span>CPU:</span> <strong>64 Cores (Intel Xeon)</strong></div>
+                        <div class="spec-row"><span>GPU:</span> <strong>Nvidia Tensor Core</strong></div>
+                        <div class="spec-row"><span>RAM:</span> <strong>256 GB ECC</strong></div>
+                    </div>
+                </div>
+                <div class="node-card">
+                    <div class="node-top"><span class="node-title">NODE 03</span><span
+                            class="node-status status-idle">IDLE (Demo)</span></div>
+                    <div class="node-specs">
+                        <div class="spec-row"><span>CPU:</span> <strong>64 Cores (Intel Xeon)</strong></div>
+                        <div class="spec-row"><span>GPU:</span> <strong>Nvidia Tensor Core</strong></div>
+                        <div class="spec-row"><span>RAM:</span> <strong>256 GB ECC</strong></div>
+                    </div>
+                </div>
+                <div class="node-card">
+                    <div class="node-top"><span class="node-title">NODE 04</span><span
+                            class="node-status status-maintenance">MAINTENANCE (Demo)</span></div>
+                    <div class="node-specs">
+                        <div class="spec-row"><span>CPU:</span> <strong>64 Cores (Intel Xeon)</strong></div>
+                        <div class="spec-row"><span>GPU:</span> <strong>Nvidia Tensor Core</strong></div>
+                        <div class="spec-row"><span>RAM:</span> <strong>256 GB ECC</strong></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="service-section" id="job-submission-section">
+            <div class="form-container-box">
+                <div class="form-header">
+                    <h2>واجهة إرسال المهام (Job Submission UI)</h2>
+                    <span class="demo-badge" role="status">DEMO MODE</span>
+                </div>
+                <form class="hpc-job-form"
+                    onsubmit="event.preventDefault(); alert('Demo mode — job submission backend is not connected.');">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Job Name</label>
+                            <input type="text" class="form-control" placeholder="أدخل اسم المهمة الحسابية..." required>
+                        </div>
+                        <div class="form-group">
+                            <label>Workload Type</label>
+                            <select class="form-control">
+                                <option>Image Segmentation</option>
+                                <option>Heavy Computation</option>
+                                <option>Simulation Model</option>
+                                <option>Batch Processing</option>
+                                <option>GPU Deep Learning</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; margin-top: 10px;">Submit
+                        Job</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div style="font-weight: 700; font-size: 1.1rem; margin-bottom: 5px;">الهيئة القومية للاستشعار عن بعد وعلوم
+                الفضاء (NARSS)</div>
+            <p>جميع الحقوق محفوظة © 2026 | وحدة الحوسبة الفائقة ومعالجة البيانات الجيومكانية</p>
+        </div>
+    </footer>
 </body>
 
 </html>

@@ -2,90 +2,167 @@
 <html lang="ar" dir="rtl">
 
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تطوير وتدريب نماذج الذكاء الاصطناعي | NARSS HPC Lab</title>
 
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts: Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-    <title>
-        AI Training - NARSS HPC
-    </title>
-
-    <link
-        rel="stylesheet"
-        href="../css/main.css">
-
+    <!-- Global Project Styles -->
+    <link rel="stylesheet" href="../css/main.css">
+    <!-- Service Detail Specific Styles -->
+    <link rel="stylesheet" href="../css/services_css/ai-training.css">
 </head>
 
 <body>
 
-<header>
+    <!-- Global Header / Navbar (Reused) -->
+    <nav class="main-navbar">
+        <a href="../index.html" class="nav-brand">
+            🛰️ NARSS HPC Lab
+        </a>
 
-    <a
-        href="../index.html"
-        class="logo">
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="../index.html" class="nav-link">الرئيسية</a>
+            </li>
+            <li class="nav-item">
+                <a href="../map.html" class="nav-link">الخريطة التفاعلية</a>
+            </li>
+        </ul>
 
-        🛰️ NARSS HPC Lab
-
-    </a>
-
-    <a
-        href="../index.html"
-        class="home-link">
-
-        الرئيسية
-
-    </a>
-
-</header>
-
-
-<main class="container">
-
-    <a
-        href="../index.html"
-        class="back-link">
-
-        ➜ العودة للرئيسية
-
-    </a>
-
-
-    <section class="page-card">
-
-        <h1>
-            🧠 AI Model Development & Training Assistance
-        </h1>
-
-        <p class="service-description">
-
-            خدمة تدريب وتحسين نماذج التعلم العميق
-            مثل U-Net و DeepLabV3+
-            باستخدام وحدات GPU.
-
-        </p>
-
-
-        <div class="placeholder-box">
-
-            <h3>
-                📍 AI Workspace
-            </h3>
-
-            <p>
-
-                منطقة البيانات الخاصة بخدمة الذكاء الاصطناعي.
-                يمكن إضافة واجهات رفع البيانات
-                وتشغيل التدريب والمعالجة لاحقاً.
-
-            </p>
-
+        <div class="nav-actions">
+            <a href="../login.html" class="btn btn-outline">تسجيل الدخول</a>
+            <a href="../register.html" class="btn btn-primary">حساب جديد</a>
         </div>
+    </nav>
 
-    </section>
+    <!-- Main Content Container -->
+    <main class="service-detail-main">
 
-</main>
+        <!-- Breadcrumb Navigation -->
+        <nav class="breadcrumb-nav" aria-label="breadcrumb">
+            <a href="../index.html">الرئيسية</a>
+            <span class="separator">/</span>
+            <a href="../index.html#services-container">الخدمات</a>
+            <span class="separator">/</span>
+            <span class="current">تدريب الذكاء الاصطناعي</span>
+        </nav>
+
+        <!-- Hero Section -->
+        <header class="service-hero-section">
+            <div class="hero-badge">معمل الحوسبة الفائقة - NARSS HPC</div>
+            <h1>تطوير وتدريب نماذج الذكاء الاصطناعي للرؤية الحاسوبية</h1>
+            <p class="hero-lead">تسريع خوارزميات التعلم العميق ومعالجة صور الأقمار الصناعية باستخدام بنيات تحتية عالية
+                الأداء موجهة للبحث العلمي.</p>
+        </header>
+
+        <!-- Service Introduction & Challenge -->
+        <section class="service-section">
+            <div class="section-grid">
+                <div class="text-content">
+                    <h2>التحدي العلمي والبيئي</h2>
+                    <p>
+                        تتطلب معالجة صور الأقمار الصناعية الضخمة وتطوير نماذج التعلم العميق (Deep Learning) قدرات حوسبية
+                        استثنائية.
+                        الاعتماد على البنى التحتية التقليدية يبطئ من دورات البحث والتطوير، مما يعيق استخراج المؤشرات
+                        البيئية في الأوقات الحرجة.
+                    </p>
+                </div>
+                <div class="media-preview-box">
+                    <img src="../assets/images/images.jpeg" alt="نمذجة الحوسبة الفائقة للبيانات الجيومكانية"
+                        loading="lazy">
+                    <div class="demo-tag">معاينة النظام (Demo Visualization)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Capabilities -->
+        <section class="service-section">
+            <h2>القدرات الأساسية للخدمة</h2>
+            <div class="capabilities-grid">
+                <article class="capability-card">
+                    <h3>تسريع وحدات المعالجة الرسومية (GPUs)</h3>
+                    <p>استغلال العتاد الفائق لتشغيل نماذج الشبكات العصبية المعقدة بأداء عالي الكفاءة.</p>
+                </article>
+                <article class="capability-card">
+                    <h3>معالجة الصور متعددة الأطياف</h3>
+                    <p>تطبيق خوارزميات متقدمة لاستخلاص الغطاء الأرضي والتغيرات المساحية بدقة.</p>
+                </article>
+                <article class="capability-card">
+                    <h3>بيئة عمل برمجية متكاملة</h3>
+                    <p>دعم أحدث مكتبات وأطر العمل المعتمدة عالمياً في أبحاث الاستشعار عن بعد.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Workflow / How It Works -->
+        <section class="service-section workflow-section">
+            <h2>آلية العمل وسير المهام (Workflow)</h2>
+            <div class="workflow-steps">
+                <div class="step-item">
+                    <span class="step-num">01</span>
+                    <h4>رفع وتحضير البيانات</h4>
+                    <p>استقبال مجموعات البيانات الجيومكانية وتجهيزها للمعالجة البحثية.</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-num">02</span>
+                    <h4>التخصيص والتدريب</h4>
+                    <p>تشغيل النماذج على سيرفرات الحوسبة الفائقة تحت إشراف الباحثين.</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-num">03</span>
+                    <h4>التقييم واستخراج النتائج</h4>
+                    <p>تحليل مخرجات النماذج وتوليد التقارير والمؤشرات الجيومكانية.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Specifications -->
+        <section class="service-section">
+            <h2>المواصفات التقنية</h2>
+            <div class="specs-table-wrapper">
+                <table class="specs-table">
+                    <tr>
+                        <th>المكون التقني</th>
+                        <th>التفاصيل التشغيلية</th>
+                    </tr>
+                    <tr>
+                        <td>بيئة التشغيل</td>
+                        <td>Linux HPC Cluster / CUDA-enabled Environment</td>
+                    </tr>
+                    <tr>
+                        <td>الأطر المدعومة</td>
+                        <td>PyTorch, TensorFlow, GDAL, Rasterio</td>
+                    </tr>
+                    <tr>
+                        <td>أمان البيانات</td>
+                        <td>بيئة معزولة بالكامل لضمان سرية وخصوصية الأبحاث</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- Call To Action Section -->
+        <section class="cta-section">
+            <h2>هل تحتاج إلى تخصيص موارد حوسبية لبحثك القادم؟</h2>
+            <p>تواصل مع فريق الدعم الفني بالمعمل لجدولة المهام الحسابية وطلب الدعم الأكاديمي.</p>
+            <a href="../contact.html" class="btn btn-primary btn-lg">تواصل مع فريق الدعم</a>
+        </section>
+
+    </main>
+
+    <!-- Global Footer (Reused) -->
+    <footer>
+        <div class="footer-content">
+            <div style="font-weight: 700; font-size: 1.1rem; margin-bottom: 5px;">الهيئة القومية للاستشعار عن بعد وعلوم
+                الفضاء (NARSS)</div>
+            <p>جميع الحقوق محفوظة © 2026 | وحدة الحوسبة الفائقة ومعالجة البيانات الجيومكانية</p>
+        </div>
+    </footer>
 
 </body>
 

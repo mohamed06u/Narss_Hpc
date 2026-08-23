@@ -2,88 +2,257 @@
 <html lang="ar" dir="rtl">
 
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oil Spill Detection & Monitoring | NARSS HPC Lab</title>
 
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts: Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-    <title>
-        Oil Spill - NARSS HPC
-    </title>
-
-    <link
-        rel="stylesheet"
-        href="../css/main.css">
-
+    <!-- Global Project Styles -->
+    <link rel="stylesheet" href="../css/main.css">
+    <!-- Oil Spill Detail Specific Styles -->
+    <link rel="stylesheet" href="../css/services_css/oil-spill.css">
 </head>
 
 <body>
 
-<header>
+    <!-- Global Header / Navbar (Reused) -->
+    <nav class="main-navbar">
+        <a href="../index.html" class="nav-brand">
+            🛰️ NARSS HPC Lab
+        </a>
 
-    <a
-        href="../index.html"
-        class="logo">
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="../index.html" class="nav-link">الرئيسية</a>
+            </li>
+            <li class="nav-item">
+                <a href="../map.html" class="nav-link">الخريطة التفاعلية</a>
+            </li>
+        </ul>
 
-        🛰️ NARSS HPC Lab
-
-    </a>
-
-    <a
-        href="../index.html"
-        class="home-link">
-
-        الرئيسية
-
-    </a>
-
-</header>
-
-
-<main class="container">
-
-    <a
-        href="../index.html"
-        class="back-link">
-
-        ➜ العودة للرئيسية
-
-    </a>
-
-
-    <section class="page-card">
-
-        <h1>
-            🌊 Oil Spill Detection
-        </h1>
-
-        <p class="service-description">
-
-            خدمة مساعدة في تحليل صور الأقمار الصناعية
-            لاكتشاف ومتابعة بقع الزيت.
-
-        </p>
-
-
-        <div class="placeholder-box">
-
-            <h3>
-                📍 Oil Spill Workspace
-            </h3>
-
-            <p>
-
-                منطقة رفع الصور وتشغيل التحليل
-                وعرض النتائج.
-
-            </p>
-
+        <div class="nav-actions">
+            <a href="../login.html" class="btn btn-outline">تسجيل الدخول</a>
+            <a href="../register.html" class="btn btn-primary">حساب جديد</a>
         </div>
+    </nav>
 
-    </section>
+    <!-- Main Content Container -->
+    <main class="service-detail-main">
 
-</main>
+        <!-- Breadcrumb Navigation -->
+        <nav class="breadcrumb-nav" aria-label="breadcrumb">
+            <a href="../index.html">الرئيسية</a>
+            <span class="separator">/</span>
+            <a href="../index.html#services-container">الخدمات</a>
+            <span class="separator">/</span>
+            <span class="current">مراقبة التسرب النفطي</span>
+        </nav>
+
+        <!-- 1. Hero Section -->
+        <header class="service-hero-section">
+            <div class="hero-top-meta">
+                <span class="service-num">01</span>
+                <span class="hero-category">REMOTE SENSING / AI / MARINE MONITORING</span>
+            </div>
+            <h1>Oil Spill Detection & Monitoring</h1>
+            <p class="hero-lead">رصد وتحليل بقع الزيت والتلوث البحري باستخدام بيانات الأقمار الصناعية متعددة الأطياف
+                ونماذج الذكاء الاصطناعي عبر وحدات الحوسبة الفائقة.</p>
+            <div class="hero-actions">
+                <a href="#demo-section" class="btn btn-primary">Explore Capabilities</a>
+                <a href="../contact.html" class="btn btn-outline"
+                    style="border-color: rgba(255,255,255,0.3); color: white;">Request Service</a>
+            </div>
+        </header>
+
+        <!-- 2. Introduction Section -->
+        <section class="service-section">
+            <div class="section-grid">
+                <div class="text-content">
+                    <h2>أهمية مراقبة البيئة البحرية بالحوسبة الفائقة</h2>
+                    <p>
+                        تتطلب حوادث التلوث البحري والتسرب النفطي استجابة تحليلية فائقة السرعة. من خلال دمج قدرات الأقمار
+                        الصناعية الرادارية والبصرية مع الحوسبة الفائقة (HPC)، يتيح المعمل معالجة كميات هائلة من بيانات
+                        الرصد البحري واستخراج نطاقات الانتشار بزمن قياسي لدعم اتخاذ القرار البيئي.
+                    </p>
+                </div>
+                <div class="media-preview-box">
+                    <img src="../assets/images/images.jpeg" alt="Marine Monitoring Satellite View" loading="lazy">
+                    <div class="demo-tag">DEMO VISUALIZATION — NOT LIVE NARSS DATA</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Capabilities Section (5 Cards) -->
+        <section class="service-section">
+            <h2>القدرات التقنية للخدمة</h2>
+            <div class="capabilities-grid-5">
+                <article class="capability-card">
+                    <h3>Near-Real-Time Detection</h3>
+                    <p>الكشف شبه اللحظي عن التغيرات في انعكاسية سطح البحر باستخدام صور الأقمار الصناعية.</p>
+                </article>
+                <article class="capability-card">
+                    <h3>AI-Based Segmentation</h3>
+                    <p>تطبيق خوارزميات التعلم العميق لعزل وتحديد مساحات التلوث النفطي بدقة.</p>
+                </article>
+                <article class="capability-card">
+                    <h3>Spill Classification</h3>
+                    <p>تصنيف أنواع ومصادر الانسكابات بناءً على الخصائص الطيفية والرادارية.</p>
+                </article>
+                <article class="capability-card">
+                    <h3>Spatial Mapping</h3>
+                    <p>إنشاء خرائط نطاق الانتشار الجغرافي وتحديد الأقاليم المتأثرة.</p>
+                </article>
+                <article class="capability-card">
+                    <h3>Time-Series Monitoring</h3>
+                    <p>تتبع تطور انتشار البقع النفطية عبر الزمن لتقييم حركة التيارات البحرية.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- 4. Interactive Workflow Section -->
+        <section class="service-section workflow-section">
+            <h2>سير العمل التحليلي (Workflow)</h2>
+            <div class="workflow-container">
+                <div class="workflow-step" tabindex="0">
+                    <span class="step-badge">01</span>
+                    <h4>Satellite Data</h4>
+                    <p>استقبال بيانات الأقمشة الفضائية المتعددة.</p>
+                </div>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-step" tabindex="0">
+                    <span class="step-badge">02</span>
+                    <h4>Data Preprocessing</h4>
+                    <p>المعالجة الأولية وتصحيح التشوهات الإشعاعية.</p>
+                </div>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-step" tabindex="0">
+                    <span class="step-badge">03</span>
+                    <h4>AI Analysis</h4>
+                    <p>تحليل النماذج الذكية عبر خوارزميات الـ GPU.</p>
+                </div>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-step" tabindex="0">
+                    <span class="step-badge">04</span>
+                    <h4>Spill Detection</h4>
+                    <p>تحديد رقعة التلوث واكتشاف الشذوذ البحري.</p>
+                </div>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-step" tabindex="0">
+                    <span class="step-badge">05</span>
+                    <h4>Spatial Analysis</h4>
+                    <p>إسقاط البيانات وتحليل النطاق الجغرافي.</p>
+                </div>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-step" tabindex="0">
+                    <span class="step-badge">06</span>
+                    <h4>Time-Series Monitoring</h4>
+                    <p>تتبع التطور الزمني وتأثير التيارات.</p>
+                </div>
+                <div class="workflow-arrow">→</div>
+                <div class="workflow-step" tabindex="0">
+                    <span class="step-badge">07</span>
+                    <h4>GIS-Ready Output</h4>
+                    <p>تصدير مخرجات جاهزة لأنظمة GIS.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Interactive Visualization Demo Interface -->
+        <section class="service-section" id="demo-section">
+            <h2>واجهة محاكاة مراقبة التسرب النفطي</h2>
+            <div class="demo-interface-box">
+                <div class="demo-toolbar">
+                    <div class="status-indicator">
+                        <span class="pulse-dot"></span>
+                        <span>Monitoring Status: <strong>Active (Demo Mode)</strong></span>
+                    </div>
+                    <div class="demo-controls">
+                        <span class="badge-time">التاريخ: 2026-08-22</span>
+                        <button class="layer-toggle-btn" type="button">تبديل طبقة الرادار (SAR)</button>
+                    </div>
+                </div>
+                <div class="demo-map-viewport">
+                    <div class="simulated-map-bg">
+                        <div class="simulated-oil-plume"></div>
+                    </div>
+                    <div class="demo-warning-banner">
+                        ⚠️ DEMO VISUALIZATION — NOT LIVE NARSS DATA
+                    </div>
+                    <div class="map-legend">
+                        <h4>مفتاح الخريطة</h4>
+                        <div class="legend-item"><span class="color-box spill"></span> رقعة التلوث المرصودة</div>
+                        <div class="legend-item"><span class="color-box water"></span> المياه الإقليمية الساحلية</div>
+                    </div>
+                </div>
+                <div class="demo-info-panel">
+                    <p><strong>معلومات التحليل:</strong> يتم عرض نموذج افتراضي يوضح طريقة تحديد مساحة التلوث وتتبع
+                        انتشار الانسكابات بناءً على معالجة البيانات الرادارية.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Outputs Section -->
+        <section class="service-section">
+            <h2>مخرجات النظام التحليلية</h2>
+            <div class="outputs-grid">
+                <div class="output-card">
+                    <h4>Spill Extent Maps</h4>
+                    <p>خرائط تفصيلية تحدد الأبعاد والمساحات الجغرافية للانسكاب البحري بدقة.</p>
+                </div>
+                <div class="output-card">
+                    <h4>GIS-Ready Products</h4>
+                    <p>ملفات متوافقة مع نظم المعلومات الجيومكانية لتسهيل دمجها في خطط الطوارئ.</p>
+                </div>
+                <div class="output-card">
+                    <h4>Time-Series Analysis</h4>
+                    <p>تقارير زمنية تسجل سرعة ومسار تحرك البقعة النفطية بمرور الساعات.</p>
+                </div>
+                <div class="output-card">
+                    <h4>Monitoring Results</h4>
+                    <p>ملخصات تحليلية مدعومة بمؤشرات رقمية لمتخذي القرار في قطاع حماية البيئة.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Technical Relationship Section -->
+        <section class="service-section tech-flow-section">
+            <h2>الهيكلية التقنية والمعمارية للخدمة</h2>
+            <div class="tech-flow-chain">
+                <div class="tech-node">Satellite Data</div>
+                <span class="tech-sep">➔</span>
+                <div class="tech-node">AI Processing</div>
+                <span class="tech-sep">➔</span>
+                <div class="tech-node">HPC Infrastructure</div>
+                <span class="tech-sep">➔</span>
+                <div class="tech-node">GIS Outputs</div>
+            </div>
+        </section>
+
+        <!-- 8. CTA Section -->
+        <section class="cta-section">
+            <h2>Ready to explore Earth Observation workflows?</h2>
+            <p>تواصل معنا لطلب الخدمة أو الاستفسار عن آليات ربط النماذج الحوسبية البيئية.</p>
+            <div class="cta-btns">
+                <a href="../contact.html" class="btn btn-primary btn-lg">Request Service</a>
+                <a href="../contact.html" class="btn btn-outline btn-lg"
+                    style="border-color: rgba(255,255,255,0.4); color: white;">Contact HPC Lab</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Global Footer (Reused) -->
+    <footer>
+        <div class="footer-content">
+            <div style="font-weight: 700; font-size: 1.1rem; margin-bottom: 5px;">الهيئة القومية للاستشعار عن بعد وعلوم
+                الفضاء (NARSS)</div>
+            <p>جميع الحقوق محفوظة © 2026 | وحدة الحوسبة الفائقة ومعالجة البيانات الجيومكانية</p>
+        </div>
+    </footer>
 
 </body>
 

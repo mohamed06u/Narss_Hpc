@@ -11,6 +11,7 @@
 
     <!-- Map CSS -->
     <link rel="stylesheet" href="css/map.css">
+    <script src="https://unpkg.com/shpjs@latest/shp.js"></script>
 </head>
 
 <body>
@@ -46,13 +47,33 @@
     <main class="main-content">
         <header class="topbar">
             <div>
-                <h1>Geographic Map</h1>
+                <h1 id="topbarTitle">Satellite Imagery</h1>
                 <p>NARSS HPC Spatial Data</p>
             </div>
         </header>
 
+        <!-- MAP SELECTOR TABS -->
+        <div class="map-tabs-bar">
+            <button class="map-tab-btn active" data-map="satellite">Satellite Map</button>
+            <button class="map-tab-btn" data-map="geographic">Geographic Map</button>
+            <button class="map-tab-btn" data-map="gis">GIS Analysis Map</button>
+        </div>
+
         <section class="map-section">
-            <div id="map"></div>
+            <!-- Map 1: Satellite Map -->
+            <div class="map-pane active" id="pane-satellite">
+                <div class="map-container" id="map-satellite"></div>
+            </div>
+
+            <!-- Map 2: Geographic / Street Map -->
+            <div class="map-pane" id="pane-geographic">
+                <div class="map-container" id="map-geographic"></div>
+            </div>
+
+            <!-- Map 3: GIS Analysis Map -->
+            <div class="map-pane" id="pane-gis">
+                <div class="map-container" id="map-gis"></div>
+            </div>
         </section>
     </main>
 

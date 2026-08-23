@@ -1,67 +1,98 @@
 /* =========================
-   NARSS HPC MAP
+   NARSS HPC MAP - Single Active Map with Tab Switching
 ========================= */
 
-// ضبط المسار الرئيسي للـ API
 if (typeof window.API_BASE_URL === "undefined") {
     window.API_BASE_URL = "http://localhost:3000/api";
 }
 
-// المتغيرات العامة للخريطة والطبقة الحالية
-let map = null;
-let currentShapefileLayer = null;
+// Independent map instances and layer controls
+const maps = {
+    satellite: null,
+    geographic: null,
+    gis: null
+};
 
-/* =========================
-   GET TOKEN
-========================= */
-function getToken() {
-    return localStorage.getItem("token");
-}
+const layerControls = {
+    satellite: null,
+    geographic: null,
+    gis: null
+};
 
-/* =========================
-   INITIALIZE MAP ON DOM LOAD
-========================= */
+// Map titles mapping for Topbar update
+const mapTitles = {
+    satellite: "Satellite Imagery",
+    geographic: "Geographic Map",
+    gis: "GIS Analysis"
+};
+
 document.addEventListener("DOMContentLoaded", function () {
+    const centerEgypt = [26.8206, 30.8025]; // Center coordinates of Egypt
+    const defaultZoom = 6;
 
-    // 1. إنشاء الخريطة وتحديد المركز الافتراضي (مصر)
-    map = L.map("map").setView([30.0444, 31.2357], 6);
+    // 1. Initialize Map 1 — Satellite Map (Visible by default)
+    maps.satellite = L.map("map-satellite").setView(centerEgypt, defaultZoom);
+    const satelliteBasemap = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
+        maxZoom: 19,
+        attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+    }).addTo(maps.satellite);
+    layerControls.satellite = L.control.layers({ "Satellite Imagery": satelliteBasemap }, {}).addTo(maps.satellite);
 
-    // 2. تحميل طبقة OpenStreetMap
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    // 2. Initialize Map 2 — Geographic / Street Map (Hidden initially)
+    maps.geographic = L.map("map-geographic").setView(centerEgypt, defaultZoom);
+    const osmBasemap = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         maxZoom: 19,
         attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
+    }).addTo(maps.geographic);
+    layerControls.geographic = L.control.layers({ "OpenStreetMap": osmBasemap }, {}).addTo(maps.geographic);
 
-    // 3. إعادة حساب الأبعاد لحل مشكلة المربع الرمادي عند التحميل
-    setTimeout(() => {
-        if (map) {
-            map.invalidateSize();
-        }
-    }, 250);
+    // 3. Initialize Map 3 — GIS Analysis Map (Hidden initially)
+    maps.gis = L.map("map-gis").setView(centerEgypt, defaultZoom);
+    const topoBasemap = L.tileLayer("https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png", {
+        maxZoom: 17,
+        attribution: 'Map data: &copy; OpenStreetMap contributors, SRTM | Map style: &copy; OpenTopoMap (CC-BY-SA)'
+    }).addTo(maps.gis);
+    layerControls.gis = L.control.layers({ "Topographic GIS": topoBasemap }, {}).addTo(maps.gis);
 
-    // إعادة حساب الأبعاد تلقائياً عند تغيير حجم الشاشة أو فتح الـ DevTools
-    window.addEventListener("resize", () => {
-        if (map) {
-            map.invalidateSize();
-        }
+    // 4. Setup Tab Switching Logic
+    const tabButtons = document.querySelectorAll(".map-tab-btn");
+    tabButtons.forEach(btn => {
+        btn.addEventListener("click", function () {
+            const targetMapKey = this.getAttribute("data-map");
+
+            // Update active tab buttons
+            tabButtons.forEach(b => b.classList.remove("active"));
+            this.classList.add("active");
+
+            // Update active panes
+            document.querySelectorAll(".map-pane").forEach(pane => pane.classList.remove("active"));
+            document.getElementById(`pane-${targetMapKey}`).classList.add("active");
+
+            // Update topbar title
+            const titleEl = document.getElementById("topbarTitle");
+            if (titleEl && mapTitles[targetMapKey]) {
+                titleEl.textContent = mapTitles[targetMapKey];
+            }
+
+            // Invalidate size of the activated map to render correctly
+            if (maps[targetMapKey]) {
+                setTimeout(() => {
+                    maps[targetMapKey].invalidateSize();
+                }, 100);
+            }
+        });
     });
 
-    // 4. ربط الأزرار بالأحداث
-    const uploadButton = document.getElementById("uploadShapefileBtn");
-    const logoutButton = document.getElementById("logoutBtn");
+    // 5. Set up Buttons & Upload Handlers
+    document.getElementById("uploadShapefileBtn").addEventListener("click", uploadShapefile);
+    document.getElementById("logoutBtn").addEventListener("click", logout);
 
-    if (uploadButton) {
-        uploadButton.addEventListener("click", uploadShapefile);
-    }
-
-    if (logoutButton) {
-        logoutButton.addEventListener("click", logout);
-    }
+    // Initial size fix for active map
+    setTimeout(() => {
+        if (maps.satellite) maps.satellite.invalidateSize();
+    }, 250);
 });
 
-/* =========================
-   SHAPEFILE UPLOAD
-========================= */
 async function uploadShapefile() {
     const input = document.getElementById("shapefileInput");
     const button = document.getElementById("uploadShapefileBtn");
@@ -72,164 +103,96 @@ async function uploadShapefile() {
     }
 
     const file = input.files[0];
-
-    if (!file.name.toLowerCase().endsWith(".zip")) {
-        showUploadStatus("Please select a ZIP file.", "error");
-        input.value = "";
-        return;
-    }
-
-    const token = getToken();
-    if (!token) {
-        showUploadStatus("Please login first.", "error");
-        return;
-    }
-
-    const formData = new FormData();
-    formData.append("shapefile", file);
-
-    if (button) {
-        button.disabled = true;
-        button.textContent = "Uploading...";
-    }
-
-    showUploadStatus("Uploading Shapefile...", "loading");
+    button.disabled = true;
+    showUploadStatus("Reading and processing Shapefile...", "loading");
 
     try {
-        const response = await fetch(`${window.API_BASE_URL}/shapefile/upload`, {
-            method: "POST",
-            headers: {
-                Authorization: `Bearer ${token}`
-            },
-            body: formData
-        });
+        const buffer = await file.arrayBuffer();
+        const geojson = await shp(buffer);
 
-        // التأكد من أن الاستجابة JSON وليست صفحة HTML لتجنب SyntaxError
-        const contentType = response.headers.get("content-type");
-        let data;
+        const layerName = file.name.replace(/\.[^/.]+$/, "");
 
-        if (contentType && contentType.includes("application/json")) {
-            data = await response.json();
+        if (Array.isArray(geojson)) {
+            geojson.forEach((gJson, index) => {
+                const subLayerName = `${layerName}_${index + 1}`;
+                addLayerToAllMaps(gJson, subLayerName);
+            });
         } else {
-            throw new Error(`Server error (${response.status}). Ensure backend server is running on port 3000.`);
+            addLayerToAllMaps(geojson, layerName);
         }
 
-        if (!response.ok || !data.success) {
-            throw new Error(data.message || "Shapefile upload failed.");
-        }
-
-        showUploadStatus("Shapefile uploaded successfully.", "success");
-
-        if (data.geojson) {
-            addShapefileToMap(data.geojson, data.filename);
-        }
-
+        showUploadStatus("Shapefile uploaded and displayed successfully.", "success");
         input.value = "";
     } catch (error) {
-        console.error("Shapefile upload error:", error);
-        showUploadStatus(error.message || "Failed to upload Shapefile.", "error");
+        console.error("Shapefile parsing error:", error);
+        showUploadStatus("Failed to parse Shapefile. Make sure it's a valid ZIP.", "error");
     } finally {
-        if (button) {
-            button.disabled = false;
-            button.textContent = "Upload Shapefile";
-        }
+        button.disabled = false;
     }
 }
 
-/* =========================
-   ADD GEOJSON TO MAP
-========================= */
-function addShapefileToMap(geojson, filename) {
-    if (!map) return;
+function addLayerToAllMaps(geojson, layerName) {
+    if (!geojson) return;
 
-    // مسح الطبقة القديمة إن وجدت للحد من تداخل البيانات
-    if (currentShapefileLayer) {
-        map.removeLayer(currentShapefileLayer);
-    }
+    // Add layer to all map instances so it's accessible across all views
+    Object.keys(maps).forEach(mapKey => {
+        const currentMap = maps[mapKey];
+        const currentControl = layerControls[mapKey];
 
-    // إنشاء طبقة الـ GeoJSON الجديدة
-    currentShapefileLayer = L.geoJSON(geojson, {
-        style: function () {
-            return {
-                color: "#2563eb",
-                weight: 3,
-                opacity: 0.9,
-                fillColor: "#60a5fa",
-                fillOpacity: 0.25
-            };
-        },
-        pointToLayer: function (feature, latlng) {
-            return L.circleMarker(latlng, {
-                radius: 6,
-                color: "#2563eb",
-                weight: 2,
-                fillColor: "#60a5fa",
-                fillOpacity: 0.8
-            });
-        },
-        onEachFeature: function (feature, layer) {
-            const properties = feature.properties;
-            if (properties && Object.keys(properties).length > 0) {
-                layer.bindPopup(createPropertiesPopup(properties));
+        if (!currentMap) return;
+
+        const newLayer = L.geoJSON(geojson, {
+            style: function () {
+                return {
+                    color: "#2563eb",
+                    weight: 3,
+                    opacity: 0.9,
+                    fillColor: "#60a5fa",
+                    fillOpacity: 0.3
+                };
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, {
+                    radius: 6,
+                    color: "#2563eb",
+                    weight: 2,
+                    fillColor: "#60a5fa",
+                    fillOpacity: 0.8
+                });
+            },
+            onEachFeature: function (feature, layer) {
+                if (feature.properties && Object.keys(feature.properties).length > 0) {
+                    layer.bindPopup(createPropertiesPopup(feature.properties));
+                }
             }
+        });
+
+        newLayer.addTo(currentMap);
+
+        if (currentControl) {
+            currentControl.addOverlay(newLayer, layerName);
+        }
+
+        try {
+            const bounds = newLayer.getBounds();
+            if (bounds.isValid()) {
+                currentMap.fitBounds(bounds, { padding: [40, 40] });
+            }
+        } catch (err) {
+            console.warn("Could not fit bounds on map:", err);
         }
     });
-
-    currentShapefileLayer.addTo(map);
-
-    // فحص نظام الإحداثيات وتجنب انهيار الخريطة عند استخدام UTM الأمتار
-    try {
-        const bounds = currentShapefileLayer.getBounds();
-        const sw = bounds.getSouthWest();
-        const ne = bounds.getNorthEast();
-
-        // التحقق من أن الإحداثيات جغرافية قياسية (WGS84 Lat/Lng)
-        const isWGS84 = Math.abs(sw.lat) <= 90 && Math.abs(ne.lat) <= 90 &&
-                        Math.abs(sw.lng) <= 180 && Math.abs(ne.lng) <= 180;
-
-        if (bounds.isValid() && isWGS84) {
-            map.fitBounds(bounds, { padding: [30, 30] });
-        } else {
-            console.warn("Coordinates are projected (e.g. UTM meters), not WGS84.");
-            showUploadStatus("الملف يعتمد إحداثيات مترية (UTM)؛ يفضل استخدام WGS84 لعرض دقيق.", "error");
-            
-            // تثبيت الخريطة على المركز الافتراضي
-            map.setView([30.0444, 31.2357], 6);
-        }
-    } catch (err) {
-        console.warn("Could not fit bounds:", err);
-    }
-
-    // إعادة ضبط الحجم فوراً لمنع التمدد المزدوج
-    map.invalidateSize();
 }
 
-/* =========================
-   CREATE POPUP
-========================= */
 function createPropertiesPopup(properties) {
     let html = `<div><table class="property-table"><tbody>`;
-
     for (const key in properties) {
-        if (!Object.prototype.hasOwnProperty.call(properties, key)) continue;
-        let value = properties[key];
-        if (value === null || value === undefined) value = "";
-
-        html += `
-            <tr>
-                <th>${escapeHtml(key)}</th>
-                <td>${escapeHtml(String(value))}</td>
-            </tr>
-        `;
+        let value = properties[key] !== null && properties[key] !== undefined ? properties[key] : "";
+        html += `<tr><th>${escapeHtml(key)}</th><td>${escapeHtml(String(value))}</td></tr>`;
     }
-
-    html += `</tbody></table></div>`;
-    return html;
+    return html + `</tbody></table></div>`;
 }
 
-/* =========================
-   ESCAPE HTML
-========================= */
 function escapeHtml(value) {
     return value
         .replace(/&/g, "&amp;")
@@ -239,29 +202,14 @@ function escapeHtml(value) {
         .replace(/'/g, "&#039;");
 }
 
-/* =========================
-   UPLOAD STATUS
-========================= */
 function showUploadStatus(message, type) {
     const status = document.getElementById("uploadStatus");
     if (!status) return;
-
     status.textContent = message;
-
-    if (type === "success") {
-        status.style.color = "#15803d";
-    } else if (type === "error") {
-        status.style.color = "#dc2626";
-    } else {
-        status.style.color = "#2563eb";
-    }
+    status.style.color = type === "success" ? "#15803d" : type === "error" ? "#dc2626" : "#2563eb";
 }
 
-/* =========================
-   LOGOUT
-========================= */
 function logout() {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
+    localStorage.clear();
     window.location.href = "index.html";
 }
