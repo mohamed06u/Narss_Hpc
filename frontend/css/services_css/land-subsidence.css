@@ -1,9 +1,9 @@
 /* ==========================================
-   NARSS HPC - Land Subsidence Page Styles
+   NARSS HPC - Land Subsidence Page Styles (Updated)
    ========================================== */
 
 .service-detail-main {
-    max-width: 1150px;
+    max-width: 1200px;
     margin: 40px auto;
     padding: 0 20px;
 }
@@ -38,15 +38,18 @@
 
 /* Hero Section */
 .service-hero-section {
-    background: linear-gradient(135deg, #070d1a 0%, #0a2540 100%);
+    background: linear-gradient(180deg, rgba(7, 13, 26, 0.4) 0%, rgba(7, 13, 26, 0.7) 100%), 
+                url(/frontend/assets/images/Land_image.jpeg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: #ffffff;
-    padding: 60px 40px;
-    border-radius: 20px;
-    margin-bottom: 50px;
+    padding: 100px 80px;
+    border-radius: 50px;
+    margin-bottom: 100px;
     box-shadow: 0 10px 30px rgba(10, 37, 64, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
-
 .hero-top-meta {
     display: flex;
     align-items: center;
@@ -117,7 +120,7 @@
 
 .section-grid {
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
+    grid-template-columns: 1.2fr 1.2fr;
     gap: 40px;
     align-items: center;
 }
@@ -132,63 +135,104 @@
     position: relative;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
-    border: 1px solid #e2e8f0;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+    border: 2px solid #e2e8f0;
 }
 
 .media-preview-box img {
     width: 100%;
-    height: 260px;
+    height: 380px;
     object-fit: cover;
     display: block;
+    transition: transform 0.4s ease;
+}
+
+.media-preview-box:hover img {
+    transform: scale(1.03);
 }
 
 .demo-tag {
     position: absolute;
-    bottom: 12px;
-    left: 12px;
+    bottom: 16px;
+    left: 16px;
     background: rgba(15, 23, 42, 0.9);
     backdrop-filter: blur(4px);
     color: #fca5a5;
-    padding: 5px 12px;
-    border-radius: 6px;
-    font-size: 0.72rem;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.78rem;
     font-weight: 700;
     border: 1px solid rgba(252, 165, 165, 0.3);
 }
 
-/* 6 Capabilities Grid */
+/* 6 Capabilities Grid (أزرق سماوي حيوي) */
 .capabilities-grid-6 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
+    gap: 25px;
 }
 
 .capability-card {
-    background: #ffffff;
-    border: 1px solid #e2e8f0;
-    padding: 25px 20px;
-    border-radius: 14px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s;
+    background: linear-gradient(145deg, #ffffff 0%, #f0f9ff 100%);
+    border: 1px solid #bae6fd;
+    padding: 30px 25px;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(2, 132, 199, 0.05);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s;
+}
+
+.capability-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #0284c7, #38bdf8);
+    opacity: 0.6;
+    transition: opacity 0.25s ease;
 }
 
 .capability-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px rgba(2, 132, 199, 0.15);
     border-color: #0284c7;
+    background: linear-gradient(145deg, #ffffff 0%, #e0f2fe 100%);
+}
+
+.capability-card:hover::after {
+    opacity: 1;
 }
 
 .capability-card h3 {
-    font-size: 1.05rem;
-    color: #0f172a;
+    font-size: 1.12rem;
+    color: #0369a1;
     font-weight: 700;
+    margin-bottom: 0;
+    transition: margin-bottom 0.3s ease;
+}
+
+.capability-card:hover h3 {
     margin-bottom: 10px;
 }
 
 .capability-card p {
-    color: #64748b;
-    font-size: 0.88rem;
+    color: #334155;
+    font-size: 0.9rem;
     line-height: 1.6;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
+    margin-top: 0;
+}
+
+.capability-card:hover p {
+    max-height: 150px;
+    opacity: 1;
+    margin-top: 10px;
 }
 
 /* InSAR Interactive Demo Map */
@@ -248,7 +292,7 @@
 }
 
 .insar-map-viewport {
-    height: 400px;
+    height: 420px; /* تكبير الخريطة التفاعلية */
     width: 100%;
     position: relative;
     z-index: 1;
@@ -320,52 +364,93 @@
     width: 100%;
 }
 
-/* Interactive Workflow */
+/* Interactive Workflow (بنفسجي هادئ مميز للخطوات) */
 .workflow-container {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     overflow-x: auto;
     padding: 10px 0 20px 0;
 }
 
 .workflow-step {
-    background: #ffffff;
-    border: 1px solid #e2e8f0;
-    padding: 20px;
-    border-radius: 12px;
-    min-width: 160px;
+    background: linear-gradient(145deg, #ffffff 0%, #f5f3ff 100%);
+    border: 1px solid #ddd6fe;
+    padding: 25px 20px;
+    border-radius: 16px;
+    min-width: 180px;
     flex: 1;
-    cursor: pointer;
-    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.05);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.workflow-step::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #7c3aed, #a78bfa);
+    opacity: 0.6;
+    transition: opacity 0.25s ease;
 }
 
 .workflow-step:hover,
 .workflow-step:focus {
-    border-color: #0284c7;
-    background: #f0f9ff;
-    transform: translateY(-3px);
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px rgba(124, 58, 237, 0.15);
+    border-color: #7c3aed;
+    background: linear-gradient(145deg, #ffffff 0%, #ede9fe 100%);
+}
+
+.workflow-step:hover::after {
+    opacity: 1;
 }
 
 .step-badge {
     display: inline-block;
-    color: #0284c7;
+    color: #7c3aed;
     font-weight: 800;
-    font-size: 0.9rem;
-    margin-bottom: 8px;
+    font-size: 0.95rem;
+    margin-bottom: 0;
+    transition: margin-bottom 0.3s ease;
 }
 
 .workflow-step h4 {
-    font-size: 0.95rem;
-    color: #0f172a;
+    font-size: 1rem;
+    color: #4c1d95;
     font-weight: 700;
-    margin-bottom: 5px;
+    margin-bottom: 0;
+    transition: margin-bottom 0.3s ease, color 0.2s ease;
+}
+
+.workflow-step:hover .step-badge {
+    margin-bottom: 6px;
+}
+
+.workflow-step:hover h4 {
+    margin-bottom: 8px;
+    color: #7c3aed;
 }
 
 .workflow-step p {
-    font-size: 0.78rem;
-    color: #64748b;
+    font-size: 0.82rem;
+    color: #334155;
     line-height: 1.5;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
+    margin-top: 0;
+}
+
+.workflow-step:hover p {
+    max-height: 150px;
+    opacity: 1;
+    margin-top: 8px;
 }
 
 .workflow-arrow {
@@ -437,7 +522,6 @@
     font-size: 1rem;
 }
 
-/* Responsive Adjustments */
 @media (max-width: 768px) {
     .section-grid {
         grid-template-columns: 1fr;

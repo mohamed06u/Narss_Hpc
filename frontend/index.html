@@ -14,136 +14,90 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <!-- Stylesheet الأساسي -->
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
 
-    <!-- Top Announcement Bar -->
-    <!-- <div class="top-bar">
+    <!-- TOP BAR -->
+    <div class="top-bar">
         <div class="top-bar-content">
-            <span>
+            <div class="top-bar-left">
                 <span class="badge-live"><i class="fas fa-circle"></i> نشط</span>
-                كافة أنظمة الحوسبة الفائقة وسيرفرات الذكاء الاصطناعي تعمل بكفاءة 100%
-            </span>
-            <span class="top-bar-divider">|</span>
-            <a href="#" class="top-bar-link">
-                <i class="fas fa-file-alt"></i> سجلات الصيانة الدورية
-            </a>
+                <span>أنظمة الحوسبة الفائقة وسيرفرات الذكاء الاصطناعي تعمل بكفاءة 100%</span>
+            </div>
+            <div class="top-bar-right">
+                <a href="#"><i class="fas fa-file-alt"></i> سجلات الصيانة</a>
+                <span style="opacity: 0.3">|</span>
+                <a href="#"><i class="fas fa-envelope"></i> اتصل بنا</a>
+            </div>
         </div>
-    </div> -->
+    </div>
 
-    <!-- Header / Navbar -->
-    <nav class="main-navbar">
+    <!-- NAVBAR -->
+    <nav class="main-navbar" id="navbar">
+        <li class="nav-item">
+    <a href="services/interactive-map.html" class="nav-link"><i class="fas fa-map-marked-alt"></i> الخريطة التفاعلية</a>
+</li>
         <a href="index.html" class="nav-brand">
-            <span class="brand-icon">🛰️</span>
+            <span>🛰️</span>
             <span>NARSS <span class="brand-highlight">HPC</span> Lab</span>
         </a>
 
-        <ul class="nav-menu">
+        <ul class="nav-menu" id="navMenu">
             <li class="nav-item dropdown">
-                <a href="#" class="nav-link">
-                    الخدمات <span class="chevron"></span>
-                </a>
+                <a href="#" class="nav-link">الخدمات <span class="chevron"></span></a>
                 <div class="dropdown-menu">
                     <div class="dropdown-header">
                         <span>مجالات التركيز</span>
                         <span>↗</span>
                     </div>
-                    <a href="../frontend/services/ai-training.html" class="dropdown-item">
-                        <i class="fas fa-brain"></i> ai_training
-                    </a>
-                    <a href="../frontend/services/ondemand-computing.html" class="dropdown-item">
-                        <i class="fas fa-server"></i> ondemand_computing
-                    </a>
-                    <a href="../frontend/services/land-subsidence.html" class="dropdown-item">
-                        <i class="fas fa-mountain"></i> land_subsidence
-                    </a>
-                    <a href="../frontend/services/oil-spill.html" class="dropdown-item">
-                        <i class="fas fa-oil-can"></i> oil_spill
-                    </a>
+                    <a href="services/ai-training.html" class="dropdown-item"><i class="fas fa-brain"></i> تدريب الذكاء الاصطناعي</a>
+                    <a href="services/ondemand-computing.html" class="dropdown-item"><i class="fas fa-server"></i> الحوسبة السحابية</a>
+                    <a href="services/land-subsidence.html" class="dropdown-item"><i class="fas fa-mountain"></i> رصد هبوط الأرض</a>
+                    <a href="services/oil-spill.html" class="dropdown-item"><i class="fas fa-oil-can"></i> كشف التسربات</a>
                 </div>
             </li>
-
-            <li class="nav-item dropdown">
-                <a href="#" class="nav-link">
-                    المنصات <span class="chevron"></span>
-                </a>
-                <div class="dropdown-menu">
-                    <div class="dropdown-header">
-                        <span>الأنظمة التفاعلية</span>
-                        <span>↗</span>
-                    </div>
-                    <a href="map.html" class="dropdown-item">
-                        <i class="fas fa-map"></i> map
-                    </a>
-                    <a href="../frontend/services/data-analytics.html" class="dropdown-item">
-                        <i class="fas fa-chart-bar"></i> data_analytics
-                    </a>
-                </div>
-            </li>
-
             <li class="nav-item">
-                <a href="#services-container" class="nav-link">عن المعمل</a>
+                <a href="#why-section" class="nav-link">عن المعمل</a>
+            </li>
+            <li class="nav-item">
+                <a href="#services-container" class="nav-link">المشاريع</a>
             </li>
         </ul>
 
-        <div class="nav-actions">
-            <a href="login.html" class="btn btn-outline">
-                <i class="fas fa-sign-in-alt"></i> تسجيل الدخول
-            </a>
-            <a href="register.html" class="btn btn-primary">
-                <i class="fas fa-user-plus"></i> حساب جديد
-            </a>
+        <div class="nav-actions" id="navActions">
+            <a href="#" class="btn btn-outline"><i class="fas fa-sign-in-alt"></i> دخول</a>
+            <a href="#" class="btn btn-primary"><i class="fas fa-user-plus"></i> حساب جديد</a>
         </div>
 
-        <!-- Mobile Menu Toggle -->
-        <button class="mobile-toggle" aria-label="القائمة">
-            <span></span>
-            <span></span>
-            <span></span>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="القائمة">
+            <span></span><span></span><span></span>
         </button>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- HERO SECTION -->
     <section class="hero">
         <div class="hero-overlay">
             <div class="hero-content">
-
-                <h1>معمل الحوسبة الفائقة للاستشعار عن بعد</h1>
+                <div class="hero-badge">
+                    <i class="fas fa-circle" style="font-size: 6px;"></i> HPC · AI · GIS · SATELLITE
+                </div>
+                <h1>معمل <span>الحوسبة الفائقة</span><br>للاستشعار عن بعد</h1>
                 <p class="hero-subtitle">NARSS HPC Lab</p>
                 <p>تسريع أبحاث الذكاء الاصطناعي، ومعالجة علوم الأرض لدعم اتخاذ القرارات البيئية المتقدمة.</p>
                 <div class="hero-actions">
-                    <a href="map.html" class="btn-main">
-                        استعرض الخريطة التفاعلية <i class="fas fa-arrow-left"></i>
-                    </a>
-                    <a href="#services-container" class="btn-secondary">
-                        <i class="fas fa-chevron-down"></i> استكشف الخدمات
-                    </a>
+                    <a href="#services-container" class="btn-main">استعرض الخدمات <i class="fas fa-arrow-left"></i></a>
+                    <a href="#why-section" class="btn-secondary"><i class="fas fa-info-circle"></i> تعرف علينا</a>
                 </div>
-                <!-- <div class="hero-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">100%</span>
-                        <span class="stat-label">كفاءة التشغيل</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">24/7</span>
-                        <span class="stat-label">دعم فني</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">+50</span>
-                        <span class="stat-label">مشروع بحثي</span>
-                    </div>
-                </div> -->
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Main Container -->
+    <!-- MAIN CONTAINER -->
     <main class="container">
-
-        <!-- قسم العنوان والبحث المحسن -->
         <div class="section-header-box">
             <div class="section-title-wrapper">
                 <span class="section-tag">🛠️ خدماتنا</span>
@@ -156,45 +110,170 @@
             </div>
         </div>
 
-        <!-- شبكة الخدمات بتصميم الكروت الجديدة -->
         <div class="services-grid" id="services-container">
             <div class="loading">
-                <i class="fas fa-spinner fa-spin"></i>
-                جاري تحميل الخدمات...
+                <i class="fas fa-spinner fa-spin"></i> جاري تحميل الخدمات...
             </div>
         </div>
-
     </main>
 
-    <!-- Footer -->
+    <!-- WHY NARSS HPC LAB SECTION -->
+    <section class="why-section" id="why-section">
+        <div class="why-header">
+            <span class="section-tag">💡 لماذا نحن؟</span>
+            <h2>Why NARSS HPC Lab?</h2>
+            <p>بنية تحتية متطورة للحوسبة الفائقة تدعم أحدث الأبحاث والتطبيقات</p>
+        </div>
+        <div class="why-grid">
+            <div class="why-card">
+                <div class="why-icon"><i class="fas fa-microchip"></i></div>
+                <h4>GPUs & HPC</h4>
+                <p>أحدث وحدات المعالجة لتسريع التدريب والنمذجة.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon"><i class="fas fa-database"></i></div>
+                <h4>Big Data</h4>
+                <p>معالجة كميات ضخمة من البيانات الجيومكانية بكفاءة.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon"><i class="fas fa-robot"></i></div>
+                <h4>AI & Deep Learning</h4>
+                <p>تطوير نماذج ذكاء اصطناعي لتحليل صور الأقمار الصناعية.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon"><i class="fas fa-globe-asia"></i></div>
+                <h4>GIS & Satellite</h4>
+                <p>دمج نظم المعلومات الجغرافية لاتخاذ قرارات دقيقة.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-main">
-                <div class="footer-brand">
-                    <span class="brand-icon">🛰️</span>
-                    <span class="brand-name">NARSS HPC Lab</span>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3>🛰️ NARSS HPC Lab</h3>
+                <p>الهيئة القومية للاستشعار عن بعد وعلوم الفضاء - وحدة الحوسبة الفائقة ومعالجة البيانات الجيومكانية.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
                 </div>
-                <p class="footer-desc">الهيئة القومية للاستشعار عن بعد وعلوم الفضاء</p>
             </div>
-            <div class="footer-links">
-                <a href="#"><i class="fas fa-info-circle"></i> عن المعمل</a>
-                <a href="#"><i class="fas fa-envelope"></i> اتصل بنا</a>
-                <a href="#"><i class="fas fa-blog"></i> المدونة</a>
+            <div class="footer-col">
+                <h4>روابط سريعة</h4>
+                <ul>
+                    <li><a href="#"><i class="fas fa-chevron-left" style="font-size: 8px;"></i> عن المعمل</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-left" style="font-size: 8px;"></i> المشاريع</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-left" style="font-size: 8px;"></i> الأبحاث</a></li>
+                </ul>
             </div>
-            <div class="footer-social">
-                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
-                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <div class="footer-col">
+                <h4>تواصل معنا</h4>
+                <ul>
+                    <li><a href="#"><i class="fas fa-envelope"></i> info@narss-hpc.eg</a></li>
+                    <li><a href="#"><i class="fas fa-phone"></i> +20 2 1234 5678</a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> القاهرة، مصر</a></li>
+                </ul>
             </div>
-            <div class="footer-bottom">
-                <p>جميع الحقوق محفوظة © 2026 | وحدة الحوسبة الفائقة ومعالجة البيانات الجيومكانية</p>
-            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة © 2026 | وحدة الحوسبة الفائقة ومعالجة البيانات الجيومكانية</p>
         </div>
     </footer>
 
-    <!-- JavaScript -->
-    <script src="js/services.js"></script>
+    <!-- JAVASCRIPT -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+        const navActions = document.getElementById('navActions');
+        
+        mobileToggle.addEventListener('click', () => {
+            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+            navActions.style.display = navActions.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Services Data (بدون إيموجي ومع تحديد الأيقونات والألوان بدقة)
+        const services = [
+            {
+                title: "AI Model Development & Training",
+                description: "تدريب وتحسين نماذج التعلم العميق باستخدام موارد GPU.",
+                link: "services/ai-training.html",
+                color: "#3b82f6",
+                icon: "fa-brain"
+            },
+            {
+                title: "Data Analytics",
+                description: "تحليل ومعالجة البيانات المكانية وبيانات الاستشعار عن بعد.",
+                link: "services/data-analytics.html",
+                color: "#f59e0b",
+                icon: "fa-chart-pie"
+            },
+            {
+                title: "Land Subsidence",
+                description: "متابعة وتحليل هبوط سطح الأرض باستخدام بيانات الاستشعار عن بعد.",
+                link: "services/land-subsidence.html",
+                color: "#10b981",
+                icon: "fa-mountain"
+            },
+            {
+                title: "Oil Spill Detection",
+                description: "تحليل الصور الفضائية لاكتشاف ومتابعة بقع الزيت.",
+                link: "services/oil-spill.html",
+                color: "#8b5cf6",
+                icon: "fa-water"
+            },
+            {
+                title: "On-Demand Computing",
+                description: "طلب موارد الحوسبة الفائقة للمهام العلمية والحسابية.",
+                link: "services/ondemand-computing.html",
+                color: "#ef4444",
+                icon: "fa-server"
+            }
+        ];
+
+        // Render Services Function with Search Support & Colored Icons
+        function renderServices(filter = "") {
+            const container = document.getElementById("services-container");
+            if (!container) return;
+
+            const filtered = services.filter(service => 
+                service.title.toLowerCase().includes(filter.toLowerCase()) || 
+                service.description.toLowerCase().includes(filter.toLowerCase())
+            );
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<div class="loading"><i class="fas fa-search"></i> لا توجد نتائج مطابقة للبحث</div>`;
+                return;
+            }
+
+            container.innerHTML = filtered.map(service => `
+                <article class="service-card">
+                    <div class="service-icon-box" style="background-color: ${service.color}15; color: ${service.color};">
+                        <i class="fas ${service.icon}"></i>
+                    </div>
+                    <h3>${service.title}</h3>
+                    <p>${service.description}</p>
+                    <a class="btn-service" href="${service.link}" style="background-color: ${service.color};">
+                        فتح الخدمة <i class="fas fa-arrow-left"></i>
+                    </a>
+                </article>
+            `).join("");
+        }
+
+        // Search Event Listener
+        const searchInput = document.getElementById("serviceSearch");
+        if (searchInput) {
+            searchInput.addEventListener("input", (e) => {
+                renderServices(e.target.value.trim());
+            });
+        }
+
+        // Initial Load
+        document.addEventListener("DOMContentLoaded", () => renderServices());
+    </script>
 </body>
 
 </html>

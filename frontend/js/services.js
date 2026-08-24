@@ -34,6 +34,14 @@ const services = [
             "طلب موارد الحوسبة الفائقة للمهام العلمية والحسابية.",
         link: "services/ondemand-computing.html"
     }
+    ,
+    {
+        title: "Interactive GIS Map",
+        description: "استعراض وتحليل البيانات المكانية وصور الأقمار الصناعية عبر الخريطة التفاعلية.",
+        link: "services/interactive-map.html", // أو مسار صفحة الخريطة لديك
+        color: "#0d9488", // لون تركواز مميز للخريطة
+        icon: "fa-map-marked-alt"
+    }
 
 ];
 
