@@ -38,8 +38,8 @@
 
 /* Hero Section */
 .service-hero-section {
-    background: linear-gradient(180deg, rgba(7, 13, 26, 0.4) 0%, rgba(7, 13, 26, 0.7) 100%), 
-                url(/frontend/assets/images/Oil_image.jpeg);
+    background: linear-gradient(180deg, rgba(7, 13, 26, 0.4) 0%, rgba(7, 13, 26, 0.7) 100%),
+        url(/assets/images/Oil_image.jpeg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -50,6 +50,7 @@
     box-shadow: 0 10px 30px rgba(10, 37, 64, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
+
 .hero-top-meta {
     display: flex;
     align-items: center;
@@ -373,9 +374,11 @@
     0% {
         box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
     }
+
     70% {
         box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
     }
+
     100% {
         box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
     }
@@ -410,7 +413,8 @@
 
 .demo-map-viewport {
     position: relative;
-    height: 420px; /* تكبير خريطة المحاكاة لتكون واضحة */
+    height: 420px;
+    /* تكبير خريطة المحاكاة لتكون واضحة */
     background: #0b1329;
     overflow: hidden;
 }

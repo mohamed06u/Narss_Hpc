@@ -44,8 +44,8 @@
 
 /* Hero Section */
 .service-hero-section {
-    background: linear-gradient(180deg, rgba(7, 13, 26, 0.4) 0%, rgba(7, 13, 26, 0.7) 100%), 
-                url(/frontend/assets/images/Data_image.jpeg);
+    background: linear-gradient(180deg, rgba(7, 13, 26, 0.4) 0%, rgba(7, 13, 26, 0.7) 100%),
+        url(/assets/images/Data_image.jpeg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -347,9 +347,17 @@
 }
 
 @keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
-    70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    0% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    }
 }
 
 .demo-controls {
@@ -464,7 +472,8 @@
 }
 
 .workflow-arrow {
-    display: none; /* تم الاستغناء عن الأسهم التقليدية لتصميم الشبكة الأنيق والمتناسق */
+    display: none;
+    /* تم الاستغناء عن الأسهم التقليدية لتصميم الشبكة الأنيق والمتناسق */
 }
 
 .step-badge {

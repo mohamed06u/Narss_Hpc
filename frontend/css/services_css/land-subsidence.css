@@ -38,8 +38,8 @@
 
 /* Hero Section */
 .service-hero-section {
-    background: linear-gradient(180deg, rgba(7, 13, 26, 0.4) 0%, rgba(7, 13, 26, 0.7) 100%), 
-                url(/frontend/assets/images/Land_image.jpeg);
+    background: linear-gradient(180deg, rgba(7, 13, 26, 0.4) 0%, rgba(7, 13, 26, 0.7) 100%),
+        url(/assets/images/Land_image.jpeg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -50,6 +50,7 @@
     box-shadow: 0 10px 30px rgba(10, 37, 64, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
+
 .hero-top-meta {
     display: flex;
     align-items: center;
@@ -292,7 +293,8 @@
 }
 
 .insar-map-viewport {
-    height: 420px; /* تكبير الخريطة التفاعلية */
+    height: 420px;
+    /* تكبير الخريطة التفاعلية */
     width: 100%;
     position: relative;
     z-index: 1;

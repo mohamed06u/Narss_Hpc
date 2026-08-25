@@ -38,11 +38,11 @@
 
 /* Hero Section */
 .service-hero-section {
-    background: linear-gradient(180deg, rgba(7, 13, 26, 0.4) 0%, rgba(7, 13, 26, 0.7) 100%), 
-                url(/frontend/assets/images/On_D_image.png);
-   background-size: contain;
-background-position: center;
-background-repeat: no-repeat;
+    background: linear-gradient(180deg, rgba(7, 13, 26, 0.4) 0%, rgba(7, 13, 26, 0.7) 100%),
+        url(/assets/images/On_D_image.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
     background-repeat: no-repeat;
     color: #ffffff;
     padding: 100px 80px;

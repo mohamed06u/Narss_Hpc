@@ -38,8 +38,8 @@
     <!-- NAVBAR -->
     <nav class="main-navbar" id="navbar">
         <li class="nav-item">
-    <a href="services/interactive-map.html" class="nav-link"><i class="fas fa-map-marked-alt"></i> الخريطة التفاعلية</a>
-</li>
+            <a href="map.html" class="nav-link"><i class="fas fa-map-marked-alt"></i> الخريطة التفاعلية</a>
+        </li>
         <a href="index.html" class="nav-brand">
             <span>🛰️</span>
             <span>NARSS <span class="brand-highlight">HPC</span> Lab</span>
@@ -53,10 +53,14 @@
                         <span>مجالات التركيز</span>
                         <span>↗</span>
                     </div>
-                    <a href="services/ai-training.html" class="dropdown-item"><i class="fas fa-brain"></i> تدريب الذكاء الاصطناعي</a>
-                    <a href="services/ondemand-computing.html" class="dropdown-item"><i class="fas fa-server"></i> الحوسبة السحابية</a>
-                    <a href="services/land-subsidence.html" class="dropdown-item"><i class="fas fa-mountain"></i> رصد هبوط الأرض</a>
-                    <a href="services/oil-spill.html" class="dropdown-item"><i class="fas fa-oil-can"></i> كشف التسربات</a>
+                    <a href="services/ai-training.html" class="dropdown-item"><i class="fas fa-brain"></i> تدريب الذكاء
+                        الاصطناعي</a>
+                    <a href="services/ondemand-computing.html" class="dropdown-item"><i class="fas fa-server"></i>
+                        الحوسبة السحابية</a>
+                    <a href="services/land-subsidence.html" class="dropdown-item"><i class="fas fa-mountain"></i> رصد
+                        هبوط الأرض</a>
+                    <a href="services/oil-spill.html" class="dropdown-item"><i class="fas fa-oil-can"></i> كشف
+                        التسربات</a>
                 </div>
             </li>
             <li class="nav-item">
@@ -91,8 +95,8 @@
                     <a href="#services-container" class="btn-main">استعرض الخدمات <i class="fas fa-arrow-left"></i></a>
                     <a href="#why-section" class="btn-secondary"><i class="fas fa-info-circle"></i> تعرف علينا</a>
                 </div>
-                </div>
             </div>
+        </div>
         </div>
     </section>
 
@@ -189,7 +193,7 @@
         const mobileToggle = document.getElementById('mobileToggle');
         const navMenu = document.getElementById('navMenu');
         const navActions = document.getElementById('navActions');
-        
+
         mobileToggle.addEventListener('click', () => {
             navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
             navActions.style.display = navActions.style.display === 'flex' ? 'none' : 'flex';
@@ -239,8 +243,8 @@
             const container = document.getElementById("services-container");
             if (!container) return;
 
-            const filtered = services.filter(service => 
-                service.title.toLowerCase().includes(filter.toLowerCase()) || 
+            const filtered = services.filter(service =>
+                service.title.toLowerCase().includes(filter.toLowerCase()) ||
                 service.description.toLowerCase().includes(filter.toLowerCase())
             );
 
