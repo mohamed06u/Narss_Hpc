@@ -353,8 +353,6 @@ function getUtmDefinitionFromPrj(prjText) {
 
     return `EPSG:${epsg}`;
 }
-
-
 // =========================
 // GET CRS FROM PRJ
 // =========================
