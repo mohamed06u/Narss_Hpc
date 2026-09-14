@@ -4,21 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Land Subsidence Monitoring & Analysis | NARSS HPC Lab</title>
+    <title data-i18n="title">رصد الانخفاض الأرضي | مختبر الحوسبة الفائقة NARSS</title>
 
     <!-- Google Fonts: Cairo -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Leaflet CSS for Map Demo -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-
     <!-- Global Project Styles -->
     <link rel="stylesheet" href="../css/main.css">
     <!-- Land Subsidence Detail Specific Styles -->
-    <link rel="stylesheet" href="../css/services_css/land-subsidence.css">
+    <link rel="stylesheet" href="/frontend/css/services_css/land-subsidence.css">
+    <!-- Leaflet (Real Interactive Map) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
 </head>
 
 <body>
@@ -26,226 +24,416 @@
     <!-- Global Header / Navbar (Reused) -->
     <nav class="main-navbar">
         <a href="../index.html" class="nav-brand">
-            🛰️ NARSS HPC Lab
+            🛰️ <span data-i18n="nav-brand">مختبر الحوسبة الفائقة NARSS</span>
         </a>
 
         <ul class="nav-menu">
             <li class="nav-item">
-                <a href="../index.html" class="nav-link">الرئيسية</a>
+                <a href="../index.html" class="nav-link" data-i18n="nav-home">الرئيسية</a>
             </li>
             <li class="nav-item">
-                <a href="../map.html" class="nav-link">الخريطة التفاعلية</a>
+                <a href="../map.html" class="nav-link" data-i18n="nav-map">الخريطة التفاعلية</a>
             </li>
         </ul>
 
         <div class="nav-actions">
-            <a href="../login.html" class="btn btn-outline">تسجيل الدخول</a>
-            <a href="../register.html" class="btn btn-primary">حساب جديد</a>
+            <a href="../login.html" class="btn btn-outline" data-i18n="nav-login">تسجيل الدخول</a>
+            <a href="../register.html" class="btn btn-primary" data-i18n="nav-register">حساب جديد</a>
+            <button type="button" id="langToggleBtn" class="btn btn-outline lang-toggle-btn" data-i18n="lang-toggle">English</button>
         </div>
     </nav>
-
     <!-- Main Content Container -->
     <main class="service-detail-main">
 
         <!-- Breadcrumb Navigation -->
         <nav class="breadcrumb-nav" aria-label="breadcrumb">
-            <a href="../index.html">الرئيسية</a>
+            <a href="../index.html" data-i18n="bc-home">الرئيسية</a>
             <span class="separator">/</span>
-            <a href="../index.html#services-container">الخدمات</a>
+            <a href="../index.html#services-container" data-i18n="bc-services">الخدمات</a>
             <span class="separator">/</span>
-            <span class="current">مراقبة هبوط الأراضي</span>
+            <span class="current" data-i18n="bc-current">رصد الهبوط الأرضي</span>
         </nav>
-
         <!-- 1. Hero Section -->
         <header class="service-hero-section">
             <div class="hero-top-meta">
                 <span class="service-num">02</span>
-                <span class="hero-category">INSAR / SAR / TIME-SERIES ANALYSIS</span>
+                <span class="hero-category" data-i18n="hero-category">الاستشعار عن بعد / القياس التداخلي الراداري / تشوه الأرض</span>
             </div>
-            <h1>Land Subsidence Monitoring & Analysis</h1>
-            <p class="hero-lead">مراقبة تشوهات سطح الأرض بدقة ملليمترية باستخدام تقنيات قياس التداخل الراداري (InSAR)
-                والسلاسل الزمنية عبر وحدات الحوسبة الفائقة.</p>
-            <div class="hero-actions">
-                <a href="#insar-demo-section" class="btn btn-primary">Explore InSAR Demo</a>
+            <h1 data-i18n="hero-h1">رصد الهبوط الأرضي </h1>
+            <p class="hero-lead" data-i18n="hero-lead">رصد وقياس الحركة الرأسية لسطح الأرض أسفل المدن والمناطق الزراعية والبنية التحتية，
+                باستخدام تقنية القياس التداخلي الراداري متعدد الالتقاطات (PSI) 
+            </p>
+            <div class="hero-actions">  
+                <a href="#demo-section" class="btn btn-primary" data-i18n="hero-btn-explore">استكشاف القدرات</a>
                 <a href="../contact.html" class="btn btn-outline"
-                    style="border-color: rgba(255,255,255,0.3); color: white;">Request Service</a>
+                    style="border-color: rgba(255,255,255,0.3); color: white;" data-i18n="hero-btn-request">طلب الخدمة</a>
             </div>
         </header>
-
         <!-- 2. Introduction Section -->
         <section class="service-section">
             <div class="section-grid">
                 <div class="text-content">
-                    <h2>رصد تشوهات سطح الأرض والتغيرات الجيوتقنية</h2>
-                    <p>
-                        تعتبر ظواهر هبوط الأراضي في المدن الكبرى والمناطق الساحلية والدلتا تحدياً هندسياً وبيئياً بالغ
-                        الخطورة. من خلال دمج بيانات رادارات الفتحة الاصطناعية (SAR) وتقنيات InSAR Time-Series، يتيح
-                        المعمل تحليل الحركات الأرضية الدقيقة بدقة ملليمترية ودعم الدراسات الجيوتقنية لتحديد المناطق
-                        المعرضة للمخاطر.
+                    <h2 data-i18n="intro-h2">أهمية رصد الانخفاض الأرضي بالحوسبة الفائقة</h2>
+                    <p data-i18n="intro-p1">
+                        الانخفاض الأرضي هو حركة تدريجية لسطح الأرض نحو الأسفل، يصعب ملاحظتها بالعين المجردة، لكن
+                        تقنيات الرادار الفضائي المتقدمة قادرة على كشف تغيرات دقيقة جدًا في مستوى السطح عبر الزمن.
+                        تحوّل خدمة رصد الانخفاض الأرضي، بدعم من الحوسبة الفائقة (HPC)، التقاطات القمر الصناعي
+                        Sentinel-1 المتكررة إلى خرائط تفاعلية وقياسات تشوه وسلاسل زمنية وتقارير رصد، لتمنح متخذي
+                        القرار فهمًا واضحًا لأين تتحرك الأرض، وبأي معدل، وكيف يتغير هذا التحرك بمرور الوقت.
                     </p>
+                    <p data-i18n="intro-p2">تضم دلتا النيل بعض أهم مناطق مصر الحيوية، وتقع كثير منها على أراضٍ منخفضة وغنية بالرواسب:</p>
+                    <ul>
+                        <li data-i18n="intro-li1">مدن ومناطق سكنية</li>
+                        <li data-i18n="intro-li2">أراضٍ زراعية</li>
+                        <li data-i18n="intro-li3">مناطق صناعية</li>
+                        <li data-i18n="intro-li4">موانئ وطرق ومنشآت نقل</li>
+                        <li data-i18n="intro-li5">مجتمعات ساحلية وتجمعات عمرانية جديدة</li>
+                    </ul>
                 </div>
-                <div class="media-preview-box">
-                    <img src="../assets/images/images.jpeg" alt="InSAR Ground Deformation Monitoring" loading="lazy">
-                    <div class="demo-tag">DEMO VISUALIZATION — NOT LIVE DATA</div>
-                </div>
-            </div>
-        </section>
+                <!-- ================= بداية الخريطة القصصية (Story Map) ================= -->
+                <div class="story-map-container">
 
-        <!-- 3. Capabilities Section (6 Cards) -->
-        <section class="service-section">
-            <h2>القدرات التقنية للخدمة</h2>
-            <div class="capabilities-grid-6">
-                <article class="capability-card">
-                    <h3>Millimeter-Scale Deformation</h3>
-                    <p>رصد الحركات الرأسية والأفقية لسطح الأرض بدقة قياسية ملليمترية.</p>
-                </article>
-                <article class="capability-card">
-                    <h3>InSAR Monitoring</h3>
-                    <p>تطبيق تقنيات قياس التداخل الراداري لاستخلاص خرائط الإزاحة.</p>
-                </article>
-                <article class="capability-card">
-                    <h3>Time-Series Analysis</h3>
-                    <p>تحليل السلاسل الزمنية لبيانات الرادار لتتبع تطور الهبوط عبر الفترات.</p>
-                </article>
-                <article class="capability-card">
-                    <h3>Urban Monitoring</h3>
-                    <p>مراقبة الاستقرار الإنشائي وتتبع الحركات الهيكلية في المدن والتجمعات العمرانية.</p>
-                </article>
-                <article class="capability-card">
-                    <h3>Coastal & Delta Regions</h3>
-                    <p>دراسة التغيرات الساحلية ومعدلات الهبوط في المناطق الدلتاوية الحساسة.</p>
-                </article>
-                <article class="capability-card">
-                    <h3>Geospatial Risk Identification</h3>
-                    <p>تحديد المناطق عالية الخطورة وربطها بالبيانات الجيولوجية والجيوتقنية.</p>
-                </article>
-            </div>
-        </section>
-
-        <!-- 4. Interactive InSAR Demo Section (Leaflet Map Integration) -->
-        <section class="service-section" id="insar-demo-section">
-            <h2>واجهة محاكاة تحليل InSAR والتغيرات السطحية</h2>
-            <div class="insar-demo-container">
-                <div class="insar-toolbar">
-                    <div class="toolbar-group">
-                        <span class="toolbar-label">اختر الطبقة:</span>
-                        <select id="layerSelect" class="demo-select">
-                            <option value="displacement">InSAR Displacement Map (mm/year)</option>
-                            <option value="risk">High-Risk Zones Overlay</option>
-                        </select>
+                    <!-- ترويسة الخريطة -->
+                    <div class="story-map-header">
+                        <div class="story-map-header-title">
+                            <span class="story-map-icon" aria-hidden="true">🛰️</span>
+                            <div>
+                                <h3 data-i18n="story-h3">خريطة النقاط التفاعلية</h3>
+                                <span class="story-map-subtitle" data-i18n="story-subtitle">دلتا النيل — معدلات الحركة الرأسية للسطح</span>
+                            </div>
+                        </div>
+                        <div class="story-map-header-actions">
+                            <span class="story-map-badge" data-i18n="story-badge">بيانات فعلية — NARSS، Sentinel-1 (2015–2020)</span>
+                            <button type="button" class="map-download-btn" id="mapDownloadBtn"
+                                aria-label="تحميل الخريطة بالبيانات الظاهرة حاليًا">
+                                <span class="map-download-icon" aria-hidden="true">⬇</span>
+                                <span class="map-download-label" data-i18n="map-download-label">تحميل الخريطة</span>
+                            </button>
+                        </div>
                     </div>
-                    <div class="toolbar-group time-control-group">
-                        <span class="toolbar-label">الفترة الزمنية:</span>
-                        <input type="range" id="timeSlider" min="2020" max="2026" value="2026" step="1"
-                            class="demo-slider">
-                        <span id="sliderValue" class="slider-val-badge">2026</span>
+
+                    <!-- منطقة الخريطة الحقيقية (Leaflet + OpenStreetMap/CARTO) -->
+                    <div class="map-visual-area" id="storyLeafletMap" dir="ltr" role="application"
+                        aria-label="خريطة تفاعلية حقيقية لمعدلات الحركة الرأسية لسطح الأرض في دلتا النيل">
                     </div>
+
+                    <!-- شرائط التنقل بين المناطق (بديل سهل الاستخدام على الموبايل) -->
+                    <div class="story-tabs" role="tablist" aria-label="اختيار منطقة الرصد">
+                        <button type="button" class="story-tab" data-target="content-iskandaria" role="tab"
+                            aria-selected="false" data-i18n="tab-alex">الإسكندرية</button>
+                        <button type="button" class="story-tab" data-target="content-damietta" role="tab"
+                            aria-selected="false" data-i18n="tab-damietta">دمياط</button>
+                        <button type="button" class="story-tab" data-target="content-cairo" role="tab"
+                            aria-selected="false" data-i18n="tab-cairo">القاهرة الكبرى</button>
+                    </div>
+
+                    <!-- لوحة التفاصيل السردية -->
+                    <div class="story-details-panel">
+
+                        <!-- المحتوى الافتراضي -->
+                        <div id="content-default" class="story-content active">
+                            <div class="story-placeholder">
+                                <span class="story-placeholder-icon" aria-hidden="true">📍</span>
+                                <div>
+                                    <h3 data-i18n="story-default-h3">استكشف خريطة دلتا النيل</h3>
+                                    <p data-i18n="story-default-p">انقر فوق النقاط المرقمة على الخريطة، أو اختر منطقة من القائمة أدناه، لعرض
+                                        تفاصيل معدلات الحركة الرأسية في تلك المناطق.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- محتوى منطقة 1 -->
+                        <div id="content-iskandaria" class="story-content">
+                            <div class="story-content-head">
+                                <h3 data-i18n="story-alex-h3">منطقة غرب الدلتا (الإسكندرية)</h3>
+                                <span class="story-rate-badge subsidence" data-i18n="story-alex-badge">3 – 5 مم/سنة</span>
+                            </div>
+                            <p data-i18n="story-alex-p">تظهر البيانات في هذه المنطقة معدلات هبوط تتراوح بين 3 إلى 5 ملم/سنة. هذا الهبوط يعزى بشكل
+                                رئيسي إلى
+                                استخراج المياه الجوفية وطبيعة التربة الطينية.</p>
+                        </div>
+
+                        <!-- محتوى منطقة 2 -->
+                        <div id="content-damietta" class="story-content">
+                            <div class="story-content-head">
+                                <h3 data-i18n="story-damietta-h3">منطقة شرق الدلتا (دمياط)</h3>
+                                <span class="story-rate-badge stable" data-i18n="story-damietta-badge">~1 مم/سنة</span>
+                            </div>
+                            <p data-i18n="story-damietta-p">هذه المنطقة مستقرة نسبياً مقارنة بالغربية، حيث تظهر معدلات هبوط طفيفة تقترب من 1 ملم/سنة.
+                            </p>
+                        </div>
+
+                        <!-- محتوى منطقة 3 -->
+                        <div id="content-cairo" class="story-content">
+                            <div class="story-content-head">
+                                <h3 data-i18n="story-cairo-h3">جنوب الدلتا (القاهرة الكبرى)</h3>
+                                <span class="story-rate-badge variable" data-i18n="story-cairo-badge">معدلات متباينة</span>
+                            </div>
+                            <p data-i18n="story-cairo-p">تُظهر البيانات تحركات متباينة بسبب الكثافة العمرانية والبنية التحتية، مع وجود بؤر هبوط
+                                محددة.</p>
+                        </div>
+
+                    </div>
+
                 </div>
-                <!-- Leaflet Map Viewport -->
-                <div id="insarMap" class="insar-map-viewport"></div>
-                <div class="map-overlay-badge">
-                    ⚠️ DEMO VISUALIZATION — NOT LIVE DATA
-                </div>
-                <div class="insar-info-panel">
-                    <p><strong>لوحة المعلومات:</strong> تعرض الخريطة التفاعلية نموذجاً توضيحياً لبيانات إزاحة السطح
-                        واستنتاج معدلات الهبوط السنوي بالملليمتر.</p>
-                </div>
+                <!-- ================= نهاية الخريطة القصصية (Story Map) ================= -->
             </div>
         </section>
 
-        <!-- 5. Time-Series Trend Chart Section (Chart.js Integration) -->
+        <!-- 3. Capabilities Section (5 Cards) -->
         <section class="service-section">
-            <h2>تحليل السلاسل الزمنية لمعدلات الهبوط (Time-Series Trend)</h2>
-            <div class="chart-container-box">
-                <div class="chart-header">
-                    <span class="chart-title-main">معدل الإزاحة التراكمي (ملليمتر) عبر الزمن</span>
-                    <span class="illustrative-badge">Illustrative Demo Data</span>
-                </div>
-                <div class="chart-canvas-wrapper">
-                    <canvas id="subsidenceChart"></canvas>
-                </div>
+            <h2 data-i18n="cap-h2">القدرات التقنية للخدمة</h2>
+            <div class="capabilities-grid-5">
+                <article class="capability-card">
+                    <h3 data-i18n="cap1-h3">معالجة السلاسل الزمنية بتقنية PSI</h3>
+                    <p data-i18n="cap1-p">معالجة سلاسل زمنية من صور الرادار باستخدام تقنية القياس التداخلي متعدد الالتقاطات (PSI)
+                        لاستخراج قياسات تشوه دقيقة عند نقاط انعكاس ثابتة.</p>
+                </article>
+                <article class="capability-card">
+                    <h3 data-i18n="cap2-h3">رسم خرائط معدلات التشوه</h3>
+                    <p data-i18n="cap2-p">إنتاج خرائط مفصّلة لمعدلات الحركة الرأسية للسطح بوحدة مليمتر/سنة عبر مساحات واسعة من الدلتا.</p>
+                </article>
+                <article class="capability-card">
+                    <h3 data-i18n="cap3-h3">كشف البؤر الساخنة</h3>
+                    <p data-i18n="cap3-p">تحديد وتصنيف مناطق الانخفاض المرتفع محليًا، والتمييز بينها وبين أنماط الحركة الإقليمية العامة.
+                    </p>
+                </article>
+                <article class="capability-card">
+                    <h3 data-i18n="cap4-h3">تتبع التغيرات متعددة الأزمنة</h3>
+                    <p data-i18n="cap4-p">تتبع تطور الحركة الأرضية على مدى سنوات لرصد التسارع أو التباطؤ في معدلات الانخفاض أو الارتفاع.
+                    </p>
+                </article>
+                <article class="capability-card">
+                    <h3 data-i18n="cap5-h3">تحليل مُتحقق منه ميدانيًا</h3>
+                    <p data-i18n="cap5-p">ربط نتائج الرصد الفضائي بمشاهدات ميدانية مثل الشروخ والتشققات، لتأكيد صحة الإشارة المرصودة.</p>
+                </article>
             </div>
         </section>
 
-        <!-- 6. Interactive Workflow Section -->
-        <section class="service-section workflow-section">
-            <h2>سير العمل الهيكلي (Workflow)</h2>
+        <!-- 3b. Decision Support Applications (reuses the capabilities grid pattern) -->
+        <section class="service-section">
+            <h2 data-i18n="dec-h2">التطبيقات ودعم اتخاذ القرار</h2>
+            <div class="capabilities-grid-5">
+                <article class="capability-card">
+                    <h3 data-i18n="dec1-h3">التخطيط العمراني</h3>
+                    <p data-i18n="dec1-p">تحديد المناطق التي تحتاج إلى فحص أرضي إضافي قبل التوسع العمراني.</p>
+                </article>
+                <article class="capability-card">
+                    <h3 data-i18n="dec2-h3">إدارة البنية التحتية</h3>
+                    <p data-i18n="dec2-p">ترتيب أولويات الفحص والمتابعة للأصول والمنشآت المعرّضة للحركة الأرضية.</p>
+                </article>
+                <article class="capability-card">
+                    <h3 data-i18n="dec3-h3">الإنشاءات</h3>
+                    <p data-i18n="dec3-p">إنشاء خطوط أساس للتشوه قبل وأثناء تنفيذ المشروعات الكبرى.</p>
+                </article>
+                <article class="capability-card">
+                    <h3 data-i18n="dec4-h3">الإدارة الساحلية</h3>
+                    <p data-i18n="dec4-p">تحديد المناطق التي قد يزيد فيها الانخفاض الأرضي من هشاشة الساحل أمام ارتفاع منسوب البحر.</p>
+                </article>
+                <article class="capability-card">
+                    <h3 data-i18n="dec5-h3">الموارد المائية</h3>
+                    <p data-i18n="dec5-p">دعم دراسات العلاقة المحتملة بين استخراج المياه الجوفية والتشوه الأرضي.</p>
+                </article>
+                <article class="capability-card">
+                    <h3 data-i18n="dec6-h3">النفط والغاز</h3>
+                    <p data-i18n="dec6-p">مراقبة التشوه حول مناطق الإنتاج والمنشآت البترولية.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- 4. Interactive Workflow Section -->
+        <!-- <section class="service-section workflow-section">
+            <h2 data-i18n="wf-h2">سير العمل التحليلي</h2>
             <div class="workflow-container">
                 <div class="workflow-step" tabindex="0">
                     <span class="step-badge">01</span>
-                    <h4>SAR Data</h4>
-                    <p>استقبال بيانات رادارات الفتحة الاصطناعية.</p>
+                    <h4 data-i18n="wf1-h4">بيانات Sentinel-1</h4>
+                    <p data-i18n="wf1-p">استقبال أرشيف صور الرادار Sentinel-1 المتكررة.</p>
                 </div>
                 <div class="workflow-arrow">→</div>
                 <div class="workflow-step" tabindex="0">
                     <span class="step-badge">02</span>
-                    <h4>Preprocessing</h4>
-                    <p>المعالجة الأولية وتصحيح المدارات.</p>
+                    <h4 data-i18n="wf2-h4">المعالجة الأولية للبيانات</h4>
+                    <p data-i18n="wf2-p">المعالجة الأولية وتصحيح التشوهات الهندسية والغلاف الجوي.</p>
                 </div>
                 <div class="workflow-arrow">→</div>
                 <div class="workflow-step" tabindex="0">
                     <span class="step-badge">03</span>
-                    <h4>Interferogram Generation</h4>
-                    <p>توليد خطوط التداخل الراداري.</p>
+                    <h4 data-i18n="wf3-h4">معالجة PSI</h4>
+                    <p data-i18n="wf3-p">التحليل التداخلي متعدد الالتقاطات عبر منصة Geohazards Exploitation Platform.</p>
                 </div>
                 <div class="workflow-arrow">→</div>
                 <div class="workflow-step" tabindex="0">
                     <span class="step-badge">04</span>
-                    <h4>InSAR Analysis</h4>
-                    <p>استخلاص قيم الإزاحة السطحية بدقة.</p>
+                    <h4 data-i18n="wf4-h4">استخراج بيانات التشوه</h4>
+                    <p data-i18n="wf4-p">استخراج قياسات التشوه عند نقاط الانعكاس الثابتة.</p>
                 </div>
                 <div class="workflow-arrow">→</div>
                 <div class="workflow-step" tabindex="0">
                     <span class="step-badge">05</span>
-                    <h4>Time-Series Processing</h4>
-                    <p>تحليل السلاسل الزمنية عبر الحوسبة.</p>
+                    <h4 data-i18n="wf5-h4">التحليل المكاني</h4>
+                    <p data-i18n="wf5-p">إسقاط البيانات وتحليل أنماط الحركة المكانية.</p>
                 </div>
                 <div class="workflow-arrow">→</div>
                 <div class="workflow-step" tabindex="0">
                     <span class="step-badge">06</span>
-                    <h4>Deformation Mapping</h4>
-                    <p>إنشاء خرائط الهبوط المكانية.</p>
+                    <h4 data-i18n="wf6-h4">رصد البؤر الساخنة</h4>
+                    <p data-i18n="wf6-p">رصد التطور الزمني وتحديد المناطق الساخنة.</p>
                 </div>
                 <div class="workflow-arrow">→</div>
                 <div class="workflow-step" tabindex="0">
                     <span class="step-badge">07</span>
-                    <h4>Risk Analysis</h4>
-                    <p>تقييم المخاطر وإصدار التقارير.</p>
+                    <h4 data-i18n="wf7-h4">مخرجات جاهزة لنظم المعلومات الجغرافية</h4>
+                    <p data-i18n="wf7-p">تصدير مخرجات جاهزة لأنظمة GIS ودعم القرار.</p>
+                </div>
+            </div>
+        </section> -->
+
+        <!-- 5. Interactive Visualization Demo Interface -->
+        <section class="service-section" id="demo-section">
+            <h2 data-i18n="demo-h2">لوحة عرض بيانات رصد الانخفاض الأرضي</h2>
+            <div class="demo-interface-box">
+                <div class="demo-toolbar">
+                    <div class="status-indicator">
+                        <span class="pulse-dot archive-dot"></span>
+                        <span data-i18n="demo-coverage">تغطية البيانات: <strong>225 مشهدًا من Sentinel-1 (2015–2020)</strong></span>
+                    </div>
+                    <div class="demo-controls">
+                        <span class="badge-time" data-i18n="demo-period">الفترة الزمنية: 2015 – 2020</span>
+                        <button class="layer-toggle-btn" type="button" data-i18n="demo-layer-btn">تبديل طبقة معدل الحركة (PSI)</button>
+                    </div>
+                </div>
+                <div class="demo-map-viewport">
+                    <div class="real-map-bg"></div>
+                    <div class="demo-warning-banner" data-i18n="demo-warning">
+                        ⚠️ عرض قائم على بيانات دراسة فعلية — وليس بثًا حيًا
+                    </div>
+                    <div class="map-legend">
+                        <h4 data-i18n="demo-legend-h4">مفتاح الخريطة (مم/سنة)</h4>
+                        <div class="legend-item"><span class="color-box subsidence"></span> <span data-i18n="demo-legend-1">انخفاض مرتفع</span></div>
+                        <div class="legend-item"><span class="color-box stable"></span> <span data-i18n="demo-legend-2">شبه مستقر</span></div>
+                        <div class="legend-item"><span class="color-box uplift"></span> <span data-i18n="demo-legend-3">ارتفاع مرصود</span></div>
+                    </div>
+                </div>
+                <div class="demo-info-panel">
+                    <p><strong data-i18n="demo-info-strong">معلومات التحليل:</strong> <span data-i18n="demo-info-p">تعرض اللوحة نماذج فعلية من أربع مناطق ساخنة على طول ساحل دلتا
+                        النيل (الإسكندرية، دمياط، كفر الشيخ، بورسعيد)، مستخلصة من معالجة 225 مشهد رادار Sentinel-1
+                        بتقنية PSI عبر منصة Geohazards Exploitation Platform.</span></p>
                 </div>
             </div>
         </section>
 
-        <!-- 7. Outputs Section -->
+        <!-- 5b. Key Findings Stat Strip -->
+        <section class="service-section stat-strip-section">
+            <h2 style="text-align:center;" data-i18n="stat-h2">أبرز نتائج الدراسة</h2>
+            <div class="stat-strip-chain">
+                <div class="stat-pill">
+                    <span class="stat-value" data-i18n="stat1-value">0 – 7 مم/سنة</span>
+                    <span class="stat-label" data-i18n="stat1-label">معدل الانخفاض العام في شمال الدلتا</span>
+                </div>
+                <div class="stat-pill">
+                    <span class="stat-value" data-i18n="stat2-value">17 مم/سنة</span>
+                    <span class="stat-label" data-i18n="stat2-label">أقصى معدل انخفاض محلي مرصود</span>
+                </div>
+                <div class="stat-pill">
+                    <span class="stat-value" data-i18n="stat3-value">6 مم/سنة</span>
+                    <span class="stat-label" data-i18n="stat3-label">أقصى معدل ارتفاع مرصود (بحيرة البردويل، الإسماعيلية، بلطيم)</span>
+                </div>
+                <div class="stat-pill">
+                    <span class="stat-value" data-i18n="stat4-value">225 مشهد</span>
+                    <span class="stat-label" data-i18n="stat4-label">صور رادار Sentinel-1 خلال 2015 – 2020</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Outputs Section -->
         <section class="service-section">
-            <h2>مخرجات النظام التحليلية</h2>
+            <h2 data-i18n="out-h2">مخرجات النظام التحليلية</h2>
             <div class="outputs-grid">
                 <div class="output-card">
-                    <h4>Deformation Maps</h4>
-                    <p>خرائط إزاحة مكانية توضح معدلات الهبوط السنوي بدقة ملليمترية.</p>
+                    <h4 data-i18n="out1-h4">خرائط معدلات التشوه</h4>
+                    <p data-i18n="out1-p">خرائط تفصيلية لمعدلات الحركة الرأسية لسطح الأرض بوحدة مم/سنة عبر مساحات الدلتا.</p>
                 </div>
                 <div class="output-card">
-                    <h4>Time-Series Results</h4>
-                    <p>نتائج زمنية تفصيلية لتتبع حركة النقاط الرصدية بمرور السنوات.</p>
+                    <h4 data-i18n="out2-h4">منتجات جاهزة لنظم المعلومات الجغرافية</h4>
+                    <p data-i18n="out2-p">ملفات متوافقة مع نظم المعلومات الجيومكانية لتسهيل دمجها في التخطيط العمراني وإدارة البنية
+                        التحتية.</p>
                 </div>
                 <div class="output-card">
-                    <h4>Spatial Analysis</h4>
-                    <p>تحليلات جغرافية متقدمة لتقاطع بيانات الهبوط مع البنية التحتية.</p>
+                    <h4 data-i18n="out3-h4">تقارير السلاسل الزمنية</h4>
+                    <p data-i18n="out3-p">تقارير زمنية توثّق تطور الحركة الأرضية في المواقع المرصودة على مدى سنوات الدراسة.</p>
                 </div>
                 <div class="output-card">
-                    <h4>Trend Reports</h4>
-                    <p>تقارير اتجاهات الهبوط لدعم الدراسات الهندسية والتخطيط العمراني.</p>
+                    <h4 data-i18n="out4-h4">ملخصات رصد البؤر الساخنة</h4>
+                    <p data-i18n="out4-p">ملخصات تحليلية لمناطق الانخفاض المرتفع، مدعومة بمؤشرات رقمية لمتخذي القرار.</p>
                 </div>
+            </div>
+        </section>
+
+        <!-- 6b. Field Validation Gallery -->
+        <section class="service-section">
+            <h2 data-i18n="field-h2">نتائج الرصد الميداني</h2>
+            <div class="field-gallery-grid">
+                <div class="field-card">
+                    <img src="/frontend/assets/images/land_im/ashtoum_bridge_image 2026-09-04 at 5.50.49 PM.jpeg"
+                        alt="آثار تشوه ملحوظة على كوبري أشتوم الجميل، بورسعيد" loading="lazy">
+                    <div class="field-card-caption">
+                        <h4 data-i18n="field1-h4">كوبري أشتوم الجميل — بورسعيد</h4>
+                        <p data-i18n="field1-p">آثار تصدع وتلف إنشائي ملحوظة عند أحد مواقع الانخفاض المرتفع بمنطقة بورسعيد–المنزلة.</p>
+                    </div>
+                </div>
+                <div class="field-card">
+                    <img src="/frontend/assets/images/land_im/Muharram_image 2026-09-04 at 5.54.49 PM.jpeg"
+                        alt="شروخ في الأرضيات بمحطة أتوبيس محرم بك، الإسكندرية" loading="lazy">
+                    <div class="field-card-caption">
+                        <h4 data-i18n="field2-h4">محطة محرم بك — الإسكندرية</h4>
+                        <p data-i18n="field2-p">شروخ واضحة في الأرضيات وعند تقاء الحوائط، متسقة مع إشارة الانخفاض المرصودة فضائيًا.</p>
+                    </div>
+                </div>
+                <div class="field-card">
+                    <img src="/frontend/assets/images/land_im/Elmataria_image 2026-09-04 at 5.52.37 PM.jpeg"
+                        alt="مبانٍ مائلة ومناطق رطبة حول الأساسات في المطرية، الدقهلية" loading="lazy">
+                    <div class="field-card-caption">
+                        <h4 data-i18n="field3-h4">المطرية — الدقهلية</h4>
+                        <p data-i18n="field3-p">مبانٍ مائلة ومناطق رطبة حول الأساسات، من المؤشرات الميدانية النموذجية للتشوه الموضعي.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6c. Interpretation Note -->
+        <section class="service-section">
+            <div class="note-callout">
+                <p><strong data-i18n="note-strong">ماذا تخبرنا الخدمة فعليًا؟</strong> <span data-i18n="note-p1">يكتشف النظام الفضائي حركة التشوه على السطح، لكنه
+                    لا يحدد سببها تلقائيًا.</span></p>
+                <p data-i18n="note-p2">قد يكون للإشارة المرصودة أكثر من تفسير محتمل، منها الظروف الجيولوجية، أو انضغاط الرواسب الطبيعي، أو
+                    استخراج المياه الجوفية، أو أحمال الإنشاءات، أو عوامل أخرى. الرصد الفضائي يحدد أين تلزم المتابعة —
+                    بينما تقدّم الدراسات الميدانية والهندسية التقييم التفصيلي للسبب.</p>
+            </div>
+        </section>
+
+        <!-- 7. Technical Relationship Section -->
+        <section class="service-section tech-flow-section">
+            <h2 data-i18n="tech-h2">الهيكلية التقنية والمعمارية للخدمة</h2>
+            <div class="tech-flow-chain">
+                <div class="tech-node" data-i18n="tech1">بيانات Sentinel-1</div>
+                <span class="tech-sep">➔</span>
+                <div class="tech-node" data-i18n="tech2">معالجة PSI</div>
+                <span class="tech-sep">➔</span>
+                <div class="tech-node" data-i18n="tech3">البنية التحتية للحوسبة الفائقة</div>
+                <span class="tech-sep">➔</span>
+                <div class="tech-node" data-i18n="tech4">مخرجات GIS</div>
             </div>
         </section>
 
         <!-- 8. CTA Section -->
         <section class="cta-section">
-            <h2>Explore Ground Deformation Analysis</h2>
-            <p>تواصل معنا لطلب خدمات تحليل الهبوط الأرضي ودراسات InSAR المتقدمة.</p>
+            <h2 data-i18n="cta-h2">هل أنت مستعد لاستكشاف مسارات عمل الرصد الأرضي؟</h2>
+            <p data-i18n="cta-p">تواصل معنا لطلب الخدمة أو الاستفسار عن آليات ربط النماذج الحوسبية البيئية.</p>
             <div class="cta-btns">
-                <a href="../contact.html" class="btn btn-primary btn-lg">Request Service</a>
+                <a href="../contact.html" class="btn btn-primary btn-lg" data-i18n="cta-btn1">طلب الخدمة</a>
                 <a href="../contact.html" class="btn btn-outline btn-lg"
-                    style="border-color: rgba(255,255,255,0.4); color: white;">Contact HPC Lab</a>
+                    style="border-color: rgba(255,255,255,0.4); color: white;" data-i18n="cta-btn2">تواصل مع مختبر الحوسبة الفائقة</a>
             </div>
         </section>
 
@@ -254,78 +442,326 @@
     <!-- Global Footer (Reused) -->
     <footer>
         <div class="footer-content">
-            <div style="font-weight: 700; font-size: 1.1rem; margin-bottom: 5px;">الهيئة القومية للاستشعار عن بعد وعلوم
+            <div style="font-weight: 700; font-size: 1.1rem; margin-bottom: 5px;" data-i18n="footer-org">الهيئة القومية للاستشعار عن بعد وعلوم
                 الفضاء (NARSS)</div>
-            <p>جميع الحقوق محفوظة © 2026 | وحدة الحوسبة الفائقة ومعالجة البيانات الجيومكانية</p>
+            <p data-i18n="footer-rights">جميع الحقوق محفوظة © 2026 | وحدة الحوسبة الفائقة ومعالجة البيانات الجيومكانية</p>
         </div>
     </footer>
 
-    <!-- Leaflet JS -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <!-- Page Specific Interactive Script -->
+    <!-- Story Map Interactivity -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
-        const insarMap = L.map('insarMap').setView([30.0444, 31.2357], 8);
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-            attribution: '&copy; OpenStreetMap & CARTO',
-            maxZoom: 18
-        }).addTo(insarMap);
+        (function () {
+            var container = document.querySelector('.story-map-container');
+            if (!container) return;
 
-        const demoPoints = [
-            { lat: 30.0444, lng: 31.2357, rate: "-12.5 mm/yr (High Risk)", color: "#dc2626" },
-            { lat: 30.8025, lng: 31.0000, rate: "-8.2 mm/yr (Moderate)", color: "#f59e0b" },
-            { lat: 29.3084, lng: 30.8428, rate: "-3.1 mm/yr (Stable)", color: "#10b981" },
-            { lat: 31.2001, lng: 29.9187, rate: "-15.0 mm/yr (High Risk)", color: "#dc2626" }
-        ];
+            var tabs = container.querySelectorAll('.story-tab');
+            var contents = container.querySelectorAll('.story-content');
+            var mapEl = document.getElementById('storyLeafletMap');
+            var markersByTarget = {};
+            var map = null;
 
-        demoPoints.forEach(pt => {
-            L.circleMarker([pt.lat, pt.lng], {
-                radius: 8,
-                fillColor: pt.color,
-                color: "#fff",
-                weight: 1,
-                opacity: 1,
-                fillOpacity: 0.8
-            }).addTo(insarMap).bindPopup(`<b>موقع رصد InSAR (تجريبي)</b><br>المعدل: ${pt.rate}`);
-        });
+            var REGIONS = [
+                { target: 'content-iskandaria', lat: 31.2001, lng: 29.9187, label: 'الإسكندرية', number: 1 },
+                { target: 'content-damietta', lat: 31.4165, lng: 31.8133, label: 'دمياط', number: 2 },
+                { target: 'content-cairo', lat: 30.0444, lng: 31.2357, label: 'القاهرة الكبرى', number: 3 }
+            ];
 
-        const slider = document.getElementById('timeSlider');
-        const sliderVal = document.getElementById('sliderValue');
-        slider.addEventListener('input', (e) => {
-            sliderVal.textContent = e.target.value;
-        });
+            var DEFAULT_CENTER = [30.6, 31.0];
+            var DEFAULT_ZOOM = 8;
 
-        const ctx = document.getElementById('subsidenceChart').getContext('2d');
-        const subsidenceChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['2020', '2021', '2022', '2023', '2024', '2025', '2026'],
-                datasets: [{
-                    label: 'متوسط الهبوط التراكمي (مم)',
-                    data: [0, -4.2, -9.1, -14.5, -20.0, -26.3, -32.8],
-                    borderColor: '#0284c7',
-                    backgroundColor: 'rgba(2, 132, 199, 0.1)',
-                    borderWidth: 3,
-                    fill: true,
-                    tension: 0.3
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { labels: { color: '#64748b', font: { family: 'Cairo' } } }
-                },
-                scales: {
-                    x: { grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { color: '#64748b' } },
-                    y: { grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { color: '#64748b' } }
-                }
+            function activate(targetId) {
+                contents.forEach(function (content) {
+                    content.classList.toggle('active', content.id === targetId);
+                });
+                tabs.forEach(function (tab) {
+                    var isMatch = tab.getAttribute('data-target') === targetId;
+                    tab.classList.toggle('is-active', isMatch);
+                    tab.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+                });
+                Object.keys(markersByTarget).forEach(function (key) {
+                    var markerEl = markersByTarget[key].getElement();
+                    if (markerEl) {
+                        var btn = markerEl.querySelector('.hotspot');
+                        if (btn) btn.classList.toggle('is-active', key === targetId);
+                    }
+                });
             }
-        });
+
+            tabs.forEach(function (tab) {
+                tab.addEventListener('click', function () {
+                    var targetId = tab.getAttribute('data-target');
+                    activate(targetId);
+                    var marker = markersByTarget[targetId];
+                    if (marker && map) {
+                        map.panTo(marker.getLatLng());
+                    }
+                });
+            });
+
+            /* ===== إنشاء الخريطة الحقيقية عبر Leaflet + OpenStreetMap/CARTO ===== */
+            if (mapEl && typeof L !== 'undefined') {
+                map = L.map(mapEl, {
+                    center: DEFAULT_CENTER,
+                    zoom: DEFAULT_ZOOM,
+                    minZoom: 7,
+                    maxZoom: 15,
+                    scrollWheelZoom: true
+                });
+
+                L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>',
+                    subdomains: 'abcd',
+                    maxZoom: 20,
+                    crossOrigin: true
+                }).addTo(map);
+
+                REGIONS.forEach(function (region) {
+                    var icon = L.divIcon({
+                        className: 'hotspot-marker-wrapper',
+                        html: '<button type="button" class="hotspot" aria-label="عرض بيانات منطقة ' + region.label + '">' +
+                            '<span class="hotspot-number">' + region.number + '</span>' +
+                            '<span class="hotspot-tooltip">' + region.label + '</span>' +
+                            '</button>',
+                        iconSize: [30, 30],
+                        iconAnchor: [15, 15]
+                    });
+
+                    var marker = L.marker([region.lat, region.lng], { icon: icon }).addTo(map);
+                    marker.on('click', function () {
+                        activate(region.target);
+                    });
+                    markersByTarget[region.target] = marker;
+                });
+
+                var ResetViewControl = L.Control.extend({
+                    options: { position: 'topleft' },
+                    onAdd: function () {
+                        var btn = L.DomUtil.create('button', 'leaflet-bar leaflet-control map-reset-btn');
+                        btn.type = 'button';
+                        btn.title = 'إعادة ضبط العرض';
+                        btn.setAttribute('aria-label', 'إعادة ضبط عرض الخريطة');
+                        btn.innerHTML = '⤾';
+                        L.DomEvent.on(btn, 'click', function (e) {
+                            L.DomEvent.stopPropagation(e);
+                            map.setView(DEFAULT_CENTER, DEFAULT_ZOOM);
+                        });
+                        return btn;
+                    }
+                });
+                map.addControl(new ResetViewControl());
+            }
+
+            /* ===== تحميل الخريطة بالبيانات الظاهرة حاليًا ===== */
+            var downloadBtn = container.querySelector('#mapDownloadBtn');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', function () {
+                    if (typeof html2canvas === 'undefined') {
+                        var isEn = document.body.getAttribute('data-lang') === 'en';
+                        alert(isEn ? 'Could not download the map, please try again after the page fully loads.' : 'تعذر تحميل الخريطة، برجاء المحاولة مرة أخرى بعد اكتمال تحميل الصفحة.');
+                        return;
+                    }
+
+                    var originalLabel = downloadBtn.innerHTML;
+                    downloadBtn.disabled = true;
+                    var isEnNow = document.body.getAttribute('data-lang') === 'en';
+                    downloadBtn.innerHTML = '<span class="map-download-icon" aria-hidden="true">⏳</span>' +
+                        '<span class="map-download-label">' + (isEnNow ? 'Preparing...' : 'جارِ التجهيز...') + '</span>';
+
+                    html2canvas(container, { backgroundColor: '#ffffff', useCORS: true, scale: 2 })
+                        .then(function (canvas) {
+                            var link = document.createElement('a');
+                            link.download = 'land-subsidence-map.png';
+                            link.href = canvas.toDataURL('image/png');
+                            link.click();
+                        })
+                        .catch(function () {
+                            var isEnErr = document.body.getAttribute('data-lang') === 'en';
+                            alert(isEnErr ? 'Could not download the map as an image right now, please try again.' : 'تعذر تحميل الخريطة كصورة في الوقت الحالي، برجاء المحاولة مرة أخرى.');
+                        })
+                        .finally(function () {
+                            downloadBtn.disabled = false;
+                            downloadBtn.innerHTML = originalLabel;
+                        });
+                });
+            }
+        })();
     </script>
+
+    <!-- Bilingual (AR/EN) Toggle -->
+    <script>
+        (function () {
+            var TRANSLATIONS = {
+                "title": { ar: "رصد الانخفاض الأرضي | مختبر الحوسبة الفائقة NARSS", en: "Land Subsidence Monitoring | NARSS HPC Lab" },
+                "nav-brand": { ar: "مختبر الحوسبة الفائقة NARSS", en: "NARSS HPC Lab" },
+                "nav-home": { ar: "الرئيسية", en: "Home" },
+                "nav-map": { ar: "الخريطة التفاعلية", en: "Interactive Map" },
+                "nav-login": { ar: "تسجيل الدخول", en: "Login" },
+                "nav-register": { ar: "حساب جديد", en: "Register" },
+                "lang-toggle": { ar: "English", en: "العربية" },
+                "bc-home": { ar: "الرئيسية", en: "Home" },
+                "bc-services": { ar: "الخدمات", en: "Services" },
+                "bc-current": { ar: "رصد الهبوط الأرضي", en: "Land Subsidence Monitoring" },
+                "hero-category": { ar: "الاستشعار عن بعد / القياس التداخلي الراداري / تشوه الأرض", en: "REMOTE SENSING / INSAR / GROUND DEFORMATION" },
+                "hero-h1": { ar: "رصد الهبوط الأرضي", en: "Land Subsidence Monitoring" },
+                "hero-lead": {
+                    ar: "رصد وقياس الحركة الرأسية لسطح الأرض أسفل المدن والمناطق الزراعية والبنية التحتية",
+                    en: "Monitoring and measuring the vertical movement of the ground beneath Egypt's cities, farmland, and infrastructure, using multi-temporal Persistent Scatterer Interferometry (PSI) on Sentinel-1 satellite data through high performance computing units."
+                },
+                "hero-btn-explore": { ar: "استكشاف القدرات", en: "Explore Capabilities" },
+                "hero-btn-request": { ar: "طلب الخدمة", en: "Request Service" },
+                "intro-h2": { ar: "أهمية رصد الهبوط الأرضي ", en: "The Importance of HPC-Powered Land Subsidence Monitoring" },
+                "intro-p1": {
+                    ar: "الهبوط الأرضي هو حركة تدريجية لسطح الأرض نحو الأسفل، يصعب ملاحظتها بالعين المجردة، لكن تقنيات الرادار الفضائي المتقدمة قادرة على كشف تغيرات دقيقة جدًا في مستوى الأرض عبر الزمن. تحوّل خدمة رصد الهبوط الأرضي، بدعم من الحوسبة الفائقة ، التقاطات القمر الصناعي  المتكررة إلى خرائط تفاعلية وقياسات تشوه وسلاسل زمنية وتقارير رصد، لتمنح متخذي القرار فهمًا واضحًا لأين تتحرك الأرض، وبأي معدل، وكيف يتغير هذا التحرك بمرور الوقت.",
+                    en: "Land subsidence is a gradual downward movement of the ground surface that is difficult to notice with the naked eye, but advanced spaceborne radar techniques can detect extremely subtle changes in surface level over time. Supported by high performance computing (HPC), the land subsidence monitoring service turns repeated Sentinel-1 satellite acquisitions into interactive maps, deformation measurements, time series, and monitoring reports, giving decision-makers a clear understanding of where the ground is moving, at what rate, and how that movement changes over time."
+                },
+                "intro-p2": { ar: "تضم دلتا النيل بعض أهم مناطق مصر الحيوية، وتقع كثير منها على أراضٍ منخفضة وغنية بالرواسب:", en: "The Nile Delta contains some of Egypt's most vital areas, many of which sit on low-lying, sediment-rich land:" },
+                "intro-li1": { ar: "مدن ومناطق سكنية", en: "Cities and residential areas" },
+                "intro-li2": { ar: "أراضٍ زراعية", en: "Agricultural land" },
+                "intro-li3": { ar: "مناطق صناعية", en: "Industrial zones" },
+                "intro-li4": { ar: "موانئ وطرق ومنشآت نقل", en: "Ports, roads, and transport facilities" },
+                "intro-li5": { ar: "مجتمعات ساحلية وتجمعات عمرانية جديدة", en: "Coastal communities and new urban developments" },
+                "story-h3": { ar: "خريطة النقاط التفاعلية", en: "Interactive Points Map" },
+                "story-subtitle": { ar: "دلتا النيل — معدلات الحركة الرأسية للسطح", en: "Nile Delta — Surface Vertical Motion Rates" },
+                "story-badge": { ar: "بيانات فعلية — NARSS، Sentinel-1 (2015–2020)", en: "Real Data — NARSS, Sentinel-1 (2015–2020)" },
+                "map-download-label": { ar: "تحميل الخريطة", en: "Download Map" },
+                "tab-alex": { ar: "الإسكندرية", en: "Alexandria" },
+                "tab-damietta": { ar: "دمياط", en: "Damietta" },
+                "tab-cairo": { ar: "القاهرة الكبرى", en: "Greater Cairo" },
+                "story-default-h3": { ar: "استكشف خريطة دلتا النيل", en: "Explore the Nile Delta Map" },
+                "story-default-p": { ar: "انقر فوق النقاط المرقمة على الخريطة، أو اختر منطقة من القائمة أدناه، لعرض تفاصيل معدلات الحركة الرأسية في تلك المناطق.", en: "Click the numbered points on the map, or choose a region from the list below, to view details of the vertical motion rates in those areas." },
+                "story-alex-h3": { ar: "منطقة غرب الدلتا (الإسكندرية)", en: "Western Delta Region (Alexandria)" },
+                "story-alex-badge": { ar: "3 – 5 مم/سنة", en: "3–5 mm/year" },
+                "story-alex-p": { ar: "تظهر البيانات في هذه المنطقة معدلات هبوط تتراوح بين 3 إلى 5 ملم/سنة. هذا الهبوط يعزى بشكل رئيسي إلى استخراج المياه الجوفية وطبيعة التربة الطينية.", en: "Data in this region shows subsidence rates ranging between 3 and 5 mm/year. This subsidence is mainly attributed to groundwater extraction and the clay-rich nature of the soil." },
+                "story-damietta-h3": { ar: "منطقة شرق الدلتا (دمياط)", en: "Eastern Delta Region (Damietta)" },
+                "story-damietta-badge": { ar: "~1 مم/سنة", en: "~1 mm/year" },
+                "story-damietta-p": { ar: "هذه المنطقة مستقرة نسبياً مقارنة بالغربية، حيث تظهر معدلات هبوط طفيفة تقترب من 1 ملم/سنة.", en: "This region is relatively stable compared to the western Delta, showing slight subsidence rates close to 1 mm/year." },
+                "story-cairo-h3": { ar: "جنوب الدلتا (القاهرة الكبرى)", en: "Southern Delta (Greater Cairo)" },
+                "story-cairo-badge": { ar: "معدلات متباينة", en: "Variable rates" },
+                "story-cairo-p": { ar: "تُظهر البيانات تحركات متباينة بسبب الكثافة العمرانية والبنية التحتية، مع وجود بؤر هبوط محددة.", en: "Data shows variable movement due to urban density and infrastructure, with specific subsidence hotspots." },
+                "cap-h2": { ar: "القدرات التقنية للخدمة", en: "Technical Capabilities of the Service" },
+                "cap1-h3": { ar: "معالجة السلاسل الزمنية بتقنية PSI", en: "PSI Time-Series Processing" },
+                "cap1-p": { ar: "معالجة سلاسل زمنية من صور الرادار باستخدام تقنية القياس التداخلي متعدد الالتقاطات (PSI) لاستخراج قياسات تشوه دقيقة عند نقاط انعكاس ثابتة.", en: "Processing time series of radar images using Persistent Scatterer Interferometry (PSI) to extract precise deformation measurements at stable reflection points." },
+                "cap2-h3": { ar: "رسم خرائط معدلات الهبوط ", en: "Deformation Rate Mapping" },
+                "cap2-p": { ar: "إنتاج خرائط مفصّلة لمعدلات الحركة الرأسية للسطح بوحدة مليمتر/سنة عبر مساحات واسعة من الدلتا.", en: "Producing detailed maps of surface vertical motion rates in millimeters/year across large areas of the Delta." },
+                "cap3-h3": { ar: "كشف الأماكن الأكثر تأثرا  ", en: "Hotspot Detection" },
+                "cap3-p": { ar: "تحديد وتصنيف مناطق الانخفاض المرتفع محليًا، والتمييز بينها وبين أنماط الحركة الإقليمية العامة.", en: "Identifying and classifying areas of high localized subsidence, distinguishing them from general regional motion patterns." },
+                "cap4-h3": { ar: "تتبع التغيرات متعددة الأزمنة", en: "Multi-Temporal Change Tracking" },
+                "cap4-p": { ar: "تتبع تطور الحركة الأرضية على مدى سنوات لرصد التسارع أو التباطؤ في معدلات الانخفاض أو الارتفاع.", en: "Tracking the evolution of ground movement over years to monitor acceleration or deceleration in subsidence or uplift rates." },
+                "cap5-h3": { ar: "تحليل مُتحقق منه ميدانيًا", en: "Field-Validated Analysis" },
+                "cap5-p": { ar: "ربط نتائج الرصد الفضائي بمشاهدات ميدانية مثل الشروخ والتشققات، لتأكيد صحة الإشارة المرصودة.", en: "Linking spaceborne monitoring results with field observations such as cracks and fissures to confirm the validity of the observed signal." },
+                "dec-h2": { ar: "التطبيقات ودعم اتخاذ القرار", en: "Applications & Decision Support" },
+                "dec1-h3": { ar: "التخطيط العمراني", en: "Urban Planning" },
+                "dec1-p": { ar: "تحديد المناطق التي تحتاج إلى فحص أرضي إضافي قبل التوسع العمراني.", en: "Identifying areas that need additional ground inspection before urban expansion." },
+                "dec2-h3": { ar: "إدارة البنية التحتية", en: "Infrastructure Management" },
+                "dec2-p": { ar: "ترتيب أولويات الفحص والمتابعة للأصول والمنشآت المعرّضة للحركة الأرضية.", en: "Prioritizing inspection and follow-up for assets and facilities exposed to ground movement." },
+                "dec3-h3": { ar: "الإنشاءات", en: "Construction" },
+                "dec3-p": { ar: "إنشاء خطوط أساس للتشوه قبل وأثناء تنفيذ المشروعات الكبرى.", en: "Establishing deformation baselines before and during the execution of major projects." },
+                "dec4-h3": { ar: "الإدارة الساحلية", en: "Coastal Management" },
+                "dec4-p": { ar: "تحديد المناطق التي قد يزيد فيها الانخفاض الأرضي من هشاشة الساحل أمام ارتفاع منسوب البحر.", en: "Identifying areas where land subsidence may increase coastal vulnerability to sea level rise." },
+                "dec5-h3": { ar: "الموارد المائية", en: "Water Resources" },
+                "dec5-p": { ar: "دعم دراسات العلاقة المحتملة بين استخراج المياه الجوفية والتشوه الأرضي.", en: "Supporting studies of the potential relationship between groundwater extraction and ground deformation." },
+                "dec6-h3": { ar: "النفط والغاز", en: "Oil & Gas" },
+                "dec6-p": { ar: "مراقبة التشوه حول مناطق الإنتاج والمنشآت البترولية.", en: "Monitoring deformation around production areas and petroleum facilities." },
+                "wf-h2": { ar: "سير العمل التحليلي", en: "Analytical Workflow" },
+                "wf1-h4": { ar: "بيانات Sentinel-1", en: "Sentinel-1 Data" },
+                "wf1-p": { ar: "استقبال أرشيف صور الرادار Sentinel-1 المتكررة.", en: "Receiving the archive of repeated Sentinel-1 radar images." },
+                "wf2-h4": { ar: "المعالجة الأولية للبيانات", en: "Data Preprocessing" },
+                "wf2-p": { ar: "المعالجة الأولية وتصحيح التشوهات الهندسية والغلاف الجوي.", en: "Preprocessing and correcting geometric and atmospheric distortions." },
+                "wf3-h4": { ar: "معالجة PSI", en: "PSI Processing" },
+                "wf3-p": { ar: "التحليل التداخلي متعدد الالتقاطات عبر منصة Geohazards Exploitation Platform.", en: "Multi-temporal interferometric analysis via the Geohazards Exploitation Platform." },
+                "wf4-h4": { ar: "استخراج بيانات التشوه", en: "Deformation Extraction" },
+                "wf4-p": { ar: "استخراج قياسات التشوه عند نقاط الانعكاس الثابتة.", en: "Extracting deformation measurements at stable reflection points." },
+                "wf5-h4": { ar: "التحليل المكاني", en: "Spatial Analysis" },
+                "wf5-p": { ar: "إسقاط البيانات وتحليل أنماط الحركة المكانية.", en: "Projecting data and analyzing spatial movement patterns." },
+                "wf6-h4": { ar: "رصد البؤر الساخنة", en: "Hotspot Monitoring" },
+                "wf6-p": { ar: "رصد التطور الزمني وتحديد المناطق الساخنة.", en: "Monitoring temporal evolution and identifying hotspot areas." },
+                "wf7-h4": { ar: "مخرجات جاهزة لنظم المعلومات الجغرافية", en: "GIS-Ready Output" },
+                "wf7-p": { ar: "تصدير مخرجات جاهزة لأنظمة GIS ودعم القرار.", en: "Exporting outputs ready for GIS systems and decision support." },
+                "demo-h2": { ar: "لوحة عرض بيانات رصد الانخفاض الأرضي", en: "Land Subsidence Monitoring Data Dashboard" },
+                "demo-coverage": { ar: "تغطية البيانات: <strong>225 مشهدًا من Sentinel-1 (2015–2020)</strong>", en: "Data Coverage: <strong>225 Sentinel-1 Scenes (2015–2020)</strong>" },
+                "demo-period": { ar: "الفترة الزمنية: 2015 – 2020", en: "Time Period: 2015 – 2020" },
+                "demo-layer-btn": { ar: "تبديل طبقة معدل الحركة (PSI)", en: "Toggle Motion Rate Layer (PSI)" },
+                "demo-warning": { ar: "⚠️ عرض قائم على بيانات دراسة فعلية — وليس بثًا حيًا", en: "⚠️ Display based on real study data — not a live feed" },
+                "demo-legend-h4": { ar: "مفتاح الخريطة (مم/سنة)", en: "Map Legend (mm/year)" },
+                "demo-legend-1": { ar: "انخفاض مرتفع", en: "High Subsidence" },
+                "demo-legend-2": { ar: "شبه مستقر", en: "Near Stable" },
+                "demo-legend-3": { ar: "ارتفاع مرصود", en: "Observed Uplift" },
+                "demo-info-strong": { ar: "معلومات التحليل:", en: "Analysis Info:" },
+                "demo-info-p": { ar: "تعرض اللوحة نماذج فعلية من أربع مناطق ساخنة على طول ساحل دلتا النيل (الإسكندرية، دمياط، كفر الشيخ، بورسعيد)، مستخلصة من معالجة 225 مشهد رادار Sentinel-1 بتقنية PSI عبر منصة Geohazards Exploitation Platform.", en: "The panel shows real samples from four hotspots along the Nile Delta coast (Alexandria, Damietta, Kafr El-Sheikh, Port Said), derived from processing 225 Sentinel-1 radar scenes with PSI via the Geohazards Exploitation Platform." },
+                "stat-h2": { ar: "أبرز نتائج الدراسة", en: "Key Study Findings" },
+                "stat1-value": { ar: "0 – 7 مم/سنة", en: "0 – 7 mm/year" },
+                "stat1-label": { ar: "معدل الانخفاض العام في شمال الدلتا", en: "General subsidence rate in the northern Delta" },
+                "stat2-value": { ar: "17 مم/سنة", en: "17 mm/year" },
+                "stat2-label": { ar: "أقصى معدل انخفاض محلي مرصود", en: "Maximum observed local subsidence rate" },
+                "stat3-value": { ar: "6 مم/سنة", en: "6 mm/year" },
+                "stat3-label": { ar: "أقصى معدل ارتفاع مرصود (بحيرة البردويل، الإسماعيلية، بلطيم)", en: "Maximum observed uplift rate (Lake Bardawil, Ismailia, Baltim)" },
+                "stat4-value": { ar: "225 مشهد", en: "225 scenes" },
+                "stat4-label": { ar: "صور رادار Sentinel-1 خلال 2015 – 2020", en: "Sentinel-1 radar images during 2015 – 2020" },
+                "out-h2": { ar: "مخرجات النظام التحليلية", en: "Analytical System Outputs" },
+                "out1-h4": { ar: "خرائط معدلات التشوه", en: "Deformation Rate Maps" },
+                "out1-p": { ar: "خرائط تفصيلية لمعدلات الحركة الرأسية لسطح الأرض بوحدة مم/سنة عبر مساحات الدلتا.", en: "Detailed maps of surface vertical motion rates in mm/year across the Delta." },
+                "out2-h4": { ar: "منتجات جاهزة لنظم المعلومات الجغرافية", en: "GIS-Ready Products" },
+                "out2-p": { ar: "ملفات متوافقة مع نظم المعلومات الجيومكانية لتسهيل دمجها في التخطيط العمراني وإدارة البنية التحتية.", en: "Files compatible with geospatial information systems to ease integration into urban planning and infrastructure management." },
+                "out3-h4": { ar: "تقارير السلاسل الزمنية", en: "Time-Series Reports" },
+                "out3-p": { ar: "تقارير زمنية توثّق تطور الحركة الأرضية في المواقع المرصودة على مدى سنوات الدراسة.", en: "Time series reports documenting the evolution of ground movement at monitored sites over the years of the study." },
+                "out4-h4": { ar: "ملخصات رصد البؤر الساخنة", en: "Hotspot Monitoring Summaries" },
+                "out4-p": { ar: "ملخصات تحليلية لمناطق الانخفاض المرتفع، مدعومة بمؤشرات رقمية لمتخذي القرار.", en: "Analytical summaries of high-subsidence areas, supported by numerical indicators for decision-makers." },
+                "field-h2": { ar: "نتائج الرصد الميداني", en: "Field Monitoring Results" },
+                "field1-h4": { ar: "كوبري أشتوم الجميل — بورسعيد", en: "Ashtoum El Gamil Bridge — Port Said" },
+                "field1-p": { ar: "آثار تصدع وتلف إنشائي ملحوظة عند أحد مواقع الانخفاض المرتفع بمنطقة بورسعيد–المنزلة.", en: "Noticeable cracking and structural damage at one of the high-subsidence sites in the Port Said–El Manzala area." },
+                "field2-h4": { ar: "محطة محرم بك — الإسكندرية", en: "Moharam Bek Station — Alexandria" },
+                "field2-p": { ar: "شروخ واضحة في الأرضيات وعند تقاء الحوائط، متسقة مع إشارة الانخفاض المرصودة فضائيًا.", en: "Clear cracks in floors and at wall joints, consistent with the subsidence signal observed by satellite." },
+                "field3-h4": { ar: "المطرية — الدقهلية", en: "El Matareya — Dakahlia" },
+                "field3-p": { ar: "مبانٍ مائلة ومناطق رطبة حول الأساسات، من المؤشرات الميدانية النموذجية للتشوه الموضعي.", en: "Tilted buildings and damp areas around foundations, typical field indicators of localized deformation." },
+                "note-strong": { ar: "ماذا تخبرنا الخدمة فعليًا؟", en: "What does the service actually tell us?" },
+                "note-p1": { ar: "يكتشف النظام الفضائي حركة التشوه على السطح، لكنه لا يحدد سببها تلقائيًا.", en: "The spaceborne system detects surface deformation, but it does not automatically determine its cause." },
+                "note-p2": { ar: "قد يكون للإشارة المرصودة أكثر من تفسير محتمل، منها الظروف الجيولوجية، أو انضغاط الرواسب الطبيعي، أو استخراج المياه الجوفية، أو أحمال الإنشاءات، أو عوامل أخرى. الرصد الفضائي يحدد أين تلزم المتابعة — بينما تقدّم الدراسات الميدانية والهندسية التقييم التفصيلي للسبب.", en: "The observed signal may have more than one possible explanation, including geological conditions, natural sediment compaction, groundwater extraction, structural loads, or other factors. Spaceborne monitoring identifies where follow-up is needed — while field and engineering studies provide the detailed assessment of the cause." },
+                "tech-h2": { ar: "الهيكلية التقنية والمعمارية للخدمة", en: "Technical Architecture of the Service" },
+                "tech1": { ar: "بيانات Sentinel-1", en: "Sentinel-1 Data" },
+                "tech2": { ar: "معالجة PSI", en: "PSI Processing" },
+                "tech3": { ar: "البنية التحتية للحوسبة الفائقة", en: "HPC Infrastructure" },
+                "tech4": { ar: "مخرجات GIS", en: "GIS Outputs" },
+                "cta-h2": { ar: "هل أنت مستعد لاستكشاف مسارات عمل الرصد الأرضي؟", en: "Ready to explore Earth Observation workflows?" },
+                "cta-p": { ar: "تواصل معنا لطلب الخدمة أو الاستفسار عن آليات ربط النماذج الحوسبية البيئية.", en: "Contact us to request the service or to ask about how to connect environmental computational models." },
+                "cta-btn1": { ar: "طلب الخدمة", en: "Request Service" },
+                "cta-btn2": { ar: "تواصل مع مختبر الحوسبة الفائقة", en: "Contact HPC Lab" },
+                "footer-org": { ar: "الهيئة القومية للاستشعار عن بعد وعلوم الفضاء (NARSS)", en: "National Authority for Remote Sensing and Space Sciences (NARSS)" },
+                "footer-rights": { ar: "جميع الحقوق محفوظة © 2026 | وحدة الحوسبة الفائقة ومعالجة البيانات الجيومكانية", en: "All rights reserved © 2026 | HPC and Geospatial Data Processing Unit" }
+            };
+
+            var langBtn = document.getElementById('langToggleBtn');
+            var currentLang = 'ar';
+
+            function applyLang(lang) {
+                currentLang = lang;
+                document.body.setAttribute('data-lang', lang);
+                document.querySelectorAll('[data-i18n]').forEach(function (el) {
+                    var key = el.getAttribute('data-i18n');
+                    var entry = TRANSLATIONS[key];
+                    if (!entry) return;
+                    var text = entry[lang];
+                    if (text === undefined) return;
+                    if (/<[a-z][\s\S]*>/i.test(text)) {
+                        el.innerHTML = text;
+                    } else {
+                        el.textContent = text;
+                    }
+                });
+            }
+
+            if (langBtn) {
+                langBtn.addEventListener('click', function () {
+                    applyLang(currentLang === 'ar' ? 'en' : 'ar');
+                });
+            }
+
+            // Ensure Arabic is the default rendering on load
+            applyLang('ar');
+        })();
+    </script>
+
 </body>
 
 </html>

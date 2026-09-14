@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Land Subsidence Monitoring — NARSS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+
+<header class="topbar" id="topbar">
+  <span class="topbar-mark">NARSS</span>
+  <span class="topbar-title">Land Subsidence Monitoring</span>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" style="background-image:url('assets/egypt-overview.png');"></div>
+  <div class="hero-veil"></div>
+  <div class="hero-content">
+    <p class="hero-kicker">A satellite monitoring service for Egypt</p>
+    <h1 class="hero-title">Land subsidence,<br>seen from orbit.</h1>
+    <p class="hero-sub">See how the ground is changing beneath Egypt's cities, farmland and infrastructure — measured to the millimetre, from space.</p>
+  </div>
+  <div class="hero-scroll" aria-hidden="true"><span></span>Scroll</div>
+</section>
+
+<!-- INTRO / PROCESS -->
+<section class="intro">
+  <div class="intro-lead">
+    <p>Land subsidence is the gradual downward movement of the Earth's surface. It's difficult to see by standing on the ground — but satellite radar can detect movements of just a few millimetres a year, repeated over hundreds of passes.</p>
+    <p>The <strong>NARSS Land Subsidence Monitoring Service</strong> turns repeated Sentinel-1 satellite observations into interactive maps, deformation measurements and time-series reports — giving decision-makers a clear view of <em>where</em> the ground is moving, <em>how fast</em>, and <em>how that changes over time</em>.</p>
+  </div>
+  <div class="process">
+    <div class="process-step"><span class="process-num">1</span><span class="process-label">Observe</span></div>
+    <div class="process-step"><span class="process-num">2</span><span class="process-label">Detect</span></div>
+    <div class="process-step"><span class="process-num">3</span><span class="process-label">Measure</span></div>
+    <div class="process-step"><span class="process-num">4</span><span class="process-label">Monitor</span></div>
+  </div>
+</section>
+
+<!-- WHY IT MATTERS -->
+<section class="matters">
+  <div class="matters-text">
+    <h2>Why it matters</h2>
+    <p>The Nile Delta carries some of Egypt's most important assets — many of them sitting on low-lying, sediment-rich ground.</p>
+    <ul class="asset-list">
+      <li>Cities and residential areas</li>
+      <li>Agricultural land</li>
+      <li>Industrial zones</li>
+      <li>Ports</li>
+      <li>Roads and transport infrastructure</li>
+      <li>Coastal communities</li>
+      <li>New urban developments</li>
+    </ul>
+  </div>
+  <div class="matters-context">
+    <p>Ground movement here comes from a mix of causes: <strong>natural sediment compaction, groundwater extraction, urban development</strong> and other human activity. Earlier Sentinel-1 research in the Delta has already linked localized deformation to urban loading, groundwater abstraction and compaction.</p>
+    <p class="callout">Along the coast, subsidence and sea-level rise can act together — raising vulnerability faster than either would alone.</p>
+  </div>
+</section>
+
+<!-- STUDY STATS -->
+<section class="stats">
+  <p class="stats-lead">The study behind this service analysed</p>
+  <div class="stats-row">
+    <div class="stat">
+      <span class="stat-num" data-count="225">225</span>
+      <span class="stat-label">Sentinel-1 radar images</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num" data-count="2015" data-suffix="–2020">2015</span>
+      <span class="stat-label">Years of continuous coverage</span>
+    </div>
+    <div class="stat stat-text">
+      <span class="stat-method">PSI</span>
+      <span class="stat-label">Persistent Scatterer Interferometry, via the Geohazards Exploitation Platform</span>
+    </div>
+  </div>
+  <p class="stats-foot">The result: the most extensive picture yet of ground movement across the Nile Delta.</p>
+</section>
+
+<!-- FINDINGS SIDECAR -->
+<section class="findings">
+  <div class="findings-media">
+    <img src="assets/delta-overview.png" alt="Map of measured ground-deformation rates across the Nile Delta, in millimetres per year">
+    <p class="media-caption">Measured deformation rate, mm/year — Nile Delta, 2015–2020</p>
+  </div>
+  <div class="findings-text">
+    <h2>The Delta doesn't move as one piece</h2>
+    <p>Across the northern Delta, subsidence generally runs <strong>0–7&nbsp;mm per year</strong> — a slow, background rate.</p>
+    <p>But some places move much faster. Higher, localized rates were identified in parts of:</p>
+    <ul class="tag-list">
+      <li>Port Said</li>
+      <li>Damietta</li>
+      <li>Dakahlia</li>
+      <li>Sharqia</li>
+      <li>Around Lake Manzala</li>
+    </ul>
+    <div class="rate-pair">
+      <div class="rate rate-down">
+        <span class="rate-num">17</span><span class="rate-unit">mm/yr</span>
+        <span class="rate-desc">maximum localized subsidence recorded</span>
+      </div>
+      <div class="rate rate-up">
+        <span class="rate-num">6</span><span class="rate-unit">mm/yr</span>
+        <span class="rate-desc">uplift recorded near Bardawil Lake, Ismailia and Baltim</span>
+      </div>
+    </div>
+    <p class="findings-note">Different places move at different rates, in different directions. That's why monitoring has to work at the level of individual locations, not just the region as a whole — distinguishing broad patterns from local hotspots.</p>
+  </div>
+</section>
+
+<!-- REGIONAL DETAIL -->
+<section class="regional">
+  <h2>Zooming into the hotspots</h2>
+  <p class="regional-sub">The same measurements, viewed close to the ground — Alexandria &amp; Lake Mariout, Damietta–Dakahlia, Kafr El-Sheikh &amp; Lake Burullus, and Port Said–Manzala.</p>
+  <img class="regional-img" src="assets/regional-maps.png" alt="Four detailed maps of deformation velocity around Alexandria, Damietta-Dakahlia, Kafr El-Sheikh and Port Said">
+  <p class="regional-sub2">Together, these sites span the length of the Delta coastline — from Alexandria in the west to Port Said in the east.</p>
+</section>
+
+<!-- FIELD OBSERVATIONS -->
+<section class="field">
+  <div class="field-text">
+    <h2>What field observations show</h2>
+    <p>At locations flagged by the satellite data, engineers went to look. Where subsidence is pronounced, they found visible signs on the ground:</p>
+    <ul class="asset-list">
+      <li>Leaning buildings</li>
+      <li>Cracks and fractures</li>
+      <li>Wet areas around building foundations</li>
+      <li>Localized deformation</li>
+    </ul>
+    <p class="callout">Satellite monitoring flags where to look. Field and engineering investigation confirms what's happening there.</p>
+  </div>
+  <div class="field-gallery">
+    <figure><img src="assets/field-bridge.png" alt="Structural damage at Ashtoum Al-Gamil Bridge, Port Said"></figure>
+    <figure><img src="assets/field-busstation.png" alt="Wall cracking at Muharram Bek Bus Station, Alexandria"></figure>
+    <figure><img src="assets/field-elmataria.png" alt="Ground and building conditions at El Mataria, Ad Daqahliyah"></figure>
+  </div>
+</section>
+
+<!-- HOTSPOT SPOTLIGHT -->
+<section class="hotspot">
+  <div class="hotspot-inner">
+    <p class="hotspot-kicker">Hotspot in focus</p>
+    <h2>Port Said &amp; Lake Manzala</h2>
+    <p>This stretch of coast combines almost every condition that makes subsidence hard to ignore:</p>
+    <ul class="hotspot-list">
+      <li>Low-lying terrain</li>
+      <li>Urban development</li>
+      <li>Coastal conditions</li>
+      <li>Wetlands and lake environments</li>
+      <li>Infrastructure</li>
+      <li>Rapid land-use change</li>
+    </ul>
+    <p>The study recorded localized high subsidence here — and field visits confirmed visible effects at some of the affected sites.</p>
+  </div>
+</section>
+
+<!-- DECISIONS -->
+<section class="decisions">
+  <h2>What decisions can this support</h2>
+  <div class="decision-list">
+    <div class="decision-row"><span class="decision-name">Urban planning</span><span class="decision-desc">Identify areas that need further ground investigation.</span></div>
+    <div class="decision-row"><span class="decision-name">Infrastructure management</span><span class="decision-desc">Prioritize assets for inspection and monitoring.</span></div>
+    <div class="decision-row"><span class="decision-name">Construction</span><span class="decision-desc">Establish deformation baselines before and during major projects.</span></div>
+    <div class="decision-row"><span class="decision-name">Coastal management</span><span class="decision-desc">Identify where subsidence may compound coastal vulnerability.</span></div>
+    <div class="decision-row"><span class="decision-name">Water resources</span><span class="decision-desc">Investigate possible links between groundwater extraction and ground deformation.</span></div>
+    <div class="decision-row"><span class="decision-name">Oil &amp; gas</span><span class="decision-desc">Monitor deformation around production sites and infrastructure.</span></div>
+  </div>
+</section>
+
+<!-- CAVEAT -->
+<section class="caveat">
+  <p class="caveat-kicker">Read this before you act on it</p>
+  <h2>The service detects movement. It doesn't decide why.</h2>
+  <p>Satellite data measures <strong>surface deformation</strong> — it does not automatically explain what's causing it. A detected signal could point to geological conditions, sediment compaction, groundwater extraction, construction loading, or some combination of these. Confirming the cause takes ground investigation.</p>
+</section>
+
+<footer class="footer">
+  <p>NARSS Land Subsidence Monitoring Service — built on Copernicus Sentinel-1 imagery, 2015–2020, processed via the Geohazards Exploitation Platform.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

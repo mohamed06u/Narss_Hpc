@@ -1,26 +1,48 @@
 /* ============================================
-   ROOT VARIABLES & BASE
+   1. ROOT VARIABLES & GLOBAL BASE
+   المتغيرات العامة للألوان والمقاسات المستخدمة
+   في كل الصفحة (عشان لو غيرت هنا يتغير كل حاجة)
    ============================================ */
 :root {
     --primary: #0a0e1a;
+    /* اللون الأساسي الغامق (نصوص العناوين) */
     --primary-light: #141b2d;
+    /* درجة أفتح من الأساسي */
     --primary-dark: #05080f;
-    --accent: #3b82f6;
-    --accent-light: #60a5fa;
-    --accent-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    /* أغمق درجة (الفوتر والتوب بار) */
+    --accent: #06b6d4;
+    /* اللون المميز (سماوي/تركواز) */
+    --accent-light: #38bdf8;
+    /* درجة أفتح من اللون المميز */
+    --accent-green: #10b981;
+    /* أخضر مستخدم في التمييز والـ hover */
+    --accent-gradient: linear-gradient(135deg, #10b981 0%, #06b6d4 55%, #3b82f6 100%);
+    /* التدرج الأساسي (أخضر -> سماوي -> أزرق) */
     --background: #f8fafc;
+    /* خلفية الصفحة العامة (فاتحة) */
     --card-bg: #ffffff;
+    /* خلفية الكروت */
     --text-dark: #0f172a;
+    /* لون النص الغامق */
     --text-muted: #64748b;
+    /* لون النص الثانوي/الرمادي */
     --border: #e2e8f0;
+    /* لون الحدود الافتراضي */
     --radius: 16px;
+    /* الاستدارة الكبيرة (كروت) */
     --radius-sm: 10px;
+    /* الاستدارة الصغيرة (أزرار/عناصر) */
     --success: #10b981;
+    /* لون حالة "نشط/نجاح" */
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+    /* ظل خفيف */
     --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.06);
+    /* ظل متوسط */
     --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.08);
+    /* ظل قوي (قوائم منسدلة) */
 }
 
+/* إعادة ضبط عامة لكل العناصر (إزالة margin/padding الافتراضي) */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -29,13 +51,33 @@
 
 html {
     scroll-behavior: smooth;
+    /* سكرول ناعم عند الضغط على أي رابط داخلي */
+    overflow-x: hidden;
+    /* منع أي سكرول أفقي غير مقصود (خصوصاً بسبب حيلة الهيرو full-bleed والـ transform) */
+    max-width: 100%;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* تعويض ارتفاع النافبار الثابت (sticky) عشان لما نعمل سكرول لأي سكشن
+   (زي #services-container) ما يبقاش جزء منها (زي بار البحث) مختفي تحت النافبار */
+#services-container,
+#why-section {
+    scroll-margin-top: 90px;
 }
 
 body {
     font-family: 'Cairo', sans-serif;
+    /* الخط الأساسي للموقع */
     background: var(--background);
     color: var(--text-dark);
     line-height: 1.6;
+    overflow-x: hidden;
+    /* حماية إضافية من أي عنصر بيعدي عرض الشاشة على الموبايل */
+    max-width: 100%;
 }
 
 a {
@@ -47,69 +89,173 @@ ul {
     list-style: none;
 }
 
-/* TOP BAR */
+/* ============================================
+   TOP BAR
+   الشريط العلوي الرفيع (حالة النظام + روابط سريعة)
+   ============================================ */
+/* ============================================
+   الشريط العلوي (Top Bar - Digital Earth Style)
+   ============================================ */
+/* ============================================
+   الشريط العلوي (Top Bar - الاتجاه المعكوس)
+   ============================================ */
 .top-bar {
-    background: var(--primary-dark);
-    color: #fff;
-    padding: 6px 20px;
-    font-size: 0.75rem;
-    border-bottom: 2px solid var(--accent);
+    background-color: #315278;
+    /* اللون الأزرق الداكن */
+    color: #ffffff;
+    font-size: 0.82rem;
+    padding: 8px 0;
+    width: 100%;
+    position: relative;
+    z-index: 1001;
 }
 
 .top-bar-content {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 24px;
     display: flex;
     justify-content: space-between;
+    /* ينقل العناصر على الأطراف المتقابلة */
     align-items: center;
-    flex-wrap: wrap;
-    gap: 8px;
+    flex-direction: row-reverse;
+    /* يضمن نقل أداة اللغة لليسار والتواصل لليمين في كافة المتصفحات */
 }
 
-.top-bar-left,
-.top-bar-right {
+/* أيقونات التواصل الاجتماعي */
+.top-bar-socials {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
 }
 
-.badge-live {
-    display: inline-flex;
+.top-bar-socials a {
+    color: #ffffff;
+    font-size: 0.9rem;
+    opacity: 0.85;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    text-decoration: none;
+}
+
+.top-bar-socials a:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+}
+
+/* أداة اختيار اللغة */
+.top-bar-lang {
+    position: relative;
+}
+
+.lang-dropdown-btn {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    display: flex;
     align-items: center;
-    gap: 5px;
-    background: var(--success);
-    color: white;
-    padding: 2px 10px;
-    border-radius: 20px;
+    gap: 6px;
+    font-size: 0.82rem;
+    cursor: pointer;
+    opacity: 0.9;
+    padding: 2px 6px;
+    transition: opacity 0.2s ease;
+}
+
+.lang-dropdown-btn:hover {
+    opacity: 1;
+}
+
+.lang-dropdown-btn .flag-icon {
+    font-size: 0.95rem;
+    line-height: 1;
+}
+
+.lang-dropdown-btn i {
     font-size: 0.65rem;
-    font-weight: 700;
+    margin-left: 2px;
+    transition: transform 0.2s ease;
 }
 
-.top-bar-right a {
-    color: var(--accent-light);
-    transition: color 0.2s;
+.top-bar-lang.open .lang-dropdown-btn i {
+    transform: rotate(180deg);
 }
 
-.top-bar-right a:hover {
-    color: #fff;
+/* القائمة المنسدلة لاختيار اللغة (عربي / إنجليزي / فرنساوي) */
+.lang-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    min-width: 160px;
+    background: #ffffff;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-lg);
+    padding: 6px;
+    display: none;
+    flex-direction: column;
+    gap: 2px;
+    z-index: 1200;
 }
 
-/* NAVBAR */
+.top-bar-lang.open .lang-menu {
+    display: flex;
+}
+
+.lang-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: var(--text-dark);
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 8px 10px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    text-align: right;
+    transition: 0.2s;
+}
+
+.lang-menu-item:hover {
+    background: rgba(6, 182, 212, 0.08);
+    color: var(--accent);
+}
+
+.lang-menu-item.active {
+    background: rgba(6, 182, 212, 0.12);
+    color: var(--accent);
+}
+
+/* ============================================
+   NAVBAR
+   شريط التنقل الرئيسي (اللوجو + القوائم + أزرار الدخول)
+   ============================================ */
 .main-navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 30px;
-    height: 70px;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
+    padding: 0 26px;
+    height: 68px;
+    background: #ffffff;
+    /* بطاقة بيضاء عائمة مستديرة الحواف فوق صورة الهيرو (زي تصميم Digital Earth) */
     position: sticky;
-    top: 0;
+    /* الشريط يفضل ثابت فوق أثناء السكرول */
+    top: 14px;
     z-index: 1000;
-    border-bottom: 1px solid var(--border);
-    box-shadow: var(--shadow-sm);
+    margin: 14px 20px 0 20px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
 }
 
+/* المساحة اللي بتفصل بين البار العلوي والنافبار العائم فوق صورة الهيرو */
+.hero {
+    margin-top: -118px;
+    z-index: 1;
+}
+
+/* اسم الموقع/اللوجو النصي في النافبار */
 .nav-brand {
     display: flex;
     align-items: center;
@@ -119,6 +265,7 @@ ul {
     color: var(--primary);
 }
 
+/* الجزء الملون من اسم اللوجو (HPC) بالتدرج */
 .brand-highlight {
     color: var(--accent);
     background: var(--accent-gradient);
@@ -134,6 +281,7 @@ ul {
 
 .nav-item {
     position: relative;
+    /* عشان القائمة المنسدلة تتمركز بالنسبة له */
 }
 
 .nav-link {
@@ -149,10 +297,11 @@ ul {
 }
 
 .nav-link:hover {
-    background: rgba(59, 130, 246, 0.08);
+    background: rgba(6, 182, 212, 0.08);
     color: var(--accent);
 }
 
+/* السهم الصغير (chevron) بجانب "الخدمات" */
 .chevron {
     width: 5px;
     height: 5px;
@@ -163,10 +312,51 @@ ul {
     margin-right: 4px;
 }
 
+/* ============================================
+   صندوق "خدمة المنطقة العربية والأفريقية"
+   ============================================ */
+.target-region-box {
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(52, 211, 153, 0.5);
+    border-right: 4px solid #3b82f6;
+    border-radius: 8px;
+    padding: 12px 24px;
+    margin-bottom: 18px;
+
+    /* نقل الصندوق لأقصى اليمين */
+    width: fit-content;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: 0;
+
+    direction: rtl;
+    text-align: right;
+
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.25);
+}
+
+.target-region-box h4 {
+    color: #34d399;
+    font-size: 1.05rem;
+    font-weight: 800;
+    margin: 0 0 4px 0;
+    text-align: right;
+}
+
+.target-region-box p {
+    color: #e2e8f0;
+    font-size: 0.9rem;
+    margin: 0;
+    text-align: right;
+    line-height: 1.6;
+}
+
+/* دوران السهم لأعلى عند فتح القائمة المنسدلة */
 .dropdown:hover .chevron {
     transform: rotate(225deg);
 }
 
+/* القائمة المنسدلة نفسها (خدمات) */
 .dropdown-menu {
     visibility: hidden;
     opacity: 0;
@@ -208,7 +398,7 @@ ul {
     color: var(--text-muted);
     padding: 6px 10px;
     border-radius: var(--radius-sm);
-    font-size: 0.85srem;
+    font-size: 0.85rem;
     transition: 0.2s;
 }
 
@@ -218,16 +408,62 @@ ul {
 }
 
 .dropdown-item:hover {
-    background: rgba(59, 130, 246, 0.06);
+    background: rgba(6, 182, 212, 0.06);
     color: var(--accent);
     transform: translateX(-3px);
 }
 
 .nav-actions {
     display: flex;
-    gap: 8px;
+    align-items: center;
+    gap: 10px;
 }
 
+/* زر "تواصل معنا" الدائري زي تصميم Digital Earth */
+.btn-contact {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 22px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    border: none;
+    background: var(--accent-gradient);
+    color: #fff;
+    transition: 0.2s;
+    white-space: nowrap;
+}
+
+.btn-contact:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(6, 182, 212, 0.35);
+}
+
+/* أيقونة البحث المستديرة في أقصى النافبار */
+.nav-search-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.nav-search-btn:hover {
+    background: rgba(6, 182, 212, 0.08);
+    color: var(--accent);
+}
+
+/* الأزرار العامة (دخول / حساب جديد) */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -262,6 +498,7 @@ ul {
     transform: translateY(-1px);
 }
 
+/* زر القائمة (الهامبرجر) اللي يظهر بس في الموبايل */
 .mobile-toggle {
     display: none;
     flex-direction: column;
@@ -276,135 +513,397 @@ ul {
     width: 22px;
     height: 2px;
     background: var(--text-dark);
+    transition: 0.25s ease;
 }
 
-/* HERO */
+/* شكل الزر وهو مفتوح (X) لو الـ JS بيضيف كلاس active على الزر نفسه */
+.mobile-toggle.active span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+
+.mobile-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-toggle.active span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+}
+
+/* ============================================
+   2. HERO SECTION & BRANDING (TAIF)
+   قسم البانر الرئيسي (خلفية الفضاء + شعار طيف)
+   ============================================ */
+
+/* الحاوية الخارجية للهيرو - بتاخد عرض الشاشة بالكامل */
 .hero {
     position: relative;
-    margin: 20px 20px 0;
-    border-radius: var(--radius);
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
     overflow: hidden;
-    background: linear-gradient(135deg, #0a0e1a 0%, #141b2d 100%);
+    background-color: #030509;
     color: white;
 }
 
+/* الطبقة اللي فيها صورة الخلفية (chatim.png) وكل محتوى الهيرو فوقها */
 .hero-overlay {
     position: relative;
-    padding: 60px 50px;
-    background-image:
-        url('/assets/images/images.jpeg');
-    background-size: cover;
-    background-position: center;
-    min-height: 520px;
+    width: 100%;
+    aspect-ratio: 1536 / 1024;
+    /* نفس نسبة أبعاد صورة الخلفية عشان متتقصش */
+    padding: 40px 20px;
+    background-image: url('../assets/images/chatim.png');
+    /* صورة الفضاء/القمر الصناعي */
+    background-size: 100% auto;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-color: #040914;
+    /* لون احتياطي وقت تحميل الصورة */
     display: flex;
+    justify-content: center;
     align-items: center;
+    text-align: center;
+    box-sizing: border-box;
 }
 
+/* العمود الأساسي في نص الهيرو (الشعار + السلوجان + الأزرار) */
 .hero-content {
-    max-width: 680px;
+    max-width: 900px;
+    margin: 0 auto;
     position: relative;
     z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.hero-badge {
+/* قائمة المميزات الجانبية على يسار الهيرو
+   (أقمار صناعية / ذكاء اصطناعي / حوسبة عالية الأداء ...) */
+/* --- القائمة الجانبية اليسرى للخدمات المتاحة --- */
+.hero-side-features {
+    position: absolute;
+    top: 300px;
+    /* تم إنزال القائمة لتوازي بداية كلمة طيف */
+    left: 30px;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 240px;
+}
+
+/* العنصر الرئيسي للكارت */
+.side-feature-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* توزيع العناصر: النص يمين والأيقونة يسار */
+    flex-direction: row-reverse;
+    /* نقل الأيقونة لتصبح على اليسار والنص على اليمين */
+    gap: 10px;
+    background: rgba(6, 12, 24, 0.55);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    backdrop-filter: blur(6px);
+    border-radius: 12px;
+    padding: 8px 14px;
+    text-align: right;
+    transition: all 0.3s ease;
+    /* إضافة سلاسة في الحركة */
+    cursor: pointer;
+}
+
+/* تأثير التفاعل عند مرور الماوس (Hover Effect) */
+.side-feature-item:hover {
+    background: rgba(6, 182, 212, 0.2);
+    /* خلفية مضيئة متناسقة */
+    border-color: #34d399;
+    /* تغيير لون الإطار للأخضر المضيء */
+    transform: translateX(6px);
+    /* تحريك الكارت خفيفاً لليمين لإعطاء انطباع بالانزلاق */
+    box-shadow: 0 4px 15px rgba(52, 211, 153, 0.25);
+    /* إضافة توهج خلف الكارت */
+}
+
+/* تغيير شكل الأيقونة عند التفاعل */
+.side-feature-item:hover .side-feature-icon {
+    background: #34d399 !important;
+    /* تحول خلفية الأيقونة للون الأخضر */
+    color: #040914 !important;
+    /* تحول رمز الأيقونة للون الداكن */
+    transform: scale(1.1);
+    /* تكبير حجم الأيقونة قليلاً */
+}
+
+/* الأيقونات */
+.side-feature-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.side-feature-text strong {
+    display: block;
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.side-feature-text span {
+    display: block;
+    color: #94a3b8;
+    font-size: 0.72rem;
+}
+
+/* ---------- شعار "طيف" الرئيسي ---------- */
+
+/* الصندوق اللي بيحتوي كلمة "طيف" و TAIF */
+.taif-header-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -200px !important;
+    /* رفع الكتلة لأعلى فوق منتصف الهيرو */
+    margin-bottom: 15px;
+}
+
+/* كلمة "طيف" بالعربي - أكبر عنصر في الهيرو */
+.taif-logo-title {
+    font-family: 'El Messiri', sans-serif;
+    font-size: 10rem;
+    font-weight: 350;
+    line-height: 1;
+    margin: 0;
+    color: #ffffff;
+    /* جعل اللون أبيض ناصع */
+    background: none;
+    /* إلغاء التدرج القديم */
+    -webkit-text-fill-color: initial;
+    /* لإلغاء إخفاء اللون الأصلي */
+    filter: drop-shadow(0 4px 15px rgba(255, 255, 255, 0.3));
+    /* توهج أبيض خفيف حوالين الحرف */
+    display: inline-block;
+    transform: scaleX(1.6);
+    /* تمديد الخط أفقيًا */
+    transform-origin: center;
+}
+
+/* السطر الفرعي "حلول جيومكانية ذكية" تحت كلمة طيف */
+.taif-sub-subtitle {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-top: -5px;
+    letter-spacing: 1px;
+    color: #4fb083 !important;
+    /* لون أخضر فاتح ثابت (مش تدرج) */
+    background: none !important;
+    /* إلغاء أي تدرج نصي */
+    -webkit-text-fill-color: #9bd7b2 !important;
+    filter: drop-shadow(0 2px 8px rgba(6, 182, 212, 0.4));
+}
+
+/* كلمة TAIF بالإنجليزي بالتدرج اللوني */
+.taif-english-title {
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: 5px;
+    margin-top: 8px;
+    line-height: 1;
+    background: linear-gradient(315deg,
+            #34d399 0%,
+            #facc15 10%,
+            #06b6d4 70%,
+            #3b82f6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 12px rgba(6, 182, 212, 0.5));
+    transform: scaleX(1.3);
+    /* تمديد الخط أفقيًا شوية */
+}
+
+/* السطر الإنجليزي الصغير: Intelligent Geospatial Solutions */
+.taif-english-sub {
+    font-size: 1.4rem;
+    color: #cbd5e1;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-top: 4px;
+}
+
+/* خط زخرفي تحت السلوجان (غير مستخدم حاليًا في الـ HTML، جاهز لو احتجته) */
+.slogan-line {
+    position: relative;
+    display: inline-block;
+}
+
+.slogan-line::after {
+    font-size: 2rem;
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #34d399, #06b6d4, transparent);
+    border-radius: 2px;
+    box-shadow: 0 2px 10px rgba(52, 211, 153, 0.8), 0 0 18px rgba(6, 182, 212, 0.6);
+}
+
+/* الحبة (pill) الخضراء اللي فيها جملة "من بيانات الفضاء إلى قرارات أكثر ذكاءً" */
+.hero-slogan-pill {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    background: rgba(59, 130, 246, 0.2);
-    border: 1px solid rgba(59, 130, 246, 0.3);
-    padding: 4px 14px;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    color: var(--accent-light);
-    margin-bottom: 16px;
+    gap: 10px;
+    color: #70c170;
+    padding: 8px 24px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin: 18px 0;
+    /* ملاحظة: خلفية/بوردر/ظل الـ pill (اللي كانت موجودة قبل كده) اتشالوا هنا،
+       فالعنصر دلوقتي بدون خلفية واضحة - لو مش قصدك كده ممكن ترجعهم */
 }
 
-.hero h1 {
-    font-size: 2.4rem;
-    font-weight: 800;
-    line-height: 1.25;
-    margin-bottom: 8px;
+/* تغيير لون أيقونة الشعار إلى نفس لون النص الأخضر */
+.hero-slogan-pill i {
+    color: inherit !important;
+    /* أو color: #70c170 !important; */
+    /* الأيقونات جوه السلوجان بيضاء */
 }
 
-.hero-subtitle {
-    font-size: 1.1rem;
-    color: var(--accent-light);
-    font-weight: 600;
-    margin-bottom: 12px;
+
+/* شريط المميزات الأربعة (بيانات دقيقة | نماذج تنبؤية | تحليلات ذكية | قرارات أفضل) */
+.feature-bar {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
 }
 
-.hero p {
+.feature-item {
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    padding: 8px 18px;
+    border-radius: 12px;
     font-size: 0.95rem;
-    opacity: 0.8;
-    line-height: 1.7;
-    margin-bottom: 24px;
+    font-weight: 700;
+    color: #f8fafc;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    backdrop-filter: blur(8px);
+    transition: 0.3s;
 }
 
+.feature-item i {
+    color: #ffffff;
+    /* أيقونات الشريط بيضاء */
+}
+
+.feature-item:hover {
+    border-color: #34d399;
+    transform: translateY(-2px);
+}
+
+
+
+/* شارة "تطوير وتشغيل: NARSS – HPC" */
+.operator-badge {
+    background: rgba(10, 20, 40, 0.75);
+    /* خلفية داكنة متناسقة مع الهيرو */
+    border: 1.5px solid #06b6d4;
+    /* إطار أزرق سيان مضيء */
+    padding: 10px 28px;
+    border-radius: 12px;
+    /* حواف دائرية ناعمة مثل الصورة */
+    font-size: 0.9rem;
+    color: #70c170;
+    /* لون النص العلوي (تطوير وتشغيل) بالأخضر المضيء */
+    margin-bottom: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.25);
+    /* توهج أزرق خفيف حول الإطار */
+    backdrop-filter: blur(8px);
+    text-align: center;
+}
+
+/* تنسيق الكلمات بداخل الشارة */
+.operator-badge-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.3;
+}
+
+.operator-badge span {
+    color: #70c170;
+    /* "تطوير وتشغيل" باللون الأخضر */
+    font-weight: 500;
+    font-size: 1rem;
+    transform: scaleX(1);
+}
+
+.operator-badge strong {
+    color: #ffffff !important;
+    /* اسم المعمل باللون الأبيض الناصع */
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+/* لون الأيقونة الخاصة بالسيرفرات/المعمل */
+.operator-badge i {
+    color: #38bdf8;
+    font-size: 2rem;
+}
+
+/* صف أزرار الهيرو (استعرض المنتجات / عن المنصة) */
 .hero-actions {
     display: flex;
     gap: 12px;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
-}
-
-.btn-main,
-.btn-secondary {
-    padding: 10px 24px;
-    border-radius: 30px;
-    font-weight: 700;
-    font-size: 0.9rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: 0.2s;
 }
 
 .btn-main {
-    background: #fff;
-    color: var(--primary);
-}
-
-.btn-main:hover {
-    background: #f1f5f9;
+    background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+    color: white;
+    padding: 10px 24px;
+    border-radius: 25px;
+    font-weight: 700;
 }
 
 .btn-secondary {
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 10px 24px;
+    border-radius: 25px;
+    font-weight: 700;
 }
 
-.btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.15);
-}
+/* ============================================
+   3. CATEGORIZED SERVICES ACCORDION
+   قسم الخدمات (الكونتينر العام + كروت الفئات)
+   ============================================ */
 
-.hero-stats {
-    display: flex;
-    gap: 40px;
-    padding-top: 16px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.stat-number {
-    font-size: 1.6rem;
-    font-weight: 800;
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.stat-label {
-    font-size: 0.75rem;
-    opacity: 0.6;
-}
-
-/* CONTAINER & SECTIONS */
+/* الحاوية العامة لأي محتوى تحت الهيرو */
 .container {
     max-width: 1200px;
     margin: 30px auto;
     padding: 0 20px;
 }
 
+/* الصندوق العلوي لعنوان قسم الخدمات + خانة البحث */
 .section-header-box {
     display: flex;
     justify-content: space-between;
@@ -439,6 +938,7 @@ ul {
     font-size: 0.85rem;
 }
 
+/* خانة البحث عن خدمة */
 .filter-search-box {
     position: relative;
     display: flex;
@@ -467,103 +967,387 @@ ul {
 .filter-search-box input:focus {
     border-color: var(--accent);
     background: #fff;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.1);
 }
 
-/* SERVICES GRID */
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 20px;
-}
-
-.service-card {
-    background: var(--card-bg);
-    border-radius: var(--radius);
-    padding: 24px;
-    border: 1px solid var(--border);
-    transition: 0.3s;
+/* الحاوية اللي بتجمع كل كروت الفئات (Accordion) تحت بعض */
+.categories-wrapper {
     display: flex;
     flex-direction: column;
-    position: relative;
-    overflow: hidden;
+    gap: 24px;
+    margin-top: 24px;
 }
 
-.service-card:hover {
-    transform: translateY(-5px);
+/* كارت الفئة الواحدة */
+.category-card {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+    transition: 0.3s ease;
+}
+
+.category-card:hover {
+    border-color: rgba(6, 182, 212, 0.4);
     box-shadow: var(--shadow-md);
-    border-color: transparent;
 }
 
-.service-card .icon-wrap {
+/* رأس كارت الفئة */
+.category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--background);
+    margin-bottom: 20px;
+}
+
+.category-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.category-title h3 {
     font-size: 1.5rem;
-    width: 48px;
-    height: 48px;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0;
+}
+
+.category-icon {
+    font-size: 1.2rem;
+    color: var(--accent);
+    background: rgba(6, 182, 212, 0.1);
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: var(--radius-sm);
-    margin-bottom: 14px;
 }
 
-.service-card h3 {
-    font-size: 1.05rem;
-    font-weight: 800;
-    margin-bottom: 6px;
-    color: var(--text-dark);
-}
-
-.service-card p {
+.badge-count {
+    background: var(--background);
     color: var(--text-muted);
-    font-size: 0.85rem;
-    line-height: 1.6;
-    margin-bottom: 16px;
-    flex: 1;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
 }
 
-.btn-service {
+/* ============================================
+   تصميم كروت الخدمات الفرعية (مطابق للصورة الثانية)
+   ============================================ */
+
+/* شبكة الخدمات الفرعية */
+.subservices-grid {
+    display: grid;
+    /* التحكم في حجم بوكس الخدمه */
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+/* كارت الخدمة الفرعية الرئيسي */
+.subservice-item {
+    --card-accent: #3b82f6;
+    --card-accent-2: #60a5fa;
+    /* اللون الافتراضي (أزرق) */
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    padding: 0 0 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+/* صورة حقيقية لكل خدمة أعلى الكارت (بدل الأيقونة الكبيرة القديمة)
+   background-image بييجي inline من الـ HTML لكل كارت على حدة */
+.subservice-image {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    margin-bottom: 8px;
+    background-color: var(--card-accent);
+    /* لون احتياطي وقت تحميل الصورة */
+    background-size: cover;
+    background-position: center;
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* تظليل بلون الخدمة فوق الصورة عشان تفضل متسقة مع هوية الكارت */
+.subservice-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, var(--card-accent) 0%, transparent 65%);
+    opacity: 0.55;
+    mix-blend-mode: multiply;
+}
+
+/* تعتيم خفيف من تحت عشان الشارة/الأيقونة تبان واضحة فوق أي صورة */
+.subservice-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.35) 0%, transparent 45%);
+}
+
+/* شارة دائرية صغيرة بأيقونة الخدمة فوق الصورة */
+.subservice-image .subservice-badge-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 12px;
+    z-index: 2;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--card-accent);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* تفاصيل النص داخل الكارت */
+.subservice-content {
+    padding: 0 16px;
+    width: 100%;
+}
+
+.subservice-item h4 {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.subservice-item p {
+    font-size: 1rem;
+    color: #64748b;
+    line-height: 1.5;
+    margin-bottom: 8px;
+    /* كانت 20px */
+    min-height: auto;
+    /* توحيد ارتفاع النصوص لجميع الكروت */
+}
+
+/* زر "فتح الخدمة" البيضاوي الشبيه بالصورة */
+.btn-subservice {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 10px 22px;
-    border-radius: 30px;
-    color: white;
+    background-color: var(--card-accent);
+    color: #ffffff;
+    font-size: 1.1rem;
     font-weight: 700;
-    font-size: 0.85rem;
+    padding: 9px 24px;
+    border-radius: 25px;
+    width: calc(100% - 32px);
+    margin: 0 16px;
     border: none;
-    cursor: pointer;
     transition: all 0.25s ease;
-    margin-top: auto;
-    width: 100%;
-    /* ليكون الزر بعرض الكارد أو محاذاة مرتبة */
+    cursor: pointer;
 }
 
-.btn-service:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+/* السهم داخل الزر */
+.btn-subservice i {
+    font-size: 0.8rem;
+    transition: transform 0.2s ease;
+}
+
+/* تأثير التفاعل Hover */
+.subservice-item:hover {
+    transform: translateY(-4px);
+    border-color: var(--card-accent);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.subservice-item:hover .btn-subservice {
     opacity: 0.92;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.btn-service:hover {
-    opacity: 0.9;
-}
-
-.loading {
-    text-align: center;
-    grid-column: 1 / -1;
-    color: var(--text-muted);
-    padding: 40px;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+.subservice-item:hover .btn-subservice i {
+    transform: translateX(-4px);
+    /* تحريك السهم لليسار عند التفاعل */
 }
 
 /* ============================================
-   WHY SECTION (مُعاد تصميمه ليكون أنيقاً ومتناسقاً)
+   تخصيص ألوان الكروت حسب لون الخدمة (كل خدمة بلونها الخاص)
+   يمكنك إضافتها لكلاس الكارت مباشرة: class="subservice-item theme-purple"
    ============================================ */
+
+.subservice-item.theme-blue {
+    --card-accent: #3b82f6;
+    --card-accent-2: #60a5fa;
+}
+
+.subservice-item.theme-orange {
+    --card-accent: #f59e0b;
+    --card-accent-2: #fbbf24;
+}
+
+.subservice-item.theme-green {
+    --card-accent: #10b981;
+    --card-accent-2: #34d399;
+}
+
+.subservice-item.theme-purple {
+    --card-accent: #8b5cf6;
+    --card-accent-2: #a78bfa;
+}
+
+.subservice-item.theme-red {
+    --card-accent: #ef4444;
+    --card-accent-2: #fb7185;
+}
+
+.subservice-item.theme-cyan {
+    --card-accent: #06b6d4;
+    --card-accent-2: #22d3ee;
+}
+
+.subservice-item.theme-slate {
+    --card-accent: #334155;
+    --card-accent-2: #64748b;
+}
+
+.subservice-item.theme-teal {
+    --card-accent: #0d9488;
+    --card-accent-2: #2dd4bf;
+}
+
+.subservice-item.theme-amber {
+    --card-accent: #b45309;
+    --card-accent-2: #d97706;
+}
+
+.subservice-item.theme-lime {
+    --card-accent: #65a30d;
+    --card-accent-2: #a3e635;
+}
+
+.subservice-item.theme-sky {
+    --card-accent: #0284c7;
+    --card-accent-2: #38bdf8;
+}
+
+.subservice-item.theme-violet {
+    --card-accent: #7c3aed;
+    --card-accent-2: #c4b5fd;
+}
+
+.subservice-item.theme-indigo {
+    --card-accent: #4f46e5;
+    --card-accent-2: #818cf8;
+}
+
+.subservice-item.theme-rose {
+    --card-accent: #e11d48;
+    --card-accent-2: #fb7185;
+}
+
+.subservice-item.theme-navy {
+    --card-accent: #1d4ed8;
+    --card-accent-2: #38bdf8;
+}
+
+/* ============================================
+   5. SCROLL REVEAL ANIMATIONS
+   عناصر تظهر بحركة (من الجانب / من العدم) عند نزول السكرول
+   الكلاس الأساسي: reveal (+ اتجاه اختياري) وبيتفعّل بكلاس is-visible عن طريق JS
+   ============================================ */
+
+/* الحالة الابتدائية: مخفي شوية ومزاح عن مكانه */
+.reveal {
+    opacity: 0;
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+}
+
+/* من تحت لفوق (الافتراضي) */
+.reveal,
+.reveal.reveal-up {
+    transform: translateY(36px);
+}
+
+/* من اليمين (بما إن الصفحة RTL، فده بيحس إنه "جاي من جنب") */
+.reveal.reveal-right {
+    transform: translateX(60px);
+}
+
+/* من الشمال */
+.reveal.reveal-left {
+    transform: translateX(-60px);
+}
+
+/* ظهور من العدم مع تكبير بسيط (بدون إزاحة) */
+.reveal.reveal-scale {
+    transform: scale(0.92);
+}
+
+/* الحالة النهائية بعد ما العنصر يبان في الشاشة */
+.reveal.is-visible {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+}
+
+/* تأخير متدرج للعناصر جوه نفس الشبكة (كروت الخدمات) عشان تدخل واحدة ورا التانية */
+.reveal-delay-1 {
+    transition-delay: 0.08s;
+}
+
+.reveal-delay-2 {
+    transition-delay: 0.16s;
+}
+
+.reveal-delay-3 {
+    transition-delay: 0.24s;
+}
+
+.reveal-delay-4 {
+    transition-delay: 0.32s;
+}
+
+.reveal-delay-5 {
+    transition-delay: 0.4s;
+}
+
+/* احترام تفضيل تقليل الحركة لو المستخدم مفعّله في نظام تشغيله */
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        transition: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
+/* ============================================
+   4. WHY SECTION & FOOTER
+   قسم "ليه تختارنا" والفوتر
+   ============================================ */
+
+/* قسم "لماذا نحن" بالكامل */
 .why-section {
     background: #fff;
     padding: 50px 0;
@@ -572,6 +1356,7 @@ ul {
     margin-top: 50px;
 }
 
+/* عنوان ووصف قسم "لماذا نحن" */
 .why-header {
     text-align: center;
     max-width: 600px;
@@ -590,6 +1375,7 @@ ul {
     font-size: 0.9rem;
 }
 
+/* شبكة الكروت الأربعة (GPUs / Big Data / AI / GIS) */
 .why-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -614,10 +1400,11 @@ ul {
     box-shadow: var(--shadow-sm);
 }
 
+/* الدائرة اللي فيها أيقونة كل كارت في قسم "لماذا نحن" */
 .why-icon {
     width: 44px;
     height: 44px;
-    background: rgba(59, 130, 246, 0.1);
+    background: rgba(6, 182, 212, 0.1);
     color: var(--accent);
     border-radius: 50%;
     display: flex;
@@ -640,9 +1427,7 @@ ul {
     line-height: 1.6;
 }
 
-/* ============================================
-   FOOTER (مضغوط واحترافي)
-   ============================================ */
+/* الفوتر الرئيسي (3 أعمدة: عن الموقع / روابط سريعة / تواصل) */
 footer {
     background: var(--primary-dark);
     color: #fff;
@@ -660,12 +1445,21 @@ footer {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* اسم الموقع في عمود الفوتر الأول، ملوّن بالتدرج */
+.footer-brand h3 {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
 .footer-brand p {
     color: #94a3b8;
     font-size: 0.8rem;
     margin: 8px 0 16px;
 }
 
+/* أيقونات السوشيال ميديا الدائرية في الفوتر */
 .footer-social {
     display: flex;
     gap: 10px;
@@ -685,7 +1479,7 @@ footer {
 }
 
 .footer-social a:hover {
-    background: var(--accent);
+    background: var(--accent-gradient);
 }
 
 .footer-col h4 {
@@ -715,6 +1509,7 @@ footer {
     transform: translateX(-3px);
 }
 
+/* سطر الحقوق أسفل الفوتر تمامًا */
 .footer-bottom {
     max-width: 1200px;
     margin: 20px auto 0;
@@ -723,35 +1518,535 @@ footer {
     font-size: 0.75rem;
 }
 
-/* Responsive */
-@media(max-width: 768px) {
-    .main-navbar {
-        padding: 0 15px;
+/* ============================================
+   RESPONSIVE
+   تعديلات الشاشات الصغيرة (تابلت وموبايل)
+   ============================================ */
+
+/* إخفاء القائمة الجانبية في الهيرو على الشاشات المتوسطة/الصغيرة
+   عشان متزنقش المحتوى الرئيسي */
+@media(max-width: 900px) {
+    .hero-side-features {
+        display: none;
     }
 
+    /* شبكة الخدمات الفرعية: تصغير الحد الأدنى لعرض الكارت عشان تتلم في عمودين
+       بدل ما تحاول تعمل عرض 350px ثابت وتعمل سكرول أفقي */
+    .subservices-grid {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    }
+
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* تعديلات خاصة بشاشات التابلت واللابتوب الصغير */
+@media(max-width: 992px) {
+    .hero-overlay {
+        aspect-ratio: auto;
+        min-height: 640px;
+        background-size: cover;
+        background-position: center top;
+    }
+
+    .taif-header-box {
+        margin-top: 0 !important;
+    }
+}
+
+/* تعديلات خاصة بشاشات الموبايل (أقل من 768px) */
+@media(max-width: 768px) {
+    .main-navbar {
+        padding: 12px 15px;
+        margin: 10px 12px 0 12px;
+        height: auto;
+        flex-wrap: wrap;
+    }
+
+    .nav-brand {
+        font-size: 1rem;
+    }
+
+    /* إخفاء قائمة الروابط وأزرار الدخول، وإظهار زر الهامبرجر بدالها */
     .nav-menu,
     .nav-actions {
         display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid var(--border);
+    }
+
+    /* لما الـ JS يضيف كلاس "active" على القائمة أو الأزرار بيبانوا كعمود كامل العرض */
+    .nav-menu.active,
+    .nav-actions.active {
+        display: flex;
+    }
+
+    .nav-menu .nav-item,
+    .nav-menu .nav-link {
+        width: 100%;
+    }
+
+    .dropdown-menu {
+        position: static;
+        visibility: visible;
+        opacity: 1;
+        transform: none;
+        box-shadow: none;
+        border: none;
+        width: 100%;
+        display: none;
+        margin-top: 6px;
+        padding: 6px 0 6px 10px;
+    }
+
+    .dropdown.open .dropdown-menu {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nav-actions.active {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-actions .btn,
+    .nav-actions .btn-contact {
+        width: 100%;
+        justify-content: center;
     }
 
     .mobile-toggle {
         display: flex;
     }
 
+    /* الهيرو: بنشيل الـ aspect-ratio الثابت اللي بيقص المحتوى على الموبايل
+       وبنخليه يتمدد حسب المحتوى الفعلي (اللوجو + السلوجان + الأزرار) */
     .hero-overlay {
-        padding: 30px 20px;
+        aspect-ratio: auto;
+        min-height: auto;
+        height: auto;
+        padding: 90px 16px 50px;
+        background-size: cover;
+        background-position: center top;
     }
 
-    .hero h1 {
+    .hero {
+        margin-top: -92px;
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+
+    /* تصغير حجم شعار "طيف" و TAIF عشان يتناسب مع شاشة الموبايل */
+    .taif-header-box {
+        margin-top: 0 !important;
+        margin-bottom: 10px;
+    }
+
+    .taif-logo-title {
+        font-size: 3.6rem;
+        transform: scaleX(1.2);
+    }
+
+    .taif-sub-subtitle {
+        font-size: 1.4rem;
+    }
+
+    .taif-english-title {
         font-size: 1.8rem;
+        letter-spacing: 3px;
+        transform: scaleX(1.1);
     }
 
+    .taif-english-sub {
+        font-size: 1rem;
+    }
+
+    .hero-slogan-pill {
+        font-size: 0.95rem;
+        padding: 8px 16px;
+        text-align: center;
+    }
+
+    .feature-bar {
+        gap: 8px;
+    }
+
+    .feature-item {
+        font-size: 0.8rem;
+        padding: 7px 12px;
+    }
+
+    .operator-badge {
+        padding: 10px 18px;
+        font-size: 0.8rem;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .btn-main,
+    .btn-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* قسم الخدمات: البحث ياخد العرض بالكامل تحت العنوان */
+    .section-header-box {
+        padding: 18px;
+    }
+
+    .filter-search-box {
+        width: 100%;
+    }
+
+    .filter-search-box input {
+        width: 100%;
+    }
+
+    .category-card {
+        padding: 16px;
+    }
+
+    .category-title h3 {
+        font-size: 1.15rem;
+    }
+
+    /* كل كارت خدمة ياخد عمود كامل على الموبايل */
+    .subservices-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* تحويل أعمدة الفوتر لعمود واحد تحت بعض */
     .footer-container {
         grid-template-columns: 1fr;
         gap: 20px;
     }
 
-    .filter-search-box input {
-        width: 100%;
+    /* رجوع صندوق "خدمة المنطقة العربية والأفريقية" لمنتصف الشاشة في الموبايل
+       بدل ما يفضل لاصق في أقصى اليمين */
+    .target-region-box {
+        align-self: center;
+        text-align: center;
+        margin: 0 auto 18px;
+    }
+}
+
+/* تعديلات إضافية لشاشات الموبايل الصغيرة جدًا (أقل من 480px) */
+@media(max-width: 480px) {
+    .taif-logo-title {
+        font-size: 2.8rem;
+        transform: scaleX(1.05);
+    }
+
+    .taif-sub-subtitle {
+        font-size: 1.15rem;
+    }
+
+    .taif-english-title {
+        font-size: 1.4rem;
+        letter-spacing: 2px;
+        transform: none;
+    }
+
+    .hero-slogan-pill {
+        font-size: 0.85rem;
+    }
+
+    .why-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        padding: 0 16px;
+    }
+
+    .contact-banner h1 {
+        font-size: 1.6rem;
+    }
+}
+
+/* ============================================
+   ARABIC / ENGLISH LANGUAGE MODE
+   ============================================ */
+.lang-dropdown-btn {
+    min-width: 105px;
+    justify-content: center;
+}
+
+body.english-mode {
+    direction: ltr;
+}
+
+body.english-mode .top-bar-content,
+body.english-mode .nav-menu,
+body.english-mode .nav-actions,
+body.english-mode .hero-actions {
+    direction: ltr;
+}
+
+body.english-mode .nav-link,
+body.english-mode .dropdown-item,
+body.english-mode .section-title-wrapper,
+body.english-mode .why-header,
+body.english-mode .why-card,
+body.english-mode .footer-col,
+body.english-mode .footer-brand,
+body.english-mode .footer-bottom {
+    text-align: left;
+}
+
+body.english-mode .dropdown-menu {
+    left: 0;
+    right: auto;
+}
+
+body.english-mode .chevron {
+    margin-right: 0;
+    margin-left: 4px;
+}
+
+body.english-mode .hero-side-features {
+    left: auto;
+    right: 30px;
+}
+
+body.english-mode .side-feature-item {
+    flex-direction: row;
+    text-align: left;
+}
+
+body.english-mode .side-feature-item:hover {
+    transform: translateX(-6px);
+}
+
+body.english-mode .filter-search-box .search-icon {
+    right: auto;
+    left: 14px;
+}
+
+body.english-mode .filter-search-box input {
+    padding: 10px 14px 10px 40px;
+}
+
+body.english-mode .btn-subservice i {
+    transform: rotate(180deg);
+}
+
+body.english-mode .lang-menu {
+    right: auto;
+    left: 0;
+}
+
+body.english-mode .lang-menu-item {
+    text-align: left;
+}
+
+body.english-mode .nav-actions {
+    direction: ltr;
+}
+
+@media (max-width: 768px) {
+    body.english-mode .hero-side-features {
+        right: 15px;
+        left: 15px;
+    }
+}
+
+/* ============================================
+   CONTACT PAGE (contact_form.html)
+   صفحة تواصل معنا
+   ============================================ */
+.contact-banner {
+    background: var(--primary-dark);
+    background-image: linear-gradient(135deg, rgba(6, 182, 212, 0.18), rgba(16, 185, 129, 0.12)), radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.25), transparent 55%);
+    color: #fff;
+    padding: 60px 20px 90px 20px;
+    text-align: center;
+}
+
+.contact-banner h1 {
+    font-size: 2.4rem;
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+
+.contact-banner p {
+    color: #cbd5e1;
+    font-size: 1.05rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-wrapper {
+    max-width: 1100px;
+    margin: -50px auto 80px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 26px;
+    position: relative;
+    z-index: 2;
+}
+
+.contact-form-card,
+.contact-info-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    padding: 34px;
+    border: 1px solid var(--border);
+}
+
+.contact-form-card h3,
+.contact-info-card h3 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: var(--primary);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--text-dark);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    background: var(--background);
+    transition: 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: #fff;
+}
+
+.form-group textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+.btn-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 30px;
+    border-radius: var(--radius-sm);
+    border: none;
+    background: var(--accent-gradient);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-submit:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.contact-info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.contact-info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.contact-info-icon {
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: rgba(6, 182, 212, 0.1);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.contact-info-item strong {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--primary);
+    margin-bottom: 2px;
+}
+
+.contact-info-item span {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.contact-map-note {
+    margin-top: 22px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    height: 180px;
+    background: var(--background);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    text-align: center;
+    gap: 8px;
+    flex-direction: column;
+}
+
+@media (max-width: 900px) {
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-banner {
+        padding: 40px 16px 60px 16px;
+    }
+
+    .contact-banner h1 {
+        font-size: 1.8rem;
     }
 }

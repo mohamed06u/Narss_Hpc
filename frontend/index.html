@@ -4,92 +4,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NARSS HPC Lab | معمل الحوسبة الفائقة</title>
+    <title>NARSS HPC Lab | منصة طيف للخدمات الجيومكانية</title>
 
-    <!-- Google Fonts: Cairo -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Reem+Kufi+Fun:wght@700&display=swap"
+        rel="stylesheet">
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <!-- Stylesheet -->
+    <!-- Main Stylesheet -->
     <link rel="stylesheet" href="css/main.css">
+    <!-- Google Fonts Bundle for TAIF Logo Testing -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kufam:wght@800;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@700;800&display=swap" rel="stylesheet">
-
-
-    <!-- Google Fonts Bundle for TAIF Logo Testing -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Changa:wght@800&family=El+Messiri:wght@700&family=IBM+Plex+Sans+Arabic:wght@700&family=Kufam:wght@800;
-900&family=Readex+Pro:wght@700;800&family=Reem+Kufi:wght@700;800&display=swap" rel="stylesheet">
-<!-- Expanded Google Fonts Bundle for TAIF Logo Testing -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa+Ink:wght@700&family=Cairo:wght@800;900&family=Changa:wght@800&family=El+Messiri:wght@700&family=IBM+Plex+Sans+Arabic:wght@700&family=Kufam:wght@800;900&family=Lalezar&family=Marhey:wght@700&family=Mada:wght@800&family=Noto+Kufi+Arabic:wght@800;900&family=Readex+Pro:wght@700;800&family=Reem+Kufi:wght@700;800&family=Tajawal:wght@800;900&family=Vazirmatn:wght@800;900&family=Yrsa:ital,wght@1,700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Reem+Kufi+Fun:wght@700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Changa:wght@800&family=El+Messiri:wght@700&family=IBM+Plex+Sans+Arabic:wght@700&family=Kufam:wght@800;900&family=Readex+Pro:wght@700;800&family=Reem+Kufi:wght@700;800&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
 
+
+
+
+
+    
     <!-- TOP BAR -->
     <div class="top-bar">
         <div class="top-bar-content">
-            <div class="top-bar-left">
-                <span class="badge-live"><i class="fas fa-circle"></i> نشط</span>
-                <span>أنظمة الحوسبة الفائقة وسيرفرات الذكاء الاصطناعي تعمل بكفاءة 100%</span>
+            <!-- أيقونات وسائل التواصل الاجتماعي (يسار) -->
+            <div class="top-bar-socials">
+                <a href="#" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" target="_blank" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
             </div>
-            <div class="top-bar-right">
-                <a href="#"><i class="fas fa-file-alt"></i> سجلات الصيانة</a>
-                <span style="opacity: 0.3">|</span>
-                <a href="#"><i class="fas fa-envelope"></i> اتصل بنا</a>
+            <!-- أداة تغيير اللغة (يمين) -->
+            <div class="top-bar-lang" id="langSwitcher">
+                <button class="lang-dropdown-btn" id="langDropdownBtn" aria-haspopup="true" aria-expanded="false">
+                    <span class="flag-icon" id="langFlagIcon">🇪🇬</span>
+                    <span id="langLabel">العربية</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="lang-menu" id="langMenu">
+                    <button type="button" class="lang-menu-item" data-lang="ar"><span class="flag-icon">🇪🇬</span>
+                        العربية</button>
+                    <button type="button" class="lang-menu-item" data-lang="en"><span class="flag-icon">🇬🇧</span>
+                        English</button>
+                    <button type="button" class="lang-menu-item" data-lang="fr"><span class="flag-icon">🇫🇷</span>
+                        Français</button>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- NAVBAR -->
     <nav class="main-navbar" id="navbar">
-        <li class="nav-item">
-            <a href="map.html" class="nav-link"><i class="fas fa-map-marked-alt"></i> الخريطة التفاعلية</a>
-        </li>
         <a href="index.html" class="nav-brand">
             <span>🛰️</span>
             <span>NARSS <span class="brand-highlight">HPC</span> Lab</span>
         </a>
-
         <ul class="nav-menu" id="navMenu">
+            <li class="nav-item">
+                <a href="services/interactive-map.html" class="nav-link"><i class="fas fa-map-marked-alt"></i> <span
+                        data-i18n="nav.data">إستعراض
+                        البيانات</span> </a>
+            </li>
             <li class="nav-item dropdown">
-                <a href="#" class="nav-link">الخدمات <span class="chevron"></span></a>
+                <a href="#services-container" class="nav-link"><span data-i18n="nav.services">الخدمات</span> <span
+                        class="chevron"></span></a>
                 <div class="dropdown-menu">
                     <div class="dropdown-header">
-                        <span>مجالات التركيز</span>
+                        <span data-i18n="nav.focusAreas">مجالات التركيز</span>
                         <span>↗</span>
                     </div>
-                    <a href="services/ai-training.html" class="dropdown-item"><i class="fas fa-brain"></i> تدريب الذكاء
-                        الاصطناعي</a>
+                    <a href="services/ai-training.html" class="dropdown-item"><i class="fas fa-brain"></i> <span
+                            data-i18n="nav.aiTraining">تدريب الذكاء
+                            الاصطناعي</span></a>
                     <a href="services/ondemand-computing.html" class="dropdown-item"><i class="fas fa-server"></i>
-                        الحوسبة السحابية</a>
-                    <a href="services/land-subsidence.html" class="dropdown-item"><i class="fas fa-mountain"></i> رصد
-                        هبوط الأرض</a>
-                    <a href="services/oil-spill.html" class="dropdown-item"><i class="fas fa-oil-can"></i> كشف
-                        التسربات</a>
+                        <span data-i18n="nav.cloudComputing">الحوسبة السحابية</span></a>
+                    <a href="services/land-subsidence.html" class="dropdown-item"><i class="fas fa-mountain"></i> <span
+                            data-i18n="nav.subsidence">رصد
+                            هبوط الأرض</span></a>
+                    <a href="services/oil-spill.html" class="dropdown-item"><i class="fas fa-oil-can"></i> <span
+                            data-i18n="nav.oilSpill">كشف
+                            التسربات</span></a>
                 </div>
             </li>
             <li class="nav-item">
-                <a href="#why-section" class="nav-link">عن المعمل</a>
-            </li>
-            <li class="nav-item">
-                <a href="#services-container" class="nav-link">المشاريع</a>
+                <a href="#why-section" class="nav-link" data-i18n="nav.about">عن المعمل</a>
             </li>
         </ul>
 
         <div class="nav-actions" id="navActions">
-            <a href="#" class="btn btn-outline"><i class="fas fa-sign-in-alt"></i> دخول</a>
-            <a href="#" class="btn btn-primary"><i class="fas fa-user-plus"></i> حساب جديد</a>
+            <a href="login.html" class="btn btn-outline"><i class="fas fa-sign-in-alt"></i> <span
+                    data-i18n="nav.login">دخول</span></a>
+            <a href="register.html" class="btn btn-primary"><i class="fas fa-user-plus"></i> <span
+                    data-i18n="nav.signup">حساب
+                    جديد</span></a>
+            <a href="/frontend/contact_forn.html" class="btn-contact"><i class="fas fa-envelope"></i> <span
+                    data-i18n="nav.contact">تواصل معنا</span></a>
+            <button type="button" class="nav-search-btn" aria-label="بحث"
+                onclick="document.getElementById('servicesSearch')?.scrollIntoView({behavior:'smooth', block:'center'}); document.getElementById('servicesSearch')?.focus();">
+                <i class="fas fa-search"></i>
+            </button>
         </div>
 
         <button class="mobile-toggle" id="mobileToggle" aria-label="القائمة">
@@ -97,48 +118,48 @@
         </button>
     </nav>
 
-
     <!-- HERO SECTION -->
     <section class="hero">
         <div class="hero-overlay">
 
-            <!-- Left-side capability list (matches reference image) -->
+            <!-- Left-side capability list -->
             <div class="hero-side-features">
                 <div class="side-feature-item">
                     <div class="side-feature-icon"><i class="fas fa-satellite"></i></div>
                     <div class="side-feature-text">
-                        <strong>أقمار صناعية متعددة</strong>
-                        <span>Sentinel • Landsat • وغيرها</span>
+                        <strong data-i18n="hero.side1Title">أقمار صناعية متعددة</strong>
+                        <span data-i18n="hero.side1Sub">Sentinel • Landsat • وغيرها</span>
                     </div>
                 </div>
                 <div class="side-feature-item">
                     <div class="side-feature-icon"><i class="fas fa-brain"></i></div>
                     <div class="side-feature-text">
-                        <strong>ذكاء اصطناعي متقدم</strong>
-                        <span>نماذج تعلم عميق وتحليلات ذكية</span>
+                        <strong data-i18n="hero.side2Title">ذكاء اصطناعي متقدم</strong>
+                        <span data-i18n="hero.side2Sub">نماذج تعلم عميق وتحليلات ذكية</span>
                     </div>
                 </div>
                 <div class="side-feature-item">
                     <div class="side-feature-icon"><i class="fas fa-server"></i></div>
                     <div class="side-feature-text">
-                        <strong>حوسبة عالية الأداء</strong>
-                        <span>معمل الحوسبة عالية الأداء (HPC)</span>
+                        <strong data-i18n="hero.side3Title">حوسبة عالية الأداء</strong>
+                        <span data-i18n="hero.side3Sub">معمل الحوسبة عالية الأداء (HPC)</span>
                     </div>
                 </div>
                 <div class="side-feature-item">
                     <div class="side-feature-icon"><i class="fas fa-chart-line"></i></div>
                     <div class="side-feature-text">
-                        <strong>تحليلات ونمذجة متطورة</strong>
-                        <span>نمذجة بيئية وجيومكانية</span>
+                        <strong data-i18n="hero.side4Title">تحليلات ونمذجة متطورة</strong>
+                        <span data-i18n="hero.side4Sub">نمذجة بيئية وجيومكانية</span>
                     </div>
                 </div>
                 <div class="side-feature-item">
                     <div class="side-feature-icon"><i class="fas fa-globe-africa"></i></div>
                     <div class="side-feature-text">
-                        <strong>رصد وتشغيل مستمر</strong>
-                        <span>منتجات يومية وتشغيل آلي</span>
+                        <strong data-i18n="hero.side5Title">رصد وتشغيل مستمر</strong>
+                        <span data-i18n="hero.side5Sub">منتجات يومية وتشغيل آلي</span>
                     </div>
                 </div>
+
             </div>
 
             <div class="hero-content">
@@ -146,248 +167,425 @@
                 <!-- 1. الشعار الرئيسي (طيف TAIF) -->
                 <div class="taif-header-box">
                     <h1 class="taif-logo-title">طيف</h1>
-                    <div class="taif-sub-subtitle">حلول جيومكانية ذكية</div>
+                    <div class="taif-sub-subtitle" data-i18n="hero.tagline">حلول جيومكانية ذكية</div>
                     <div class="taif-english-title">TAIF</div>
-                    <div class="taif-english-sub">Intelligent Geospatial Solutions</div>
+                    <div class="taif-english-sub">
+                        <span class="slogan-line">Intelligent Geospatial Solutions</span>
+                    </div>
                 </div>
 
                 <!-- 2. السلوجان الرئيسي -->
                 <div class="hero-slogan-pill">
-                    <i class="fas fa-leaf"></i> من بيانات الفضاء إلى قرارات أكثر ذكاءً <i class="fas fa-leaf"></i>
+                    <i class="fas fa-leaf"></i> <span data-i18n="hero.slogan">من بيانات الفضاء إلى قرارات أكثر
+                        ذكاءً</span> <i class="fas fa-leaf"></i>
                 </div>
 
-                <!-- 3. الأقسام المميزة الأربعة (بيانات دقيقة | نماذج تنبؤية...) -->
+                <!-- 3. الأقسام المميزة الأربعة -->
                 <div class="feature-bar">
-                    <div class="feature-item"><i class="fas fa-database"></i> بيانات دقيقة</div>
-                    <div class="feature-item"><i class="fas fa-chart-line"></i> نماذج تنبؤية</div>
-                    <div class="feature-item"><i class="fas fa-brain"></i> تحليلات ذكية</div>
-                    <div class="feature-item"><i class="fas fa-bullseye"></i> قرارات أفضل</div>
+                    <div class="feature-item"><i class="fas fa-database"></i> <span data-i18n="hero.f1">بيانات
+                            دقيقة</span></div>
+                    <div class="feature-item"><i class="fas fa-chart-line"></i> <span data-i18n="hero.f2">نماذج
+                            تنبؤية</span></div>
+                    <div class="feature-item"><i class="fas fa-brain"></i> <span data-i18n="hero.f3">تحليلات ذكية</span>
+                    </div>
+                    <div class="feature-item"><i class="fas fa-bullseye"></i> <span data-i18n="hero.f4">قرارات
+                            أفضل</span></div>
                 </div>
+
 
                 <!-- 4. الوصف والمنطقة المستهدفة -->
-                <div class="target-region-box">
+                <!-- <div class="target-region-box">
                     <h4>خدمة المنطقة العربية والأفريقية</h4>
-                    <p>دعم اتخاذ القرار المستند إلى البيانات من أجل إدارة مستدامة لمواردنا وبيئتنا</p>
-                </div>
+                    <p>
+                        دعم اتخاذ القرار المستند إلى البيانات من أجل إدارة مستدامة
+                        لمواردنا وبيئتنا
+                    </p>
+                </div> -->
 
-                <!-- 5. الجهة المشغلة (تطوير وتشغيل) -->
+                <!-- 5. الجهة المشغلة -->
                 <div class="operator-badge">
-                    <span>تطوير وتشغيل</span>
-                    <strong>معمل الحوسبة عالية الأداء (NARSS – HPC)</strong>
+                    <i class="fa-solid fa-microchip"></i> <!-- أو أيقونة المعمل المعتمدة لديك -->
+                    <div class="operator-badge-text">
+                        <span data-i18n="hero.operatorLabel">تطوير وتشغيل</span>
+                        <strong data-i18n="hero.operatorName">معمل الحوسبة عالية الأداء NARSS – (HPC)</strong>
+                    </div>
                 </div>
 
                 <!-- 6. أزرار التفاعل -->
                 <div class="hero-actions">
-                    <a href="#services-container" class="btn-main">استعرض المنتجات والخدمات <i class="fas fa-arrow-left"></i></a>
-                    <a href="#why-section" class="btn-secondary"><i class="fas fa-info-circle"></i> عن المنصة</a>
+                    <a href="#services-container" class="btn-main"><span data-i18n="hero.btnMain">استعرض المنتجات
+                            والخدمات</span> <i class="fas fa-arrow-left"></i></a>
+                    <a href="#why-section" class="btn-secondary"><i class="fas fa-info-circle"></i> <span
+                            data-i18n="hero.btnSecondary">عن المنصة</span></a>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- MAIN CONTAINER -->
-    <main class="container">
-        <div class="section-header-box">
+    <!-- SERVICES SECTION (ACCORDION CATEGORIES) -->
+    <section id="services-container" class="container">
+        <div class="section-header-box reveal">
             <div class="section-title-wrapper">
-                <span class="section-tag">🛠️ خدماتنا</span>
-                <h2>خدمات المنصة الإلكترونية</h2>
-                <p>اختر من بين خدمات الحوسبة ومعالجة البيانات المتاحة</p>
+                <span class="section-tag"><i class="fas fa-tools"></i> <span
+                        data-i18n="services.tag">خدماتنا</span></span>
+                <h1 data-i18n="services.title"> خدمات طيف الجيومكانية </h1>
+                <p data-i18n="services.subtitle">اختر من بين خدمات الحوسبة ومعالجة البيانات المتاحة حسب التصنيف</p>
             </div>
             <div class="filter-search-box">
                 <i class="fas fa-search search-icon"></i>
-                <input type="text" id="serviceSearch" placeholder="ابحث عن خدمة أو تقنية...">
+                <input type="text" id="servicesSearch" data-i18n-placeholder="services.searchPlaceholder"
+                    placeholder="ابحث عن خدمة أو تقنية...">
             </div>
         </div>
+        <div class="categories-wrapper">
 
-        <div class="services-grid" id="services-container">
-            <div class="loading">
-                <i class="fas fa-spinner fa-spin"></i> جاري تحميل الخدمات...
-            </div>
-        </div>
-    </main>
+            <!-- 1. Marine & Coastal Monitoring -->
+            <div class="category-card reveal">
+                <div class="category-header">
+                    <div class="category-title">
+                        <i class="fas fa-water category-icon"></i>
+                        <h3 data-i18n="services.cat1"> المراقبة البحرية والساحلية </h3>
+                    </div>
+                    <!-- <span class="badge-count">5 خدمات</span> -->
+                </div>
+                <div class="subservices-grid">
+                    <div class="subservice-item theme-slate reveal reveal-right reveal-delay-1">
+                        <div class="subservice-image"
+                            style="background-image: url('/frontend/assets/images/Oil_image.jpeg');">
+                            <i class="fas fa-oil-can subservice-badge-icon"></i>
+                        </div>
+                        <div class="subservice-content">
+                            <h4></h4>
+                            <p>تحليل الصور الفضائية لاكتشاف ومتابعة بقع الزيت</p>
+                        </div>
+                        <a href="services/oil-spill.html" class="btn-subservice">
+                            <span>رصد التسربات النفطية</span>
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                    <div class="subservice-item theme-teal reveal reveal-left reveal-delay-2">
+                        <div class="subservice-image"
+                            style="background-image:url('https://images.unsplash.com/photo-1652117500909-c475212fe733?w=700&q=70&auto=format&fit=crop');">
+                            <i class="fas fa-water subservice-badge-icon"></i>
+                        </div>
+                        <div class="subservice-content">
+                            <h4></h4>
+                            <p>رصد وتتبع التغيرات الشاطئية والتآكل الساحلى</p>
+                        </div>
+                        <a href="services/coastal-monitoring.html" class="btn-subservice">
+                            <span>تغير خط الساحل</span>
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
 
-    <section id="services-container" class="container">
-    <!-- Header Box -->
-    <div class="section-header-box">
-        <div class="section-title-wrapper">
-            <span class="section-tag"><i class="fas fa-tools"></i> خدماتنا</span>
-            <h2>خدمات المنصة الإلكترونية</h2>
-            <p>اختر من بين خدمات الحوسبة ومعالجة البيانات المتاحة حسب التصنيف</p>
-        </div>
-        <div class="filter-search-box">
-            <i class="fas fa-search search-icon"></i>
-            <input type="text" id="servicesSearch" placeholder="ابحث عن خدمة أو تقنية...">
-        </div>
-    </div>
+                    <div class="subservice-item theme-red reveal reveal-right reveal-delay-3">
+                        <div class="subservice-image"
+                            style="background-image:url('https://images.unsplash.com/photo-1547083723-7c73eaf54cc6?w=700&q=70&auto=format&fit=crop');">
+                            <i class="fas fa-temperature-high subservice-badge-icon"></i>
+                        </div>
+                        <div class="subservice-content">
+                            <h4></h4>
+                            <p>رصد درجة حرارة سطح البحر</p>
+                        </div>
+                        <a href="#" class="btn-subservice">
+                            <span>درجة حرارة سطح البحر </span>
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
 
-    <!-- Categories Accordion List -->
-    <div class="categories-wrapper">
+                    <div class="subservice-item theme-green reveal reveal-left reveal-delay-4">
+                        <div class="subservice-image"
+                            style="background-image:url('https://images.unsplash.com/photo-1744968777132-0f856bc353d6?w=700&q=70&auto=format&fit=crop');">
+                            <i class="fas fa-leaf subservice-badge-icon"></i>
+                        </div>
+                        <div class="subservice-content">
+                            <h4></h4>
+                            <p>رصد تركيز الكلوروفيل والنشاط البيولوجي المائي</p>
+                        </div>
+                        <a href="#" class="btn-subservice">
+                            <span>مراقبة الكلوروفيل-أ</span>
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
 
-        <!-- 1. Marine & Coastal Monitoring -->
-        <div class="category-card">
-            <div class="category-header">
-                <div class="category-title">
-                    <i class="fas fa-water category-icon"></i>
-                    <h3>Marine & Coastal Monitoring</h3>
-                </div>
-                <span class="badge-count">5 خدمات</span>
-            </div>
-            <div class="subservices-grid">
-                <div class="subservice-item">
-                    <h4>Oil Spill</h4>
-                    <p>تحليل الصور الفضائية لاكتشاف ومتابعة بقع الزيت.</p>
-                    <a href="#" class="btn-subservice">فتح الخدمة <i class="fas fa-arrow-left"></i></a>
-                </div>
-                <div class="subservice-item">
-                    <h4>Coastline Change</h4>
-                    <p>رصد وتتبع التغيرات الشاطئية والتآكل الساحلي.</p>
-                    <a href="#" class="btn-subservice">فتح الخدمة <i class="fas fa-arrow-left"></i></a>
-                </div>
-                <div class="subservice-item">
-                    <h4>SST</h4>
-                    <p>قياس درجة حرارة سطح البحر (Sea Surface Temperature).</p>
-                    <a href="#" class="btn-subservice">فتح الخدمة <i class="fas fa-arrow-left"></i></a>
-                </div>
-                <div class="subservice-item">
-                    <h4>Chlorophyll-a</h4>
-                    <p>رصد تركيز الكلوروفيل والنشاط البيولوجي المائي.</p>
-                    <a href="#" class="btn-subservice">فتح الخدمة <i class="fas fa-arrow-left"></i></a>
-                </div>
-                <div class="subservice-item">
-                    <h4>Water Quality</h4>
-                    <p>تقييم مؤشرات جودة المياه الساحلية والداخلية.</p>
-                    <a href="#" class="btn-subservice">فتح الخدمة <i class="fas fa-arrow-left"></i></a>
-                </div>
-            </div>
-        </div>
-
-        <!-- 2. Land Monitoring -->
-        <div class="category-card">
-            <div class="category-header">
-                <div class="category-title">
-                    <i class="fas fa-mountain category-icon"></i>
-                    <h3>Land Monitoring</h3>
-                </div>
-                <span class="badge-count">3 خدمات</span>
-            </div>
-            <div class="subservices-grid">
-                <div class="subservice-item">
-                    <h4>Land Subsidence</h4>
-                    <p>متابعة وتحليل هبوط سطح الأرض باستخدام بيانات الاستشعار عن بعد.</p>
-                    <a href="#" class="btn-subservice">فتح الخدمة <i class="fas fa-arrow-left"></i></a>
-                </div>
-                <div class="subservice-item">
-                    <h4>LST</h4>
-                    <p>قياس درجة حرارة سطح الأرض (Land Surface Temperature).</p>
-                    <a href="#" class="btn-subservice">فتح الخدمة <i class="fas fa-arrow-left"></i></a>
-                </div>
-                <div class="subservice-item">
-                    <h4>Land Cover / Land Use</h4>
-                    <p>تصنيف واستخدامات الأراضي والغطاء الأرضي.</p>
-                    <a href="#" class="btn-subservice">فتح الخدمة <i class="fas fa-arrow-left"></i></a>
+                    <div class="subservice-item theme-blue reveal reveal-right reveal-delay-5">
+                        <div class="subservice-image"
+                            style="background-image:url('https://images.unsplash.com/photo-1530053969600-caed2596d242?w=700&q=70&auto=format&fit=crop');">
+                            <i class="fas fa-tint subservice-badge-icon"></i>
+                        </div>
+                        <div class="subservice-content">
+                            <h4></h4>
+                            <p>تقييم مؤشرات جودة المياه الساحلية والداخلية</p>
+                        </div>
+                        <a href="#" class="btn-subservice">
+                            <span>مراقبة جودة المياه </span>
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
+
+            <!-- 2. Land Monitoring -->
+            <div class="category-card reveal">
+                <div class="category-header">
+                    <div class="category-title">
+                        <i class="fas fa-mountain category-icon"></i>
+                        <h3 data-i18n="services.cat2"> المراقبة البرية </h3>
+                    </div>
+                    <!-- <span class="badge-count">3 خدمات</span> -->
+                </div>
+                <div class="subservices-grid">
+                    <div class="subservice-item theme-amber reveal reveal-right reveal-delay-1">
+                        <div class="subservice-image"
+                            style="background-image:url('https://images.unsplash.com/photo-1768805465533-418fb993e46c?w=700&q=70&auto=format&fit=crop');">
+                            <i class="fas fa-arrow-down subservice-badge-icon"></i>
+                        </div>
+                        <div class="subservice-content">
+                            <h4></h4>
+                            <p>متابعة وتحليل هبوط سطح الأرض </p>
+                        </div>
+                        <a href="/frontend/services/land-subsidence.html" class="btn-subservice">
+                            <span>الهبوط الأرضى</span>
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+
+                    <div class="subservice-item theme-orange reveal reveal-left reveal-delay-2">
+                        <div class="subservice-image"
+                            style="background-image:url('https://images.unsplash.com/photo-1732494644033-fedc311f0442?w=700&q=70&auto=format&fit=crop');">
+                            <i class="fas fa-city subservice-badge-icon"></i>
+                        </div>
+                        <div class="subservice-content">
+                            <h4></h4>
+                            <p>رصد درجة حرارة سطح الأرض</p>
+                        </div>
+                        <a href="#" class="btn-subservice">
+                            <span>درجة حرارة سطح الأرض</span>
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+
+                    <div class="subservice-item theme-lime reveal reveal-right reveal-delay-3">
+                        <div class="subservice-image"
+                            style="background-image:url('https://images.unsplash.com/photo-1720156457517-c5ae8b9915f0?w=700&q=70&auto=format&fit=crop');">
+                            <i class="fas fa-seedling subservice-badge-icon"></i>
+                        </div>
+                        <div class="subservice-content">
+                            <h4></h4>
+                            <p>تصنيف واستخدامات الأراضي والغطاء الأرضى</p>
+                        </div>
+                        <a href="#" class="btn-subservice">
+                            <span> الغطاء الأرضى</span>
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <!-- 3. Atmospheric Monitoring -->
-        <div class="category-card">
+        <div class="category-card reveal">
             <div class="category-header">
                 <div class="category-title">
                     <i class="fas fa-wind category-icon"></i>
-                    <h3>Atmospheric Monitoring</h3>
+                    <h3 data-i18n="services.cat3">المراقبة الجوية</h3>
                 </div>
-                <span class="badge-count">2 خدمات</span>
+                <!-- <span class="badge-count">2 خدمات</span> -->
             </div>
             <div class="subservices-grid">
-                <div class="subservice-item">
-                    <h4>Air Temperature</h4>
-                    <p>رصد ومتابعة درجات حرارة الغلاف الجوي.</p>
-                    <a href="#" class="btn-subservice">فتح الخدمة <i class="fas fa-arrow-left"></i></a>
+                <div class="subservice-item theme-sky reveal reveal-right reveal-delay-1">
+                    <div class="subservice-image"
+                        style="background-image:url('https://images.unsplash.com/photo-1758557201932-f4cf58c2573c?w=700&q=70&auto=format&fit=crop');">
+                        <i class="fas fa-thermometer-half subservice-badge-icon"></i>
+                    </div>
+                    <div class="subservice-content">
+                        <h4></h4>
+                        <p>رصد ومتابعة درجات حرارة الهواء.</p>
+                    </div>
+                    <a href="#" class="btn-subservice"><span>مراقبة درجة حرارة الهواء</span> <i
+                            class="fas fa-arrow-left"></i></a>
                 </div>
-                <div class="subservice-item">
-                    <h4>Air Quality</h4>
-                    <p>تحليل مؤشرات الملوثات ومستويات جودة الهواء.</p>
-                    <a href="#" class="btn-subservice">فتح الخدمة <i class="fas fa-arrow-left"></i></a>
+                <div class="subservice-item theme-violet reveal reveal-left reveal-delay-2">
+                    <div class="subservice-image"
+                        style="background-image:url('https://images.unsplash.com/photo-1755577540839-1daee6d0724c?w=700&q=70&auto=format&fit=crop');">
+                        <i class="fas fa-wind subservice-badge-icon"></i>
+                    </div>
+                    <div class="subservice-content">
+                        <h4></h4>
+                        <p>تحليل مؤشرات الملوثات ومستويات جودة الهواء</p>
+                    </div>
+                    <a href="#" class="btn-subservice"><span>مراقبة جودة الهواء</span> <i
+                            class="fas fa-arrow-left"></i></a>
                 </div>
             </div>
         </div>
 
         <!-- 4. Satellite Imagery -->
-        <div class="category-card">
+        <div class="category-card reveal">
             <div class="category-header">
                 <div class="category-title">
                     <i class="fas fa-satellite category-icon"></i>
-                    <h3>Satellite Imagery</h3>
+                    <h3 data-i18n="services.cat4">خدمات صور الأقمار الصناعية</h3>
                 </div>
-                <span class="badge-count">2 خدمات</span>
+                <!-- <span class="badge-count">2 خدمات</span> -->
             </div>
             <div class="subservices-grid">
-                <div class="subservice-item">
-                    <h4>Sentinel-2</h4>
-                    <p>استعراض وتحميل مرئيات القمر الصناعي Sentinel-2.</p>
-                    <a href="#" class="btn-subservice">فتح الخدمة <i class="fas fa-arrow-left"></i></a>
+                <div class="subservice-item theme-indigo reveal reveal-right reveal-delay-1">
+                    <div class="subservice-image"
+                        style="background-image:url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=700&q=70&auto=format&fit=crop');">
+                        <i class="fas fa-satellite subservice-badge-icon"></i>
+                    </div>
+                    <div class="subservice-content">
+                        <h4></h4>
+                        <p>استعراض وتحميل مرئيات القمر الصناعي سينتينيل-2</p>
+                    </div>
+                    <a href="#" class="btn-subservice"><span>صور القمر الصناعي سينتينيل-2</span> <i
+                            class="fas fa-arrow-left"></i></a>
                 </div>
-                <div class="subservice-item">
-                    <h4>Landsat</h4>
-                    <p>معالجة صور وقواعد بيانات أقمار Landsat الفضائية.</p>
-                    <a href="#" class="btn-subservice">فتح الخدمة <i class="fas fa-arrow-left"></i></a>
+                <div class="subservice-item theme-cyan reveal reveal-left reveal-delay-2">
+                    <div class="subservice-image"
+                        style="background-image:url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=700&q=70&auto=format&fit=crop');">
+                        <i class="fas fa-satellite-dish subservice-badge-icon"></i>
+                    </div>
+                    <div class="subservice-content">
+                        <h4></h4>
+                        <p>صور القمر الصناعي لاندسات</p>
+                    </div>
+                    <a href="#" class="btn-subservice"><span>فتح الخدمة</span> <i class="fas fa-arrow-left"></i></a>
                 </div>
             </div>
         </div>
 
         <!-- 5. Planning -->
-        <div class="category-card">
+        <div class="category-card reveal">
             <div class="category-header">
                 <div class="category-title">
                     <i class="fas fa-map-marked-alt category-icon"></i>
-                    <h3>Planning</h3>
+                    <h3 data-i18n="services.cat5">التخطيط</h3>
                 </div>
-                <span class="badge-count">2 خدمات</span>
+                <!-- <span class="badge-count">2 خدمات</span> -->
             </div>
             <div class="subservices-grid">
-                <div class="subservice-item">
-                    <h4>Fayoum Tourism</h4>
-                    <p>التخطيط الجيومكاني والمؤشرات السياحية لمحافظة الفيوم.</p>
-                    <a href="#" class="btn-subservice">فتح الخدمة <i class="fas fa-arrow-left"></i></a>
+                <div class="subservice-item theme-rose reveal reveal-right reveal-delay-1">
+                    <div class="subservice-image"
+                        style="background-image:url('https://images.unsplash.com/photo-1573490647684-928a2454f861?w=700&q=70&auto=format&fit=crop');">
+                        <i class="fas fa-umbrella-beach subservice-badge-icon"></i>
+                    </div>
+                    <div class="subservice-content">
+                        <h4></h4>
+                        <p>تخطيط السياحة البيئية لوادى الريان</p>
+                    </div>
+                    <a href="#" class="btn-subservice"><span>السياحة في الفيوم</span> <i
+                            class="fas fa-arrow-left"></i></a>
                 </div>
-                <div class="subservice-item">
-                    <h4>Marine Spatial Planning</h4>
-                    <p>التخطيط المكاني البحري وإدارة المناطق الساحلية.</p>
-                    <a href="#" class="btn-subservice">فتح الخدمة <i class="fas fa-arrow-left"></i></a>
+                <div class="subservice-item theme-navy reveal reveal-left reveal-delay-2">
+                    <div class="subservice-image"
+                        style="background-image:url('https://images.unsplash.com/photo-1758552659376-0129051ae8c1?w=700&q=70&auto=format&fit=crop');">
+                        <i class="fas fa-anchor subservice-badge-icon"></i>
+                    </div>
+                    <div class="subservice-content">
+                        <h4></h4>
+                        <p>تخطيط البحري وإدارة المناطق الساحلية </p>
+                    </div>
+                    <a href="#" class="btn-subservice"><span>التخطيط المكاني البحري</span> <i
+                            class="fas fa-arrow-left"></i></a>
                 </div>
+            </div>
+        </div>
+        <!-- High Performance Computing (HPC) Services -->
+        <div class="category-card reveal">
+            <div class="category-header">
+                <div class="category-title">
+                    <i class="fas fa-microchip category-icon"></i>
+                    <h3 data-i18n="services.cat6">خدمات الحوسبة عالية الأداء</h3>
+                </div>
+                <!-- <span class="badge-count">3 خدمات</span> -->
+            </div>
+            <div class="subservices-grid">
+
+                <!-- Service 1: Big Data Processing -->
+                <div class="subservice-item theme-indigo reveal reveal-right reveal-delay-1">
+                    <div class="subservice-image"
+                        style="background-image:url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=700&q=70&auto=format&fit=crop');">
+                        <i class="fas fa-database subservice-badge-icon"></i>
+                    </div>
+                    <div class="subservice-content">
+                        <h4></h4>
+                        <p>معالجة البيانات ضخمة الحجم والتحليلات الجيومكانية المعقدة</p>
+                    </div>
+                    <a href="#" class="btn-subservice">
+                        <span>معالجة البيانات الضخمة</span>
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+
+                <!-- Service 2: Advanced Geospatial & Environmental Modeling -->
+                <div class="subservice-item theme-teal reveal reveal-left reveal-delay-2">
+                    <div class="subservice-image"
+                        style="background-image:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=700&q=70&auto=format&fit=crop');">
+                        <i class="fas fa-globe-americas subservice-badge-icon"></i>
+                    </div>
+                    <div class="subservice-content">
+                        <h4></h4>
+                        <p>النمذجة البيئية والجيومكانية المتقدمة</p>
+                    </div>
+                    <a href="#" class="btn-subservice">
+                        <span>النمذجة المتقدمة</span>
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+
+                <!-- Service 3: Real-time Analytics & Forecasting -->
+                <div class="subservice-item theme-cyan reveal reveal-right reveal-delay-3">
+                    <div class="subservice-image"
+                        style="background-image:url('https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=700&q=70&auto=format&fit=crop');">
+                        <i class="fas fa-chart-line subservice-badge-icon"></i>
+                    </div>
+                    <div class="subservice-content">
+                        <h4></h4>
+                        <p>التحليلات السريعة والتنبؤ المباشر للتغيرات البيئية والمكانية</p>
+                    </div>
+                    <a href="#" class="btn-subservice">
+                        <span>التحليلات والتنبؤ المباشر</span>
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+
             </div>
         </div>
 
-    </div>
-</section>
+        </div>
+    </section>
+
     <!-- WHY NARSS HPC LAB SECTION -->
     <section class="why-section" id="why-section">
         <div class="why-header">
-            <span class="section-tag">💡 لماذا نحن؟</span>
-            <h2>Why NARSS HPC Lab?</h2>
-            <p>بنية تحتية متطورة للحوسبة الفائقة تدعم أحدث الأبحاث والتطبيقات</p>
+            <span class="section-tag" data-i18n="why.tag">💡 لماذا نحن؟</span>
+            <h2 data-i18n="why.title">?Why NARSS HPC Lab</h2>
+            <p data-i18n="why.subtitle">بنية تحتية متطورة للحوسبة الفائقة تدعم أحدث الأبحاث والتطبيقات</p>
         </div>
         <div class="why-grid">
-            <div class="why-card">
+            <div class="why-card reveal reveal-scale reveal-delay-1">
                 <div class="why-icon"><i class="fas fa-microchip"></i></div>
                 <h4>GPUs & HPC</h4>
-                <p>أحدث وحدات المعالجة لتسريع التدريب والنمذجة.</p>
+                <p data-i18n="why.card1">أحدث وحدات المعالجة لتسريع التدريب والنمذجة</p>
             </div>
-            <div class="why-card">
+            <div class="why-card reveal reveal-scale reveal-delay-2">
                 <div class="why-icon"><i class="fas fa-database"></i></div>
                 <h4>Big Data</h4>
-                <p>معالجة كميات ضخمة من البيانات الجيومكانية بكفاءة.</p>
+                <p data-i18n="why.card2">معالجة كميات ضخمة من البيانات الجيومكانية بكفاءة</p>
             </div>
-            <div class="why-card">
+            <div class="why-card reveal reveal-scale reveal-delay-3">
                 <div class="why-icon"><i class="fas fa-robot"></i></div>
                 <h4>AI & Deep Learning</h4>
-                <p>تطوير نماذج ذكاء اصطناعي لتحليل صور الأقمار الصناعية.</p>
+                <p data-i18n="why.card3">تطوير نماذج ذكاء اصطناعي لتحليل صور الأقمار الصناعية</p>
             </div>
-            <div class="why-card">
+            <div class="why-card reveal reveal-scale reveal-delay-4">
                 <div class="why-icon"><i class="fas fa-globe-asia"></i></div>
                 <h4>GIS & Satellite</h4>
-                <p>دمج نظم المعلومات الجغرافية لاتخاذ قرارات دقيقة.</p>
+                <p data-i18n="why.card4">دمج نظم المعلومات الجغرافية لاتخاذ قرارات دقيقة</p>
             </div>
         </div>
     </section>
@@ -397,7 +595,7 @@
         <div class="footer-container">
             <div class="footer-brand">
                 <h3>🛰️ NARSS HPC Lab</h3>
-                <p>الهيئة القومية للاستشعار عن بعد وعلوم الفضاء - وحدة الحوسبة الفائقة ومعالجة البيانات الجيومكانية.</p>
+                <p data-i18n="footer.desc">الهيئة القومية للاستشعار عن بعد وعلوم الفضاء - وحدة الحوسبة الفائقة</p>
                 <div class="footer-social">
                     <a href="#"><i class="fab fa-linkedin-in"></i></a>
                     <a href="#"><i class="fab fa-x-twitter"></i></a>
@@ -406,118 +604,44 @@
                 </div>
             </div>
             <div class="footer-col">
-                <h4>روابط سريعة</h4>
+                <h4 data-i18n="footer.quickLinks">روابط سريعة</h4>
                 <ul>
-                    <li><a href="#"><i class="fas fa-chevron-left" style="font-size: 8px;"></i> عن المعمل</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-left" style="font-size: 8px;"></i> المشاريع</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-left" style="font-size: 8px;"></i> الأبحاث</a></li>
+                    <li><a href="#why-section"><i class="fas fa-chevron-left" style="font-size: 8px;"></i> <span
+                                data-i18n="nav.about">عن المعمل</span></a>
+                    </li>
+                    <li><a href="#services-container"><i class="fas fa-chevron-left" style="font-size: 8px;"></i>
+                            <span data-i18n="nav.services">الخدمات</span></a></li>
+                    <li><a href="contact_form.html"><i class="fas fa-chevron-left" style="font-size: 8px;"></i>
+                            <span data-i18n="nav.contact">تواصل معنا</span></a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>تواصل معنا</h4>
+                <h4 data-i18n="nav.contact">تواصل معنا</h4>
                 <ul>
-                    <li><a href="#"><i class="fas fa-envelope"></i> info@narss-hpc.eg</a></li>
-                    <li><a href="#"><i class="fas fa-phone"></i> +20 2 1234 5678</a></li>
-                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> القاهرة، مصر</a></li>
+                    <li><a href="#"><i class="fas fa-envelope"></i> m.zakzouk@narss.sci.eg</a></li>
+                    <li><a href="#"><i class="fas fa-phone"></i> +20 111 660 9034</a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> <span data-i18n="footer.location">القاهرة،
+                                مصر</span></a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Create by </h4>
+                <ul>
+                    <li>Dr. Mohamed Zakzouk</li>
+                    <li>Eng. Yousef Mohamed Ahmed</li>
+                    <li>Eng. Ahmed Hassan</li>
+                    <li>Eng. Mohamed Ahmed</li>
+                    <li>Eng. Ahmed Hany</li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>جميع الحقوق محفوظة © 2026 | وحدة الحوسبة الفائقة ومعالجة البيانات الجيومكانية</p>
+            <p data-i18n="footer.rights">جميع الحقوق محفوظة © 2026 | وحدة الحوسبة الفائقة </p>
         </div>
     </footer>
 
-    <!-- JAVASCRIPT -->
-    <script>
-        // Mobile Menu Toggle
-        const mobileToggle = document.getElementById('mobileToggle');
-        const navMenu = document.getElementById('navMenu');
-        const navActions = document.getElementById('navActions');
-
-        mobileToggle.addEventListener('click', () => {
-            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
-            navActions.style.display = navActions.style.display === 'flex' ? 'none' : 'flex';
-        });
-
-        // Services Data
-        const services = [
-            {
-                title: "AI Model Development & Training",
-                description: "تدريب وتحسين نماذج التعلم العميق باستخدام موارد GPU.",
-                link: "services/ai-training.html",
-                color: "#3b82f6",
-                icon: "fa-brain"
-            },
-            {
-                title: "Data Analytics",
-                description: "تحليل ومعالجة البيانات المكانية وبيانات الاستشعار عن بعد.",
-                link: "services/data-analytics.html",
-                color: "#f59e0b",
-                icon: "fa-chart-pie"
-            },
-            {
-                title: "Land Subsidence",
-                description: "متابعة وتحليل هبوط سطح الأرض باستخدام بيانات الاستشعار عن بعد.",
-                link: "services/land-subsidence.html",
-                color: "#10b981",
-                icon: "fa-mountain"
-            },
-            {
-                title: "Oil Spill Detection",
-                description: "تحليل الصور الفضائية لاكتشاف ومتابعة بقع الزيت.",
-                link: "services/oil-spill.html",
-                color: "#8b5cf6",
-                icon: "fa-water"
-            },
-            {
-                title: "On-Demand Computing",
-                description: "طلب موارد الحوسبة الفائقة للمهام العلمية والحسابية.",
-                link: "services/ondemand-computing.html",
-                color: "#ef4444",
-                icon: "fa-server"
-            }
-        ];
-
-        // Render Services Function with Search Support & Colored Icons
-        function renderServices(filter = "") {
-            const container = document.getElementById("services-container");
-            if (!container) return;
-
-            const filtered = services.filter(service =>
-                service.title.toLowerCase().includes(filter.toLowerCase()) ||
-                service.description.toLowerCase().includes(filter.toLowerCase())
-            );
-
-            if (filtered.length === 0) {
-                container.innerHTML = `<div class="loading"><i class="fas fa-search"></i> لا توجد نتائج مطابقة للبحث</div>`;
-                return;
-            }
-
-            container.innerHTML = filtered.map(service => `
-                <article class="service-card">
-                    <div class="service-icon-box" style="background-color: ${service.color}15; color: ${service.color};">
-                        <i class="fas ${service.icon}"></i>
-                    </div>
-                    <h3>${service.title}</h3>
-                    <p>${service.description}</p>
-                    <a class="btn-service" href="${service.link}" style="background-color: ${service.color};">
-                        فتح الخدمة <i class="fas fa-arrow-left"></i>
-                    </a>
-                </article>
-            `).join("");
-        }
-
-        // Search Event Listener
-        const searchInput = document.getElementById("serviceSearch");
-        if (searchInput) {
-            searchInput.addEventListener("input", (e) => {
-                renderServices(e.target.value.trim());
-            });
-        }
-
-        // Initial Load
-        document.addEventListener("DOMContentLoaded", () => renderServices());
-    </script>
+    <!-- JAVASCRIPT FOR CATEGORIES FILTER, MENU & LANGUAGE SWITCHER -->
+    <script src="/frontend/main.js"></script>
 </body>
 
 </html>

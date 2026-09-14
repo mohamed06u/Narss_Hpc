@@ -44,7 +44,7 @@ body {
 
 .service-hero-section {
     background: linear-gradient(180deg, rgba(7, 13, 26, 0.4) 0%, rgba(7, 13, 26, 0.7) 100%),
-        url(/assets/images/Ai_image\ .jpeg);
+        url(/frontend/assets/images/Ai_image\ .jpeg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

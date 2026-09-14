@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تواصل معنا | NARSS HPC Lab - منصة طيف</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Reem+Kufi+Fun:wght@700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <div class="top-bar-socials">
+                <a href="#" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" target="_blank" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div class="top-bar-lang" id="langSwitcher">
+                <button class="lang-dropdown-btn" id="langDropdownBtn" aria-haspopup="true" aria-expanded="false">
+                    <span class="flag-icon" id="langFlagIcon">🇪🇬</span>
+                    <span id="langLabel">العربية</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="lang-menu" id="langMenu">
+                    <button type="button" class="lang-menu-item" data-lang="ar"><span class="flag-icon">🇪🇬</span>
+                        العربية</button>
+                    <button type="button" class="lang-menu-item" data-lang="en"><span class="flag-icon">🇬🇧</span>
+                        English</button>
+                    <button type="button" class="lang-menu-item" data-lang="fr"><span class="flag-icon">🇫🇷</span>
+                        Français</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="main-navbar" id="navbar">
+        <a href="index.html" class="nav-brand">
+            <span>🛰️</span>
+            <span>NARSS <span class="brand-highlight">HPC</span> Lab</span>
+        </a>
+        <ul class="nav-menu" id="navMenu">
+            <li class="nav-item">
+                <a href="services/interactive-map.html" class="nav-link"><i class="fas fa-map-marked-alt"></i> <span
+                        data-i18n="nav.data">إستعراض البيانات</span></a>
+            </li>
+            <li class="nav-item">
+                <a href="index.html#services-container" class="nav-link"><span
+                        data-i18n="nav.services">الخدمات</span></a>
+            </li>
+            <li class="nav-item">
+                <a href="index.html#why-section" class="nav-link" data-i18n="nav.about">عن المعمل</a>
+            </li>
+        </ul>
+
+        <div class="nav-actions" id="navActions">
+            <a href="#" class="btn btn-outline"><i class="fas fa-sign-in-alt"></i> <span
+                    data-i18n="nav.login">دخول</span></a>
+            <a href="#" class="btn btn-primary"><i class="fas fa-user-plus"></i> <span data-i18n="nav.signup">حساب
+                    جديد</span></a>
+            <a href="contact_form.html" class="btn-contact"><i class="fas fa-envelope"></i> <span
+                    data-i18n="nav.contact">تواصل معنا</span></a>
+        </div>
+
+        <button class="mobile-toggle" id="mobileToggle" aria-label="القائمة">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- CONTACT BANNER -->
+    <section class="contact-banner">
+        <h1 data-i18n="contact.bannerTitle">تواصل معنا</h1>
+        <p data-i18n="contact.bannerSub">يسعدنا تواصلك معنا لأي استفسار عن خدماتنا أو للتعاون العلمي والبحثي</p>
+    </section>
+
+    <!-- CONTACT CONTENT -->
+    <section class="contact-wrapper">
+        <div class="contact-form-card">
+            <h3 data-i18n="contact.formTitle">أرسل لنا رسالة</h3>
+            <form id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label data-i18n="contact.name">الاسم بالكامل</label>
+                        <input type="text" name="name" data-i18n-placeholder="contact.namePlaceholder"
+                            placeholder="اكتب اسمك" required>
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="contact.email">البريد الإلكتروني</label>
+                        <input type="email" name="email" data-i18n-placeholder="contact.emailPlaceholder"
+                            placeholder="example@email.com" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label data-i18n="contact.subject">الموضوع</label>
+                    <input type="text" name="subject" data-i18n-placeholder="contact.subjectPlaceholder"
+                        placeholder="موضوع الرسالة">
+                </div>
+                <div class="form-group">
+                    <label data-i18n="contact.message">الرسالة</label>
+                    <textarea name="message" data-i18n-placeholder="contact.messagePlaceholder"
+                        placeholder="اكتب رسالتك هنا..." required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">
+                    <span data-i18n="contact.send">إرسال الرسالة</span> <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+
+        <div class="contact-info-card">
+            <h3 data-i18n="contact.infoTitle">معلومات التواصل</h3>
+            <div class="contact-info-list">
+                <div class="contact-info-item">
+                    <div class="contact-info-icon"><i class="fas fa-envelope"></i></div>
+                    <div>
+                        <strong data-i18n="contact.emailLabel">البريد الإلكتروني</strong>
+                        <span>m.zakzouk@narss.sci.eg</span>
+                    </div>
+                </div>
+                <div class="contact-info-item">
+                    <div class="contact-info-icon"><i class="fas fa-phone"></i></div>
+                    <div>
+                        <strong data-i18n="contact.phoneLabel">الهاتف</strong>
+                        <span>+20 111 660 9034</span>
+                    </div>
+                </div>
+                <div class="contact-info-item">
+                    <div class="contact-info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div>
+                        <strong data-i18n="contact.addressLabel">العنوان</strong>
+                        <span data-i18n="contact.addressValue">الهيئة القومية للاستشعار عن بعد وعلوم الفضاء، القاهرة،
+                            مصر</span>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-map-note">
+                <i class="fas fa-map-marked-alt" style="font-size:1.4rem;"></i>
+                <span data-i18n="contact.mapNote">خريطة الموقع</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3>🛰️ NARSS HPC Lab</h3>
+                <p data-i18n="footer.desc">الهيئة القومية للاستشعار عن بعد وعلوم الفضاء - وحدة الحوسبة الفائقة</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footer.quickLinks">روابط سريعة</h4>
+                <ul>
+                    <li><a href="index.html#why-section"><i class="fas fa-chevron-left" style="font-size: 8px;"></i>
+                            <span data-i18n="nav.about">عن المعمل</span></a></li>
+                    <li><a href="index.html#services-container"><i class="fas fa-chevron-left"
+                                style="font-size: 8px;"></i> <span data-i18n="nav.services">الخدمات</span></a></li>
+                    <li><a href="contact_form.html"><i class="fas fa-chevron-left" style="font-size: 8px;"></i> <span
+                                data-i18n="nav.contact">تواصل معنا</span></a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="nav.contact">تواصل معنا</h4>
+                <ul>
+                    <li><a href="#"><i class="fas fa-envelope"></i> m.zakzouk@narss.sci.eg</a></li>
+                    <li><a href="#"><i class="fas fa-phone"></i> +20 111 660 9034</a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> <span data-i18n="footer.location">القاهرة،
+                                مصر</span></a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Create by </h4>
+                <ul>
+                    <li>Dr. Mohamed Zakzouk</li>
+                    <li>Eng. Yousef Mohamed Ahmed</li>
+                    <li>Eng. Ahmed Hassan</li>
+                    <li>Eng. Mohamed Ahmed</li>
+                    <li>Eng. Ahmed Hany</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-i18n="footer.rights">جميع الحقوق محفوظة © 2026 | وحدة الحوسبة الفائقة </p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        // رسالة تأكيد بسيطة عند إرسال النموذج (بدون باك اند حاليًا)
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const btn = contactForm.querySelector('.btn-submit');
+                const original = btn.innerHTML;
+                btn.innerHTML = '<span>تم الإرسال بنجاح ✓</span>';
+                btn.disabled = true;
+                contactForm.reset();
+                setTimeout(() => {
+                    btn.innerHTML = original;
+                    btn.disabled = false;
+                }, 2500);
+            });
+        }
+    </script>
+</body>
+
+</html>
