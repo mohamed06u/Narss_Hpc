@@ -2,10 +2,17 @@
    NARSS HPC MAP - Single Active Map with Tab Switching
 ========================= */
 
-if (typeof window.API_BASE_URL === "undefined") {
-    window.API_BASE_URL = "http://localhost:3000/api";
+// if (typeof window.API_BASE_URL === "undefined") {
+//     window.API_BASE_URL = "http://localhost:3000/api";
+// }
+async function getSampleData() {
+    const response = await fetch('/api/sample-user');
+    const data = await response.json();
+    
+    if(data.success) {
+        console.log("Sample Email:", data.sample.email);
+    }
 }
-
 // Independent map instances and layer controls
 const maps = {
     satellite: null,
